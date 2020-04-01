@@ -47,6 +47,7 @@ Route::get('faq', 'publicController@faqview')->name('faq');
 Route::get('search', 'SearchController@search')->name('search') ;
 Route::get('school/{slug}', 'publicController@schoolShow')->name('school.detail');
 
+Route::get('prueba', function () { return view('prueba'); })->name('prueba');
 
 Route::group(['prefix' => 'user', 'namespace' => 'User','middleware' => 'auth'], function () {
 
@@ -62,7 +63,7 @@ Route::get('dashboard', function () { return view('user.dashboard'); })->name('d
 Route::get('booking', function () { return view('user.booking'); })->name('booking');
 
 
-Route::get('bookmarks', function () { return view('user.bookmarks'); })->name('bookmarks');
+
 
 Route::get('createSchool', 'Escuelas\EscuelasController@index')->name('createSchool');
 Route::post('createSchool', 'Escuelas\EscuelasController@store')->name('createschool.store');
@@ -70,16 +71,24 @@ Route::post('dropzone/store', 'Escuelas\EscuelasController@dropzoneStore')->name
 
 
 /**
- * Profile
- */
-
-Route::post('addFavoritos', 'Favoritos\FavoritosController@addFavoritos')->name('addFavoritos.create');
-
-/**
- * Profile
+ * Reviews
  *
  */
 Route::get('reviews', 'Comentarios\ComentariosController@viewreviews')->name('reviews');
 
+/**
+ * Favoritos
+ *
+ */
+Route::get('bookmarks','Favoritos\FavoritosController@viewFavoritos')->name('bookmarks');
+Route::get('addFavoritos/{id}', 'Favoritos\FavoritosController@addFavoritos')->name('addFavoritos');
 
+
+
+});
+
+
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    return "Cache is cleared";
 });

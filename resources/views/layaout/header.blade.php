@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/css/colors/main.css" id="colors">
 
     @stack('styles')
+    @livewireStyles
 </head>
 
 <body>
@@ -204,6 +205,7 @@
     <script type="text/javascript" src="/scripts/tooltips.min.js"></script>
     <script type="text/javascript" src="/scripts/custom.js"></script>
 
+    @livewireScripts
     @stack('scripts')
     @include('sweetalert::alert')
 </body>

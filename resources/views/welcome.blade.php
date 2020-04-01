@@ -13,10 +13,9 @@
 
                     <div class="main-search-input">
 
-                        <div class="main-search-input-item location">
-                            <input type="text" placeholder="Locacion" value="" />
-                            <a href="#"><i class="fa fa-dot-circle-o"></i></a>
-                        </div>
+                        @livewire('search-name-school')
+
+                        @livewire('search-city-school')
 
                         <div class="main-search-input-item">
                             <select data-placeholder="All Categories" class="chosen-select">
