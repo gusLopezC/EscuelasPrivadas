@@ -28,7 +28,7 @@
         <div class="col-lg-12">
 
             <div id="add-listing">
-                <form method="POST" action="{{ route('createschool.store')}}">
+                <form method="POST"  action="{{ route('createschool.store')}}" enctype="multipart/form-data">
                     {{csrf_field()}}
 
 
@@ -171,7 +171,13 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="dropzone"></div>
+                                <div class="add-review-photos margin-bottom-30" style="margin-top: 30px;">
+                                    <div class="photoUpload">
+                                        <span><i class="sl sl-icon-arrow-up-circle"></i> Upload Photos</span>
+                                        <input type='file' name="image[]" id="image[]" accept=".png, .jpg, .jpeg"
+                                            multiple="" class="upload">
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

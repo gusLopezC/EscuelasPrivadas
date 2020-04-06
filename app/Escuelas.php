@@ -36,12 +36,13 @@ class Escuelas extends Model
 
     public function getUser()
     {
-        return $this->hasMany('App\User', 'id', 'user_id')->select(array('id','name','img'));
+        return $this->hasMany('App\User', 'id', 'user_id')->select(array('id', 'name', 'img'));
     }
 
     public function getComentarios()
     {
-        return $this->hasMany('App\Comentarios', 'id', 'escuela_id');
+        return $this->hasMany('App\Comentarios', 'escuela_id')->selectRaw('escuela_id, count(*) as totalComentarios')
+            ->groupBy('escuela_id');
     }
 
 
@@ -62,7 +63,8 @@ class Escuelas extends Model
         return $this->belongsTo(SchoolFavoritos::class, 'id', 'escuela_id')->where('user_id', $cid);
     }
 
-    public function like(){
+    public function like()
+    {
 
         return $this->favoritos()->selectRaw('escuela_id,count(*) as count')->groupBy('escuela_id');
     }

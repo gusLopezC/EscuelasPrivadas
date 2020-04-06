@@ -6,14 +6,11 @@
 <!-- Slider
 ================================================== -->
 <div class="listing-slider mfp-gallery-container margin-bottom-0">
-    <a href="../images/single-listing-01.jpg" data-background-image="../images/single-listing-01.jpg"
+    @foreach ($escuela->getPhotos as $photos)
+    <a href="https://escuelasprivadas.s3.amazonaws.com/images/escuelas/{{$photos->photo}}"
+        data-background-image="https://escuelasprivadas.s3.amazonaws.com/images/escuelas/{{$photos->photo}}"
         class="item mfp-gallery" title="Title 1"></a>
-    <a href="../images/single-listing-02.jpg" data-background-image="../images/single-listing-02.jpg"
-        class="item mfp-gallery" title="Title 3"></a>
-    <a href="../images/single-listing-03.jpg" data-background-image="../images/single-listing-03.jpg"
-        class="item mfp-gallery" title="Title 2"></a>
-    <a href="../images/single-listing-04.jpg" data-background-image="../images/single-listing-04.jpg"
-        class="item mfp-gallery" title="Title 4"></a>
+    @endforeach
 </div>
 
 <div class="container">
@@ -31,9 +28,16 @@
                             {{$escuela->address}}
                         </a>
                     </span>
-                    <div class="star-rating" data-rating="5">
-                        <div class="rating-counter"><a href="#listing-reviews">(31 reviews)</a></div>
+                    <div class="star-rating" data-rating="{{$escuela->calification}}">
                     </div>
+                    @if (isset($escuela->getComentarios[0]->totalComentarios))
+                    <div class="rating-counter"><a
+                            href="#listing-reviews">({{$escuela->getComentarios[0]->totalComentarios}} reviews)</a>
+                    </div>
+
+                    @else
+                    <div class="rating-counter"><a href="#listing-reviews">(0 reviews)</a></div>
+                    @endif
                 </div>
             </div>
 
@@ -339,3 +343,7 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+
+@endpush

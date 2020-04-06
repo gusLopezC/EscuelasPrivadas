@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 use App\Escuelas;
+use App\PhotosEscuelas;
 use App\User;
 
 
@@ -46,6 +47,7 @@ class EscuelasController extends Controller
     {
         //
 
+
         $userid = User::find(Auth::user()->id);
         $slug = SlugService::createSlug(Escuelas::class, 'slug', $request->name, ['unique' => true]);
 
@@ -74,6 +76,24 @@ class EscuelasController extends Controller
             'services' => $services_json,
             'user_id' => $userid->id
         ]);
+
+        if ($image = $request->file('image')) {
+
+
+            foreach ($image as $file) {
+                $filename = time() . '-' . $file->getClientOriginalName();
+                $filePath = '/images/escuelas/' . $filename;
+
+                Storage::disk('s3')->put($filePath, file_get_contents($file));
+                PhotosEscuelas::create([
+                    'photo' => $filename,
+                    'escuela_id' =>  $escuela->id
+                ]);
+            }
+        }
+
+        return redirect()->back();
+
     }
 
     protected function validator($request)
@@ -90,43 +110,6 @@ class EscuelasController extends Controller
 
         ]);
     }
-
-    public function dropzoneStore(Request $request)
-    {
-        $image = $request->file('file');
-
-        return $image;
-        $imageName = time() . '.' . $image->extension();
-        $image->move(public_path('images'), $imageName);
-
-        return response()->json(['success' => $imageName]);
-    }
-
-    public function uploadFiles(Request $request, $id)
-    {
-        $tour = Escuelas::where('id', $id)->first();
-
-        $files = $request->file('file');
-
-
-        if ($request->hasFile('file')) {
-
-            foreach ($files as $file) {
-                $name =  $id . '_' . time() . $file->getClientOriginalName();
-
-                $filePath = '/images/tours/' . $name;
-                Storage::disk('s3')->put($filePath, file_get_contents($file));
-
-
-                $phototour = PhotosTours::create([
-                    'photo' => $name,
-                    'tour_id' => $id,
-                ]);
-            }
-            return response()->json(['tours' => $tour, 200]);
-        }
-    }
-
 
     /**
      * Display the specified resource.

@@ -46,20 +46,23 @@ class publicController extends Controller
      *  Vistas detalladas
      */
 
-     public function schoolShow($slug){
+    public function schoolShow($slug)
+    {
 
-        $escuela = Escuelas::where('slug','=',$slug)
-        ->with('getPhotos')
-        ->with('getUser')
-        ->with('getComentarios')
-        ->get();
+        $escuela = Escuelas::where('slug', '=', $slug)
+            ->with('getPhotos')
+            ->with('getUser')
+            ->with('getComentarios')
+            ->get();
 
 
         $escuela = $escuela[0];
 
+
         $escuela->services = json_decode($escuela->services, true);
         $escuela->redsocial = json_decode($escuela->redsocial, true);
 
+        // return $escuela;
         return view('school.school', compact('escuela'));
-     }
+    }
 }
