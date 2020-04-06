@@ -125,8 +125,8 @@
         @foreach ($escuelas as $escuela)
         <!-- Listing Item -->
         <div class="fw-carousel-item">
-            <a href="school/{{ $escuela->slug}}" class="listing-item-container compact">
-                <div class="listing-item">
+            <a  class="listing-item-container compact">
+                <div class="listing-item" onclick="window.location='{{ route('school',$escuela->slug)}}'">
                     <img src="images/listing-item-01.jpg" alt="">
                     @if( $escuela->verificado)
                     @endif
@@ -137,16 +137,13 @@
                         <h3>{{ $escuela->name }}</h3>
 
                     </div>
-                    <span class="like-icon"></span>
+
                 </div>
-            </a>
+                <span onclick="window.location='{{ route('addFavoritos',$escuela->id)}}'" class="like-icon"></span>
         </div>
         <!-- Listing Item / End -->
         @endforeach
     </div>
-    <!-- Carousel / End -->
-
-
 </section>
 <!-- Fullwidth Section / End -->
 

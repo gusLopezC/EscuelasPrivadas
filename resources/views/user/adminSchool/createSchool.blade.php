@@ -128,12 +128,18 @@
                                     <input type="text" name="address" id="address" class="form-control"
                                         placeholder="Select Location" value="{{old('address') }}" required>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <h5>Ciudad</h5>
                                     <input type="text" name="ciudad" id="ciudad" class="form-control"
                                         placeholder="Select Location" value="{{old('ciudad') }}" readonly required>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
+                                    <h5>Estado</h5>
+                                    <input type="text" name="estado" id="estado" class="form-control"
+                                        placeholder="Select Location" value="{{old('estado') }}" readonly required>
+                                </div>
+
+                                <div class="col-md-4">
                                     <h5>Pais</h5>
                                     <input type="text" name="pais" id="pais" class="form-control"
                                         placeholder="Select Location" value="{{old('pais') }}" readonly required>
@@ -376,6 +382,7 @@
             $('#longitude').val(place.geometry['location'].lng());
             $('#address').val(place.formatted_address);
             $('#ciudad').val(place.address_components['0'].long_name);
+            $('#estado').val(place.address_components['1'].long_name);
             $('#pais').val(place.address_components['2'].long_name);
             $('#phone').val(place.international_phone_number);
             $('#website').val(place.website);

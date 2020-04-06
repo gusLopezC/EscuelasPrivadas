@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 use App\Escuelas;
@@ -53,7 +54,7 @@ class EscuelasController extends Controller
         if ($v->fails()) {
             return redirect()->back()->withInput()->withErrors($v->errors());
         }
-        $coordenandas = $request->latitude .','.  $request->longitude;
+        $coordenandas = $request->latitude . ',' .  $request->longitude;
         $redsocial_json = json_encode($request->redsocial);
         $services_json = json_encode($request->services);
 
@@ -73,8 +74,6 @@ class EscuelasController extends Controller
             'services' => $services_json,
             'user_id' => $userid->id
         ]);
-
-
     }
 
     protected function validator($request)
@@ -96,10 +95,36 @@ class EscuelasController extends Controller
     {
         $image = $request->file('file');
 
+        return $image;
         $imageName = time() . '.' . $image->extension();
         $image->move(public_path('images'), $imageName);
 
         return response()->json(['success' => $imageName]);
+    }
+
+    public function uploadFiles(Request $request, $id)
+    {
+        $tour = Escuelas::where('id', $id)->first();
+
+        $files = $request->file('file');
+
+
+        if ($request->hasFile('file')) {
+
+            foreach ($files as $file) {
+                $name =  $id . '_' . time() . $file->getClientOriginalName();
+
+                $filePath = '/images/tours/' . $name;
+                Storage::disk('s3')->put($filePath, file_get_contents($file));
+
+
+                $phototour = PhotosTours::create([
+                    'photo' => $name,
+                    'tour_id' => $id,
+                ]);
+            }
+            return response()->json(['tours' => $tour, 200]);
+        }
     }
 
 

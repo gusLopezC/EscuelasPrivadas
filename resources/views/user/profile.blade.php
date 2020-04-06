@@ -34,13 +34,18 @@
                 <div class="col-lg-4 col-md-12">
                     <!-- Avatar -->
                     <div class="edit-profile-photo">
-                        <img src="../images/{{$user->img}}" alt="">
+                        <img src="https://escuelasprivadas.s3.amazonaws.com/images/profile/{{$user->img}}" alt="">
+                        <form enctype="multipart/form-data" action="{{ route('pictureprofile')}}" method="POST">
                         <div class="change-photo-btn">
                             <div class="photoUpload">
                                 <span><i class="fa fa-upload"></i> Upload Photo</span>
-                                <input type="file" class="upload" />
+                                <input type="file" name="avatar" class="upload" />
                             </div>
                         </div>
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input type="submit" class="pull-right btn btn-sm btn-primary" style="margin-top: 30%;">
+                    </form>
+
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-12">
@@ -64,7 +69,8 @@
                                     class="form-control">
 
                                 <label>Notes</label>
-                                <textarea name="biografy" id="biografy">{{Request::old('biografy', $user->biografy)}}</textarea>
+                                <textarea name="biografy"
+                                    id="biografy">{{Request::old('biografy', $user->biografy)}}</textarea>
 
                         </div>
 

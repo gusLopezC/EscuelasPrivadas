@@ -6,14 +6,14 @@
 <!-- Slider
 ================================================== -->
 <div class="listing-slider mfp-gallery-container margin-bottom-0">
-    <a href="../images/single-listing-01.jpg" data-background-image="../images/single-listing-01.jpg" class="item mfp-gallery"
-        title="Title 1"></a>
-    <a href="../images/single-listing-02.jpg" data-background-image="../images/single-listing-02.jpg" class="item mfp-gallery"
-        title="Title 3"></a>
-    <a href="../images/single-listing-03.jpg" data-background-image="../images/single-listing-03.jpg" class="item mfp-gallery"
-        title="Title 2"></a>
-    <a href="../images/single-listing-04.jpg" data-background-image="../images/single-listing-04.jpg" class="item mfp-gallery"
-        title="Title 4"></a>
+    <a href="../images/single-listing-01.jpg" data-background-image="../images/single-listing-01.jpg"
+        class="item mfp-gallery" title="Title 1"></a>
+    <a href="../images/single-listing-02.jpg" data-background-image="../images/single-listing-02.jpg"
+        class="item mfp-gallery" title="Title 3"></a>
+    <a href="../images/single-listing-03.jpg" data-background-image="../images/single-listing-03.jpg"
+        class="item mfp-gallery" title="Title 2"></a>
+    <a href="../images/single-listing-04.jpg" data-background-image="../images/single-listing-04.jpg"
+        class="item mfp-gallery" title="Title 4"></a>
 </div>
 
 <div class="container">
@@ -169,62 +169,7 @@
                             </div>
                         </li>
 
-                        <li>
-                            <div class="avatar"><img
-                                    src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70"
-                                    alt="" /> </div>
-                            <div class="comment-content">
-                                <div class="arrow-comment"></div>
-                                <div class="comment-by">John Doe<span class="date">May 2017</span>
-                                    <div class="star-rating" data-rating="4"></div>
-                                </div>
-                                <p>Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem
-                                    felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus
-                                    sollicitudin mauris.</p>
-                                <a href="#" class="rate-review"><i class="sl sl-icon-like"></i> Helpful Review
-                                    <span>2</span></a>
-                            </div>
-                        </li>
 
-                        <li>
-                            <div class="avatar"><img
-                                    src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70"
-                                    alt="" /></div>
-                            <div class="comment-content">
-                                <div class="arrow-comment"></div>
-                                <div class="comment-by">Kathy Brown<span class="date">June 2017</span>
-                                    <div class="star-rating" data-rating="5"></div>
-                                </div>
-                                <p>Morbi velit eros, sagittis in facilisis non, rhoncus et erat. Nam posuere tristique
-                                    sem, eu ultricies tortor imperdiet vitae. Curabitur lacinia neque non metus</p>
-
-                                <div class="review-images mfp-gallery-container">
-                                    <a href="images/review-image-02.jpg" class="mfp-gallery"><img
-                                            src="images/review-image-02.jpg" alt=""></a>
-                                    <a href="images/review-image-03.jpg" class="mfp-gallery"><img
-                                            src="images/review-image-03.jpg" alt=""></a>
-                                </div>
-                                <a href="#" class="rate-review"><i class="sl sl-icon-like"></i> Helpful Review
-                                    <span>4</span></a>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="avatar"><img
-                                    src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70"
-                                    alt="" /> </div>
-                            <div class="comment-content">
-                                <div class="arrow-comment"></div>
-                                <div class="comment-by">John Doe<span class="date">May 2017</span>
-                                    <div class="star-rating" data-rating="5"></div>
-                                </div>
-                                <p>Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem
-                                    felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus
-                                    sollicitudin mauris.</p>
-                                <a href="#" class="rate-review"><i class="sl sl-icon-like"></i> Helpful Review</a>
-                            </div>
-
-                        </li>
                     </ul>
                 </section>
 
@@ -254,65 +199,54 @@
 
                 <!-- Add Review -->
                 <h3 class="listing-desc-headline margin-bottom-20">Add Review</h3>
-
-                <span class="leave-rating-title">Your rating for this listing</span>
-
-                <!-- Rating / Upload Button -->
-                <div class="row">
-                    <div class="col-md-6">
-                        <!-- Leave Rating -->
-                        <div class="clearfix"></div>
-                        <div class="leave-rating margin-bottom-30">
-                            <input type="radio" name="rating" id="rating-1" value="1" />
-                            <label for="rating-1" class="fa fa-star"></label>
-                            <input type="radio" name="rating" id="rating-2" value="2" />
-                            <label for="rating-2" class="fa fa-star"></label>
-                            <input type="radio" name="rating" id="rating-3" value="3" />
-                            <label for="rating-3" class="fa fa-star"></label>
-                            <input type="radio" name="rating" id="rating-4" value="4" />
-                            <label for="rating-4" class="fa fa-star"></label>
-                            <input type="radio" name="rating" id="rating-5" value="5" />
-                            <label for="rating-5" class="fa fa-star"></label>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <!-- Uplaod Photos -->
-                        <div class="add-review-photos margin-bottom-30">
-                            <div class="photoUpload">
-                                <span><i class="sl sl-icon-arrow-up-circle"></i> Upload Photos</span>
-                                <input type="file" class="upload" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Review Comment -->
-                <form id="add-comment" class="add-comment">
-                    <fieldset>
+                <form method="POST" action="{{ route('comentario.store')}}" enctype="multipart/form-data">
+                    {{csrf_field()}}
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Name:</label>
-                                <input type="text" value="" />
-                            </div>
+                    <span class="leave-rating-title">Your rating for this listing</span>
 
-                            <div class="col-md-6">
-                                <label>Email:</label>
-                                <input type="text" value="" />
+                    <!-- Rating / Upload Button -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- Leave Rating -->
+                            <div class="clearfix"></div>
+                            <div class="leave-rating margin-bottom-30">
+
+                                <input type="radio" name="rating" id="rating-5" value="5">
+                                <label for="rating-5" class="fa fa-star"></label>
+                                <input type="radio" name="rating" id="rating-4" value="4">
+                                <label for="rating-4" class="fa fa-star"></label>
+                                <input type="radio" name="rating" id="rating-3" value="3">
+                                <label for="rating-3" class="fa fa-star"></label>
+                                <input type="radio" name="rating" id="rating-2" value="2">
+                                <label for="rating-2" class="fa fa-star"></label>
+                                <input type="radio" name="rating" id="rating-1" value="1">
+                                <label for="rating-1" class="fa fa-star"></label>
                             </div>
+                            <div class="clearfix"></div>
                         </div>
 
+                        <div class="col-md-6">
+                            <!-- Uplaod Photos -->
+                            <div class="add-review-photos margin-bottom-30">
+                                <div class="photoUpload">
+                                    <span><i class="sl sl-icon-arrow-up-circle"></i> Upload Photos</span>
+                                    <input type='file' name="image[]" id="image[]" accept=".png, .jpg, .jpeg"
+                                        multiple="" class="upload">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="text" name="escuela_id" id="escuela_id" value="{{$escuela->id}}"
+                        style="display:none" />
+                    <fieldset>
                         <div>
                             <label>Review:</label>
-                            <textarea cols="40" rows="3"></textarea>
+                            <textarea name="review" id="review" cols="40" rows="3" required></textarea>
                         </div>
 
                     </fieldset>
-
-                    <button class="button">Submit Review</button>
-                    <div class="clearfix"></div>
+                    <button type="submit" class="button">Submit Review</button>
                 </form>
 
             </div>
@@ -337,9 +271,10 @@
             <!-- Contact -->
             <div class="boxed-widget margin-top-35">
                 <div class="hosted-by-title">
-                    <h4><span>Hosted by</span> <a href="pages-user-profile.html">Tom Perrin</a></h4>
-                    <a href="pages-user-profile.html" class="hosted-by-avatar"><img src="images/dashboard-avatar.jpg"
-                            alt=""></a>
+                    <h4><span>Publicado por </span>{{$escuela->getUser[0]->name}}</h4>
+                    <img class="hosted-by-avatar"
+                        src="https://escuelasprivadas.s3.amazonaws.com/images/profile/{{$escuela->getUser[0]->img}}"
+                        alt="">
                 </div>
                 <ul class="listing-details-sidebar">
                     <li><i class="sl sl-icon-phone"></i> {{$escuela->phone}}</li>

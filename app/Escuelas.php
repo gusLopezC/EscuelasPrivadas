@@ -4,13 +4,11 @@ namespace App;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
-use ChristianKuri\LaravelFavorite\Traits\Favoriteable;
 
 
 class Escuelas extends Model
 {
     use Sluggable;
-    use Favoriteable;
     //
     protected $fillable = [
         'name',
@@ -31,6 +29,22 @@ class Escuelas extends Model
         'user_id',
     ];
 
+    public function getPhotos()
+    {
+        return $this->hasMany('App\PhotosEscuelas', 'escuela_id');
+    }
+
+    public function getUser()
+    {
+        return $this->hasMany('App\User', 'id', 'user_id')->select(array('id','name','img'));
+    }
+
+    public function getComentarios()
+    {
+        return $this->hasMany('App\Comentarios', 'id', 'escuela_id');
+    }
+
+
     public function sluggable()
     {
         return [
@@ -38,5 +52,18 @@ class Escuelas extends Model
                 'source' => 'name'
             ]
         ];
+    }
+
+    public function favoritos()
+    {
+
+        $cid = auth()->guard()->user() != null ? auth()->guard()->user()->id : null;
+
+        return $this->belongsTo(SchoolFavoritos::class, 'id', 'escuela_id')->where('user_id', $cid);
+    }
+
+    public function like(){
+
+        return $this->favoritos()->selectRaw('escuela_id,count(*) as count')->groupBy('escuela_id');
     }
 }

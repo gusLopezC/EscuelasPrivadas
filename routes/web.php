@@ -45,7 +45,9 @@ Route::get('faq', 'publicController@faqview')->name('faq');
 
 
 Route::get('search', 'SearchController@search')->name('search') ;
-Route::get('school/{slug}', 'publicController@schoolShow')->name('school.detail');
+Route::get('school/{slug}', 'publicController@schoolShow')->name('school');
+
+
 
 Route::get('prueba', function () { return view('prueba'); })->name('prueba');
 
@@ -56,19 +58,26 @@ Route::group(['prefix' => 'user', 'namespace' => 'User','middleware' => 'auth'],
  */
 Route::get('profile', 'UserController@index')->name('profile');
 Route::put('profile/{id}', 'UserController@update')->name('profile.update');
+Route::post('pictureprofile', 'UserController@pictureprofile')->name('pictureprofile');
 Route::delete('profile/delete', 'UserController@destroy')->name('profile.delete');
 
 
 Route::get('dashboard', function () { return view('user.dashboard'); })->name('dashboard');
 Route::get('booking', function () { return view('user.booking'); })->name('booking');
 
-
-
-
+/**
+ * Create School
+ *
+ */
 Route::get('createSchool', 'Escuelas\EscuelasController@index')->name('createSchool');
 Route::post('createSchool', 'Escuelas\EscuelasController@store')->name('createschool.store');
 Route::post('dropzone/store', 'Escuelas\EscuelasController@dropzoneStore')->name('dropzone.store');
 
+/**
+ * Reviews
+ *
+ */
+Route::post('createComentario', 'Comentarios\ComentariosController@storeComentario')->name('comentario.store');
 
 /**
  * Reviews
@@ -80,8 +89,10 @@ Route::get('reviews', 'Comentarios\ComentariosController@viewreviews')->name('re
  * Favoritos
  *
  */
-Route::get('bookmarks','Favoritos\FavoritosController@viewFavoritos')->name('bookmarks');
 Route::get('addFavoritos/{id}', 'Favoritos\FavoritosController@addFavoritos')->name('addFavoritos');
+Route::get('bookmarks','Favoritos\FavoritosController@viewFavoritos')->name('bookmarks');
+Route::delete('deleteFavoritos/{id}','Favoritos\FavoritosController@deleteFavoritos')->name('deleteFavoritos');
+
 
 
 

@@ -4,9 +4,11 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Image;
+use App\User;
+
 use  Alert;
 
 class UserController extends Controller
@@ -52,6 +54,30 @@ class UserController extends Controller
         return redirect()->route('profile', $user);
     }
 
+
+
+    public function pictureprofile(Request $request )
+    {
+        // Handle the user upload of avatar
+        if ($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalName();
+
+            $filePath = '/images/profile/' . $filename;
+
+            Storage::disk('s3')->put($filePath, file_get_contents($avatar));
+
+            // Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatars/' . $filename));
+
+            $user = Auth::user();
+            $user->img = $filename;
+            $user->save();
+        }
+
+        return view('user.profile', array('user' => Auth::user()));
+    }
+
+
     public function destroy()
     {
         Alert::info('Info Title', 'Info Message');
@@ -64,4 +90,5 @@ class UserController extends Controller
 
         return redirect('/')->with('success', 'User has been deleted');
     }
+
 }

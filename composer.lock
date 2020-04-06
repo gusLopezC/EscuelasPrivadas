@@ -4,20 +4,104 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "72bdec56e23d57c15ab02d046e9fd08d",
+    "content-hash": "6d4e58690ca7410f96f5bfaaa0328261",
     "packages": [
         {
-            "name": "calebporzio/livewire",
-            "version": "v1.0.10",
+            "name": "aws/aws-sdk-php",
+            "version": "3.134.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/livewire/livewire.git",
-                "reference": "a16e6b44d950ec38238b43300327c777c85629de"
+                "url": "https://github.com/aws/aws-sdk-php.git",
+                "reference": "4fe0b03a2eefb677ce4ca47b7e3c3705f04516c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/a16e6b44d950ec38238b43300327c777c85629de",
-                "reference": "a16e6b44d950ec38238b43300327c777c85629de",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/4fe0b03a2eefb677ce4ca47b7e3c3705f04516c8",
+                "reference": "4fe0b03a2eefb677ce4ca47b7e3c3705f04516c8",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-pcre": "*",
+                "ext-simplexml": "*",
+                "guzzlehttp/guzzle": "^5.3.3|^6.2.1|^7.0",
+                "guzzlehttp/promises": "^1.0",
+                "guzzlehttp/psr7": "^1.4.1",
+                "mtdowling/jmespath.php": "^2.5",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "andrewsville/php-token-reflection": "^1.4",
+                "aws/aws-php-sns-message-validator": "~1.0",
+                "behat/behat": "~3.0",
+                "doctrine/cache": "~1.4",
+                "ext-dom": "*",
+                "ext-openssl": "*",
+                "ext-pcntl": "*",
+                "ext-sockets": "*",
+                "nette/neon": "^2.3",
+                "phpunit/phpunit": "^4.8.35|^5.4.3",
+                "psr/cache": "^1.0",
+                "psr/simple-cache": "^1.0",
+                "sebastian/comparator": "^1.2.3"
+            },
+            "suggest": {
+                "aws/aws-php-sns-message-validator": "To validate incoming SNS notifications",
+                "doctrine/cache": "To use the DoctrineCacheAdapter",
+                "ext-curl": "To send requests using cURL",
+                "ext-openssl": "Allows working with CloudFront private distributions and verifying received SNS messages",
+                "ext-sockets": "To use client-side monitoring"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Aws\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Amazon Web Services",
+                    "homepage": "http://aws.amazon.com"
+                }
+            ],
+            "description": "AWS SDK for PHP - Use Amazon Web Services in your PHP project",
+            "homepage": "http://aws.amazon.com/sdkforphp",
+            "keywords": [
+                "amazon",
+                "aws",
+                "cloud",
+                "dynamodb",
+                "ec2",
+                "glacier",
+                "s3",
+                "sdk"
+            ],
+            "time": "2020-04-02T18:13:41+00:00"
+        },
+        {
+            "name": "calebporzio/livewire",
+            "version": "v1.0.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/livewire/livewire.git",
+                "reference": "d1bad84e24e290bc3f6745d88dddc19023865a68"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/d1bad84e24e290bc3f6745d88dddc19023865a68",
+                "reference": "d1bad84e24e290bc3f6745d88dddc19023865a68",
                 "shasum": ""
             },
             "require": {
@@ -68,73 +152,7 @@
                 }
             ],
             "abandoned": "livewire/livewire",
-            "time": "2020-03-27T21:50:52+00:00"
-        },
-        {
-            "name": "christiankuri/laravel-favorite",
-            "version": "v1.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ChristianKuri/laravel-favorite.git",
-                "reference": "e3e0b9cfc8bbbb5efbf6e6e78ee31cd9646f1b51"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ChristianKuri/laravel-favorite/zipball/e3e0b9cfc8bbbb5efbf6e6e78ee31cd9646f1b51",
-                "reference": "e3e0b9cfc8bbbb5efbf6e6e78ee31cd9646f1b51",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/database": ">=5.4",
-                "illuminate/support": ">=5.4",
-                "php": ">=5.6.4"
-            },
-            "require-dev": {
-                "orchestra/database": "~3.4",
-                "orchestra/testbench": "~3.4",
-                "phpunit/phpunit": "~5.7"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "ChristianKuri\\LaravelFavorite\\FavoriteServiceProvider"
-                    ]
-                },
-                "branch-alias": {
-                    "dev-master": "1.3.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "ChristianKuri\\LaravelFavorite\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Christian Kuri",
-                    "email": "christian.kuri.martinez@gmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Allows Laravel Eloquent models to implement a 'favorite' or 'remember' or 'follow' feature.",
-            "homepage": "https://github.com/ChristianKuri/laravel-favorite",
-            "keywords": [
-                "ChristianKuri",
-                "Follow",
-                "favoritable",
-                "favorite",
-                "favourite",
-                "laravel",
-                "laravel-favorite",
-                "package",
-                "remember"
-            ],
-            "time": "2019-10-28T22:37:14+00:00"
+            "time": "2020-04-01T16:32:31+00:00"
         },
         {
             "name": "cocur/slugify",
@@ -1271,16 +1289,16 @@
         },
         {
             "name": "laravel/passport",
-            "version": "v8.4.2",
+            "version": "v8.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/passport.git",
-                "reference": "0420dc294ce2fbf92bb3a2d18505053f552b70b1"
+                "reference": "edb9ccb9993ca98c7347da2fae20e1b8b4895f31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/passport/zipball/0420dc294ce2fbf92bb3a2d18505053f552b70b1",
-                "reference": "0420dc294ce2fbf92bb3a2d18505053f552b70b1",
+                "url": "https://api.github.com/repos/laravel/passport/zipball/edb9ccb9993ca98c7347da2fae20e1b8b4895f31",
+                "reference": "edb9ccb9993ca98c7347da2fae20e1b8b4895f31",
                 "shasum": ""
             },
             "require": {
@@ -1340,7 +1358,7 @@
                 "oauth",
                 "passport"
             ],
-            "time": "2020-03-24T16:31:27+00:00"
+            "time": "2020-03-31T15:48:43+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -1689,6 +1707,53 @@
             "time": "2020-03-17T18:58:12+00:00"
         },
         {
+            "name": "league/flysystem-aws-s3-v3",
+            "version": "1.0.24",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/flysystem-aws-s3-v3.git",
+                "reference": "4382036bde5dc926f9b8b337e5bdb15e5ec7b570"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-aws-s3-v3/zipball/4382036bde5dc926f9b8b337e5bdb15e5ec7b570",
+                "reference": "4382036bde5dc926f9b8b337e5bdb15e5ec7b570",
+                "shasum": ""
+            },
+            "require": {
+                "aws/aws-sdk-php": "^3.0.0",
+                "league/flysystem": "^1.0.40",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "henrikbjorn/phpspec-code-coverage": "~1.0.1",
+                "phpspec/phpspec": "^2.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Flysystem\\AwsS3v3\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Frank de Jonge",
+                    "email": "info@frenky.net"
+                }
+            ],
+            "description": "Flysystem adapter for the AWS S3 SDK v3.x",
+            "time": "2020-02-23T13:31:58+00:00"
+        },
+        {
             "name": "league/oauth2-server",
             "version": "8.0.0",
             "source": {
@@ -1847,17 +1912,74 @@
             "time": "2019-12-20T14:22:59+00:00"
         },
         {
-            "name": "nesbot/carbon",
-            "version": "2.32.1",
+            "name": "mtdowling/jmespath.php",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "ecb525c766deb3bbbb6a0082ea0e41d3d9ae477c"
+                "url": "https://github.com/jmespath/jmespath.php.git",
+                "reference": "52168cb9472de06979613d365c7f1ab8798be895"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/ecb525c766deb3bbbb6a0082ea0e41d3d9ae477c",
-                "reference": "ecb525c766deb3bbbb6a0082ea0e41d3d9ae477c",
+                "url": "https://api.github.com/repos/jmespath/jmespath.php/zipball/52168cb9472de06979613d365c7f1ab8798be895",
+                "reference": "52168cb9472de06979613d365c7f1ab8798be895",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "symfony/polyfill-mbstring": "^1.4"
+            },
+            "require-dev": {
+                "composer/xdebug-handler": "^1.2",
+                "phpunit/phpunit": "^4.8.36|^7.5.15"
+            },
+            "bin": [
+                "bin/jp.php"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "JmesPath\\": "src/"
+                },
+                "files": [
+                    "src/JmesPath.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Declaratively specify how to extract elements from a JSON document",
+            "keywords": [
+                "json",
+                "jsonpath"
+            ],
+            "time": "2019-12-30T18:03:34+00:00"
+        },
+        {
+            "name": "nesbot/carbon",
+            "version": "2.32.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/briannesbitt/Carbon.git",
+                "reference": "f10e22cf546704fab1db4ad4b9dedbc5c797a0dc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/f10e22cf546704fab1db4ad4b9dedbc5c797a0dc",
+                "reference": "f10e22cf546704fab1db4ad4b9dedbc5c797a0dc",
                 "shasum": ""
             },
             "require": {
@@ -1925,7 +2047,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-03-26T13:04:10+00:00"
+            "time": "2020-03-31T13:43:19+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -2807,16 +2929,16 @@
         },
         {
             "name": "realrashid/sweet-alert",
-            "version": "v3.1.3",
+            "version": "v3.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/realrashid/sweet-alert.git",
-                "reference": "6846837c3861ee733de5ee2d67e3bcda9c9e9ce2"
+                "reference": "d78f0ff7a9e065da2c79fa1c35a5fe243ae9bb02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/realrashid/sweet-alert/zipball/6846837c3861ee733de5ee2d67e3bcda9c9e9ce2",
-                "reference": "6846837c3861ee733de5ee2d67e3bcda9c9e9ce2",
+                "url": "https://api.github.com/repos/realrashid/sweet-alert/zipball/d78f0ff7a9e065da2c79fa1c35a5fe243ae9bb02",
+                "reference": "d78f0ff7a9e065da2c79fa1c35a5fe243ae9bb02",
                 "shasum": ""
             },
             "require": {
@@ -2869,7 +2991,25 @@
                 "sweet-alert2",
                 "toast"
             ],
-            "time": "2020-02-22T16:58:20+00:00"
+            "funding": [
+                {
+                    "url": "https://ko-fi.com/realrashid",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.buymeacoffee.com/realrashid",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://issuehunt.io/r/realrashid",
+                    "type": "issuehunt"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/realrashid/sweet-alert",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-03-31T15:40:35+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -5950,16 +6090,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "8.5.2",
+            "version": "8.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "018b6ac3c8ab20916db85fa91bf6465acb64d1e0"
+                "reference": "67750516bc02f300e2742fed2f50177f8f37bedf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/018b6ac3c8ab20916db85fa91bf6465acb64d1e0",
-                "reference": "018b6ac3c8ab20916db85fa91bf6465acb64d1e0",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/67750516bc02f300e2742fed2f50177f8f37bedf",
+                "reference": "67750516bc02f300e2742fed2f50177f8f37bedf",
                 "shasum": ""
             },
             "require": {
@@ -6029,7 +6169,17 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2020-01-08T08:49:49+00:00"
+            "funding": [
+                {
+                    "url": "https://phpunit.de/donate.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-03-31T08:52:04+00:00"
         },
         {
             "name": "scrivo/highlight.php",
