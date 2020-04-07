@@ -37,18 +37,19 @@
                     <li>
                         <div class="list-box-listing">
 
-                            <div class="list-box-listing-img"><a href="#"><img src="images/listing-item-02.jpg"
+                            <div class="list-box-listing-img"><a href="#"><img
+                                        src="https://escuelasprivadas.s3.amazonaws.com/images/escuelas/{{$favorito->photo}}"
                                         alt=""></a></div>
                             <div class="list-box-listing-content">
-                                <a href="/school/{{ $favorito->escuela->slug}}">
-                                <div class="inner">
-                                    <h3>{{$favorito->escuela->name}}</h3>
-                                    <span>{{$favorito->escuela->address}}</span>
-                                    <div class="star-rating" data-rating="{{$favorito->escuela->calification}}">
-                                        <div class="rating-counter">(23 reviews)</div>
+                                <a href="/school/{{ $favorito->slug}}">
+                                    <div class="inner">
+                                        <h3>{{$favorito->name}}</h3>
+                                        <span>{{$favorito->address}}</span>
+                                        <div class="star-rating" data-rating="{{$favorito->calification}}">
+
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
+                                </a>
                             </div>
                         </div>
                         <div class="buttons-to-right">
@@ -56,14 +57,14 @@
                                 @method('DELETE')
                                 @csrf
                                 <input class="btn btn-danger" type="submit" value="Delete" />
-                        </form>
+                            </form>
                         </div>
                     </li>
                     @endforeach
-
-
-
                 </ul>
+                <div class="pagination">
+                    {{ $misfavoritos->render() }}
+                </div>
                 @else
                 <ul>
                     <li>

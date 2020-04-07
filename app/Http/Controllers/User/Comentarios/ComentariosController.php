@@ -19,11 +19,14 @@ class ComentariosController extends Controller
     {
 
 
-        $comentarios = Comentarios::with('getPhotosComentario')
-            ->where('user_id', '=', Auth::user()->id)
-            ->get();
+        $comentarios = Comentarios::where('user_id', '=', Auth::user()->id)
+            ->with('getEscuela')
+            ->with('getPhotosEscuela')
+            ->paginate(2);
 
-        return view('user.reviews', compact('comentarios'));
+        // return $comentarios;
+
+        return view('user.reviews.reviews', compact('comentarios'));
     }
 
 
@@ -44,7 +47,7 @@ class ComentariosController extends Controller
         if ($image = $request->file('image')) {
             foreach ($image as $file) {
                 $filename = time() . '-' . $file->getClientOriginalName();
-                $filePath = '/images/comentario/' . $filename;
+                $filePath = '/images/comentarios/' . $filename;
 
                 Storage::disk('s3')->put($filePath, file_get_contents($file));
                 PhotosComentarios::create([
@@ -54,6 +57,76 @@ class ComentariosController extends Controller
             }
         }
 
+
+        return redirect()->back();
+    }
+
+    public function edit($id)
+    {
+
+
+        $comentario = Comentarios::where('id', '=', $id)
+            ->with('getPhotosComentario')
+            ->get();
+        $comentario = $comentario[0];
+
+        // return $comentario;
+        return view('user.reviews.editreviews', compact('comentario'));
+    }
+
+    public function update(Comentarios $comentario, Request $request)
+    {
+        $this->validate($request, [
+            'comentario' => 'required',
+            'calification' => 'required',
+        ]);
+        $comentario->comentario = $request->get('comentario');
+        $comentario->calification = $request->get('calification');
+        $comentario->save();
+
+        if ($image = $request->file('image')) {
+            foreach ($image as $file) {
+                $filename = time() . '-' . $file->getClientOriginalName();
+                $filePath = '/images/comentarios/' . $filename;
+
+                Storage::disk('s3')->put($filePath, file_get_contents($file));
+                PhotosComentarios::create([
+                    'photo' => $filename,
+                    'comentario_id' =>  $comentario->id
+                ]);
+            }
+        }
+
+        return redirect()->route('reviews');
+    }
+
+
+    public function destroy($id)
+    {
+
+
+        $photosComentario = PhotosComentarios::where('comentario_id', '=', $id)->get();
+
+        foreach ($photosComentario as $photo) {
+            # code...
+            if (Storage::disk('s3')->exists('/images/comentarios/' . $photo->photo)) {
+                Storage::disk('s3')->delete('/images/comentarios/' . $photo->photo);
+            }
+            $photosComentario->each->delete();
+        }
+        $comentario = Comentarios::destroy($id);
+
+        return redirect()->back();
+    }
+
+    public function destroyPhoto($id)
+    {
+        $photosComentario = PhotosComentarios::where('id', '=', $id)->get();
+
+        if (Storage::disk('s3')->exists('/images/comentarios/' . $photosComentario[0]->photo)) {
+            Storage::disk('s3')->delete('/images/comentarios/' . $photosComentario[0]->photo);
+        }
+        $photosComentario->each->delete();
 
         return redirect()->back();
     }

@@ -89,24 +89,27 @@
                                         data-tip-content="Maximum of 5 keywords related with your business"></i></h5>
                                 <select data-placeholder="Select Multiple Items" class="chosen-select" multiple
                                     name="niveleducativo[]" id="niveleducativo" required>
-                                    <option value="0">Guarderia</option>
-                                    <option value="1">Pree-escolar</option>
-                                    <option value="2">Primaria</option>
-                                    <option value="3">Secundaria</option>
-                                    <option value="4">Preparatoria</option>
-                                    <option value="5">Universidad</option>
-                                    <option value="6">Deportes</option>
-                                    <option value="7">Arte</option>
-                                    <option value="8">Tecnica</option>
-                                    <option value="9">Idiomas</option>
+                                    <option value="guarderia">Guarderia</option>
+                                    <option value="preescolar">Pree-escolar</option>
+                                    <option value="primarias">Primaria</option>
+                                    <option value="secundarias">Secundaria</option>
+                                    <option value="preparatorias">Preparatoria</option>
+                                    <option value="universidades">Universidad</option>
+                                    <option value="otras">Deportes</option>
+                                    <option value="otras">Arte</option>
+                                    <option value="otras">Tecnica</option>
+                                    <option value="otras">Idiomas</option>
                                 </select>
                             </div>
 
                         </div>
                         <!-- Row / End -->
+                        <button class="button preview" type="submit">Enviar <i
+                            class="fa fa-arrow-circle-right"></i></button>
 
                     </div>
                     <!-- Section / End -->
+
 
                     <!-- Section -->
                     <div class="add-listing-section margin-top-45">
@@ -293,19 +296,17 @@
                             <input id="check-h" type="checkbox" name="services[]" value="8">
                             <label for="check-h">Aula Maker/ Media Lab</label>
 
-                            <input id="check-h" type="checkbox" name="services[]" value="9">
-                            <label for="check-h">Robotica / Programación </label>
+                            <input id="check-i" type="checkbox" name="services[]" value="9">
+                            <label for="check-i">Robotica / Programación </label>
 
-                            <input id="check-h" type="checkbox" name="services[]" value="10">
-                            <label for="check-h">Otros </label>
+                            <input id="check-j" type="checkbox" name="services[]" value="10">
+                            <label for="check-j">Otros </label>
 
                         </div>
                         <!-- Checkboxes / End -->
 
                     </div>
                     <!-- Section / End -->
-
-
 
                     <!-- Section -->
                     <div class="margin-top-45">
@@ -352,6 +353,7 @@
 
                     <button class="button preview" type="submit">Enviar <i
                             class="fa fa-arrow-circle-right"></i></button>
+
                 </form>
 
             </div>
@@ -364,7 +366,6 @@
 @endsection
 
 @push('styles')
-<link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.css" rel="stylesheet">
 
 @endpush
 @push('scripts')
@@ -373,7 +374,6 @@
 <script src="https://maps.google.com/maps/api/js?key=AIzaSyAioR39TAyFp6nIBvQGDdcl0Q10TaoMXjw&libraries=places"
     type="text/javascript"></script>
 <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.js"></script>
 
 <script>
     google.maps.event.addDomListener(window, 'load', initialize);
@@ -400,24 +400,6 @@
 
 <script>
     CKEDITOR.replace( 'description' );
-
-    var myDropzone = new Dropzone('.dropzone',{
-            url: 'dropzone/store',
-            paramName: 'photo',
-            dictDefaultMessage: 'Arrasta tu imagen de portada',
-
-            maxFilesize: 3,
-
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-            });
-    myDropzone.on('error', function(file,res){
-        console.log(res.errors.photo[0]);
-        var msg = res.errors.photo[0]
-        $('.dz-error-message > span').text(msg);
-    })
-            Dropzone.autoDiscover = false;
 </script>
 
 @endpush

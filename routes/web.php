@@ -84,6 +84,10 @@ Route::post('createComentario', 'Comentarios\ComentariosController@storeComentar
  *
  */
 Route::get('reviews', 'Comentarios\ComentariosController@viewreviews')->name('reviews');
+Route::get('editreview/{post}', 'Comentarios\ComentariosController@edit')->name('reviews.edit');
+Route::put('reviews/{comentario}', 'Comentarios\ComentariosController@update')->name('reviews.update');             //UPDATE
+Route::get('reviews/{post}/delete', 'Comentarios\ComentariosController@destroy')->name('reviews.delete');
+Route::delete('reviewsphoto/{post}/delete', 'Comentarios\ComentariosController@destroyPhoto')->name('reviewsreviewsphoto.delete');
 
 /**
  * Favoritos

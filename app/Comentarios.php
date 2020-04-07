@@ -26,4 +26,15 @@ class Comentarios extends Model
     {
         return $this->hasMany('App\User', 'id', 'user_id');
     }
+
+    public function getEscuela()
+    {
+        return $this->hasMany('App\Escuelas', 'id', 'escuela_id')->selectRaw('id, name, slug');
+    }
+
+
+    public function getPhotosEscuela()
+    {
+        return $this->hasMany('App\PhotosEscuelas', 'id', 'escuela_id')->selectRaw('id, photo');
+    }
 }

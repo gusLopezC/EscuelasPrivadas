@@ -1,14 +1,8 @@
 @extends('layaout.header')
 @section('contenido')
-<!-- Wrapper -->
-<div id="wrapper">
+@extends('layaout.layaout')
 
-    <!-- Dashboard -->
-    <div >
-
-        @extends('layaout.layaout')
-
-        <!-- Content
+   <!-- Content
         ================================================== -->
         <div class="dashboard-content">
 
@@ -208,12 +202,5 @@
         </div>
         <!-- Content / End -->
 
-
-    </div>
-    <!-- Dashboard / End -->
-
-
-</div>
-<!-- Wrapper / End -->
 
 @endsection

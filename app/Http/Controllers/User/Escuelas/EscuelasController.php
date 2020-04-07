@@ -8,9 +8,11 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Collection;
 
 use App\Escuelas;
 use App\PhotosEscuelas;
+use App\EscuelasNivel;
 use App\User;
 
 
@@ -47,6 +49,38 @@ class EscuelasController extends Controller
     {
         //
 
+        $collection = collect(['escuela_id' => 1]);
+
+        foreach ($request->niveleducativo as $niveleducativo) {
+
+            if ($niveleducativo == 'guarderia') {
+                $collection->put('guarderia', true);
+            }
+            if ($niveleducativo == 'preescolar') {
+                $collection->put('preescolar', true);
+            }
+            if ($niveleducativo == 'primarias') {
+                $collection->put('primarias', true);
+            }
+            if ($niveleducativo == 'secundarias') {
+                $collection->put('secundarias', true);
+            }
+            if ($niveleducativo == 'preparatorias') {
+                $collection->put('preparatorias', true);
+            }
+            if ($niveleducativo == 'universidades') {
+                $collection->put('universidades', true);
+            }
+            if ($niveleducativo == 'otras') {
+                $collection->put('otras', true);
+            }
+        }
+
+        // $EscuelasNivel = EscuelasNivel::insert($collection);
+
+        return $collection;
+
+
 
         $userid = User::find(Auth::user()->id);
         $slug = SlugService::createSlug(Escuelas::class, 'slug', $request->name, ['unique' => true]);
@@ -77,9 +111,9 @@ class EscuelasController extends Controller
             'user_id' => $userid->id
         ]);
 
+
+
         if ($image = $request->file('image')) {
-
-
             foreach ($image as $file) {
                 $filename = time() . '-' . $file->getClientOriginalName();
                 $filePath = '/images/escuelas/' . $filename;
@@ -88,12 +122,12 @@ class EscuelasController extends Controller
                 PhotosEscuelas::create([
                     'photo' => $filename,
                     'escuela_id' =>  $escuela->id
+
                 ]);
             }
         }
 
         return redirect()->back();
-
     }
 
     protected function validator($request)

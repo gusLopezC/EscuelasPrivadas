@@ -16,14 +16,21 @@ class FavoritosController extends Controller
     {
 
         $user = Auth::user();
+        /*
+        $misfavoritos = SchoolFavoritos::where('school_favoritos.user_id', '=', $user->id)
+            //->with('getEscuela')
+            ->join('escuelas', 'escuelas.id', '=', 'school_favoritos.escuela_id')
+            //->join('photos_escuelas', 'photos_escuelas.escuela_id', '=', 'school_favoritos.escuela_id')
+            ->paginate(5);
+        */
+        $misfavoritos = \DB::table('school_favoritos')
+        ->select('school_favoritos.*','escuelas.name','escuelas.slug','escuelas.address','escuelas.calification','photos_escuelas.photo')
+        ->where('school_favoritos.user_id', '=', $user->id)
+        ->join('escuelas', 'escuelas.id', '=', 'school_favoritos.escuela_id')
+        ->join('photos_escuelas', 'photos_escuelas.escuela_id', '=', 'school_favoritos.escuela_id')
+        ->paginate(7);
 
-         $misfavoritos = SchoolFavoritos::
-            where('user_id', '=', $user->id)
-            ->with('escuela')
-            ->get();
-
-
-
+        // return $misfavoritos;
         return view('user.bookmarks', compact('misfavoritos'));
     }
 
@@ -50,9 +57,8 @@ class FavoritosController extends Controller
     public function deleteFavoritos($id)
     {
 
-        $Favorito = SchoolFavoritos::find($id);
+        SchoolFavoritos::destroy($id);
 
-        $Favorito->delete();
 
         return redirect()->route('bookmarks');
     }
