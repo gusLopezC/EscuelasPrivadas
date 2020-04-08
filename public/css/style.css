@@ -2197,7 +2197,10 @@ em.mm-counter + a.mm-fullsubopen + span {
     height: 50px;
     outline: none;
 }
-
+.shadow{
+    background: #fff;
+    margin: 0% -8% 0% -8%;
+}
 /* Gray Style */
 .gray-style.main-search-input {
     box-shadow: none;
@@ -2312,7 +2315,6 @@ input[type="range"]:focus + .rangeslider .rangeslider__handle {
 /* Chosen Plugin
 ------------------------------------- */
 .chosen-container {
-    width: 120% !important;
     position: relative;
     display: inline-block;
     vertical-align: middle;

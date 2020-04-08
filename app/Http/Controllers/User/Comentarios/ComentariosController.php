@@ -15,6 +15,20 @@ class ComentariosController extends Controller
 {
     //
 
+    public function obtenerComentarios(Request $request)
+    {
+
+        $comentarios = Comentarios::
+            //where('escuela_id', '=', $request->escuela_id)
+            paginate(5);
+
+        if ($request->ajax()) {
+            return view('school.comentariosschool', compact('comentarios'));
+        }
+
+        return view('school.comentariosschool', compact('data'));
+    }
+
     public function viewreviews()
     {
 
@@ -28,7 +42,6 @@ class ComentariosController extends Controller
 
         return view('user.reviews.reviews', compact('comentarios'));
     }
-
 
     public function storeComentario(Request $request)
     {
@@ -100,6 +113,14 @@ class ComentariosController extends Controller
         return redirect()->route('reviews');
     }
 
+    public function comentarioUtil(Comentarios $comentario)
+    {
+
+        $comentario->calificationutil =  $comentario->calificationutil + 1;
+        $comentario->save();
+
+        return redirect()->back();
+    }
 
     public function destroy($id)
     {

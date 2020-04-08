@@ -31,9 +31,6 @@
                 <form method="POST"  action="{{ route('createschool.store')}}" enctype="multipart/form-data">
                     {{csrf_field()}}
 
-
-
-
                     <!-- Section -->
                     <div class="add-listing-section">
                         @if (count($errors) > 0)

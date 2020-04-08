@@ -5,7 +5,7 @@
     <small class="form-text text-danger">{{$message}}</small>
     @else
     @if(count($usuarios)>0)
-    <div class="shadow rounded px-3 pt-3 pb-0">
+    <div class="shadow">
         @foreach($usuarios as $usuario)
         <div style="cursor: pointer;">
             <a href="school/{{ $usuario->slug}}">

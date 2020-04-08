@@ -142,61 +142,6 @@
                 </div>
             </div>
 
-            <!-- Reviews -->
-            <div id="listing-reviews" class="listing-section">
-                <h3 class="listing-desc-headline margin-top-75 margin-bottom-20">Reviews <span>(12)</span></h3>
-
-                <div class="clearfix"></div>
-
-                <!-- Reviews -->
-                <section class="comments listing-reviews">
-
-                    <ul>
-                        <li>
-                            <div class="avatar"><img
-                                    src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70"
-                                    alt="" /></div>
-                            <div class="comment-content">
-                                <div class="arrow-comment"></div>
-                                <div class="comment-by">Kathy Brown<span class="date">June 2017</span>
-                                    <div class="star-rating" data-rating="5"></div>
-                                </div>
-                                <p>Morbi velit eros, sagittis in facilisis non, rhoncus et erat. Nam posuere tristique
-                                    sem, eu ultricies tortor imperdiet vitae. Curabitur lacinia neque non metus</p>
-
-                                <div class="review-images mfp-gallery-container">
-                                    <a href="images/review-image-01.jpg" class="mfp-gallery"><img
-                                            src="images/review-image-01.jpg" alt=""></a>
-                                </div>
-                                <a href="#" class="rate-review"><i class="sl sl-icon-like"></i> Helpful Review
-                                    <span>12</span></a>
-                            </div>
-                        </li>
-
-
-                    </ul>
-                </section>
-
-                <!-- Pagination -->
-                <div class="clearfix"></div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <!-- Pagination -->
-                        <div class="pagination-container margin-top-30">
-                            <nav class="pagination">
-                                <ul>
-                                    <li><a href="#" class="current-page">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#"><i class="sl sl-icon-arrow-right"></i></a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <!-- Pagination / End -->
-            </div>
-
 
             <!-- Add Review Box -->
             <div id="add-review" class="add-review-box">
@@ -257,6 +202,62 @@
             <!-- Add Review Box / End -->
 
 
+            <!-- Reviews -->
+            <div id="listing-reviews" class="listing-section">
+                @if (isset($escuela->getComentarios[0]->totalComentarios))
+                <h3 class="listing-desc-headline margin-top-75 margin-bottom-20">Reviews
+                    <span>({{$escuela->getComentarios[0]->totalComentarios}})</span></h3>
+                @else
+                <h3 class="listing-desc-headline margin-top-75 margin-bottom-20">Aun no hay Reviews</h3>
+                @endif
+
+                <div class="clearfix"></div>
+
+                @include('school.comentariosschool')
+
+                <section class="comments listing-reviews">
+                    <ul>
+                        @foreach ($comentarios as $comentario)
+                        <li>
+                            <div class="avatar"><img
+                                    src="https://escuelasprivadas.s3.amazonaws.com/images/profile/{{$comentario->getUser[0]->img}}"
+                                    alt="" /></div>
+                            <div class="comment-content">
+                                <div class="arrow-comment"></div>
+                                <div class="comment-by">{{$comentario->getUser[0]->name}}<span
+                                        class="date">{{ $comentario->created_at->format('d M Y')}}</span>
+                                    <div class="star-rating" data-rating="{{$comentario->calification}}"></div>
+                                </div>
+                                <p>{{$comentario->comentario}}</p>
+                                @if(count($comentario->getPhotosComentario) > 0)
+                                <div class="review-images mfp-gallery-container">
+                                    @foreach ($comentario->getPhotosComentario as $PhotoComentario)
+                                    <a href="https://escuelasprivadas.s3.amazonaws.com/images/comentarios/{{$PhotoComentario->photo}}"
+                                        class="mfp-gallery">
+                                        <img src="https://escuelasprivadas.s3.amazonaws.com/images/comentarios/{{$PhotoComentario->photo}}"
+                                            alt=""></a>
+                                    @endforeach
+                                </div>
+                                @endif
+
+                                <a href="{{route('comentario.comentarioUtil',$comentario)}}" class="rate-review"><i
+                                        class="sl sl-icon-like"></i> Comentario
+                                    útil
+                                    @if($comentario->calificationutil > 0)
+                                    <span>{{$comentario->calificationutil}}</span>
+                                    @endif </a>
+                            </div>
+                        </li>
+                        @endforeach
+
+                    </ul>
+                    <a class="show-more-button" data-more-title="Show More"><i class="fa fa-angle-down"></i></a>
+                </section>
+
+                <!-- Pagination -->
+                <div class="clearfix"></div>
+                <div style="margin-bottom: 25%;"></div>
+            </div>
         </div>
 
 
@@ -265,11 +266,14 @@
         <div class="col-lg-4 col-md-4 margin-top-75 sticky">
 
 
+            @if ($escuela->verificado)
             <!-- Verified Badge -->
             <div class="verified-badge with-tip"
                 data-tip-content="Listing has been verified and belongs the business owner or manager.">
                 <i class="sl sl-icon-check"></i> Verified Listing
             </div>
+            @endif
+
 
 
             <!-- Contact -->
@@ -281,27 +285,26 @@
                         alt="">
                 </div>
                 <ul class="listing-details-sidebar">
-                    <li><i class="sl sl-icon-phone"></i> {{$escuela->phone}}</li>
-                    <li><i class="sl sl-icon-globe"></i> <a href="#">{{$escuela->website}}</a></li>
-                    <li><i class="fa fa-envelope-o"></i> <a href="#">{{$escuela->phone}}</a></li>
+                    <li><i class="sl sl-icon-phone"></i><a href="{{$escuela->website}}">{{$escuela->phone}}</a></li>
+                    <li><i class="sl sl-icon-globe"></i> <a href="{{$escuela->website}}">{{$escuela->website}}</a></li>
+                    <li><i class="fa fa-envelope-o"></i> <a href="{{$escuela->phone}}">{{$escuela->phone}}</a></li>
                 </ul>
 
                 <ul class="listing-details-sidebar social-profiles">
-
                     @if( $escuela->redsocial[0] != 'null')
-                    <li><a href="#" class="facebook-profile"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+                    <li><a href="{{$escuela->redsocial[0]}}" target="_blank" class="facebook-profile"><i
+                                class="fa fa-facebook-square"></i> Facebook</a></li>
                     @endif
                     @if( $escuela->redsocial[1] != 'null')
-                    <li><a href="#" class="twitter-profile"><i class="fa fa-twitter"></i> Twitter</a></li>
+                    <li><a href="{{$escuela->redsocial[1]}}" target="_blank" class="twitter-profile"><i
+                                class="fa fa-twitter"></i> Twitter</a>
+                    </li>
                     @endif
                     @if( $escuela->redsocial[2] != 'null')
-                    <li><a href="#" class="gplus-profile"><i class="fa fa-instagram"></i> Twitter</a></li>
+                    <li><a href="{{$escuela->redsocial[2]}}" target="_blank" class="gplus-profile"><i
+                                class="fa fa-instagram"></i> Twitter</a>
+                    </li>
                     @endif
-
-
-
-
-
                     <!-- <li><a href="#" class="gplus-profile"><i class="fa fa-google-plus"></i> Google Plus</a></li> -->
                 </ul>
 
@@ -324,14 +327,19 @@
 
             <!-- Share / Like -->
             <div class="listing-share margin-top-40 margin-bottom-40 no-border">
-                <button class="like-button"><span class="like-icon"></span> Bookmark this listing</button>
-                <span>159 people bookmarked this place</span>
+                <button class="like-button" onclick="window.location='{{ route('addFavoritos',$escuela->id)}}'" ><span class="like-icon"></span> Bookmark this listing</button>
 
                 <!-- Share Buttons -->
                 <ul class="share-buttons margin-top-40 margin-bottom-0">
-                    <li><a class="fb-share" href="#"><i class="fa fa-facebook"></i> Share</a></li>
-                    <li><a class="twitter-share" href="#"><i class="fa fa-twitter"></i> Tweet</a></li>
-                    <li><a class="gplus-share" href="#"><i class="fa fa-google-plus"></i> Share</a></li>
+                    <li><a class="fb-share"
+                            href="https://www.facebook.com/sharer.php?u={{ request()->fullUrl()}}&title={{$escuela->name}}"
+                            target="_blank"><i class="fa fa-facebook"></i> Share</a></li>
+                    <li><a class="twitter-share"
+                            href="https://twitter.com/intent/tweet?url={{ request()->fullUrl()}}&text={{$escuela->name}}&via=Schola&hashtags=Schola"
+                            target="_blank"><i class=" fa fa-twitter"></i> Tweet</a></li>
+                    <li><a class="gplus-share"
+                            href="https://plus.google.com/share?url={{ request()->fullUrl()}}&text={{$escuela->description}}&hl={language_code}"
+                            target="_blank"s><i class="fa fa-google-plus"></i> Share</a></li>
                     <!-- <li><a class="pinterest-share" href="#"><i class="fa fa-pinterest-p"></i> Pin</a></li> -->
                 </ul>
                 <div class="clearfix"></div>
@@ -345,5 +353,6 @@
 @endsection
 
 @push('scripts')
-
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 @endpush

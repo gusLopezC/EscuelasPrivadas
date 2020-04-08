@@ -21,6 +21,7 @@ class Escuelas extends Model
         'description',
         'phone',
         'website',
+        'emalcontact',
         'redsocial',
         'services',
         'verificado',

@@ -46,6 +46,7 @@ Route::get('faq', 'publicController@faqview')->name('faq');
 
 Route::get('search', 'SearchController@search')->name('search') ;
 Route::get('school/{slug}', 'publicController@schoolShow')->name('school');
+Route::get('obtenerComentarios', 'User\Comentarios\ComentariosController@obtenerComentarios')->name('obtenerComentarios');
 
 
 
@@ -74,10 +75,11 @@ Route::post('createSchool', 'Escuelas\EscuelasController@store')->name('createsc
 Route::post('dropzone/store', 'Escuelas\EscuelasController@dropzoneStore')->name('dropzone.store');
 
 /**
- * Reviews
+ * Comentario
  *
  */
 Route::post('createComentario', 'Comentarios\ComentariosController@storeComentario')->name('comentario.store');
+Route::get('comentarioUtil/{comentario}', 'Comentarios\ComentariosController@comentarioUtil')->name('comentario.comentarioUtil');
 
 /**
  * Reviews

@@ -48,40 +48,6 @@ class EscuelasController extends Controller
     public function store(Request $request)
     {
         //
-
-        $collection = collect(['escuela_id' => 1]);
-
-        foreach ($request->niveleducativo as $niveleducativo) {
-
-            if ($niveleducativo == 'guarderia') {
-                $collection->put('guarderia', true);
-            }
-            if ($niveleducativo == 'preescolar') {
-                $collection->put('preescolar', true);
-            }
-            if ($niveleducativo == 'primarias') {
-                $collection->put('primarias', true);
-            }
-            if ($niveleducativo == 'secundarias') {
-                $collection->put('secundarias', true);
-            }
-            if ($niveleducativo == 'preparatorias') {
-                $collection->put('preparatorias', true);
-            }
-            if ($niveleducativo == 'universidades') {
-                $collection->put('universidades', true);
-            }
-            if ($niveleducativo == 'otras') {
-                $collection->put('otras', true);
-            }
-        }
-
-        // $EscuelasNivel = EscuelasNivel::insert($collection);
-
-        return $collection;
-
-
-
         $userid = User::find(Auth::user()->id);
         $slug = SlugService::createSlug(Escuelas::class, 'slug', $request->name, ['unique' => true]);
 
@@ -105,13 +71,11 @@ class EscuelasController extends Controller
             'description' => $request->description,
             'phone' => $request->phone,
             'website' => $request->website,
-            'emalcontact' => $request->emalcontact,
+            // 'emalcontact' => $request->emalcontact,
             'redsocial' => $redsocial_json,
             'services' => $services_json,
             'user_id' => $userid->id
         ]);
-
-
 
         if ($image = $request->file('image')) {
             foreach ($image as $file) {
@@ -126,6 +90,36 @@ class EscuelasController extends Controller
                 ]);
             }
         }
+
+        $EscuelasNivel = new EscuelasNivel();
+
+        $EscuelasNivel->escuela_id = $escuela->id;
+        foreach ($request->niveleducativo as $niveleducativo) {
+
+            if ($niveleducativo == 'guarderia') {
+                $EscuelasNivel->guarderia = true;
+            }
+            if ($niveleducativo == 'preescolar') {
+                $EscuelasNivel->preescolar = true;
+            }
+            if ($niveleducativo == 'primarias') {
+                $EscuelasNivel->primarias = true;
+            }
+            if ($niveleducativo == 'secundarias') {
+                $EscuelasNivel->secundarias = true;
+            }
+            if ($niveleducativo == 'preparatorias') {
+                $EscuelasNivel->preparatorias = true;
+            }
+            if ($niveleducativo == 'universidades') {
+                $EscuelasNivel->universidades = true;
+            }
+            if ($niveleducativo == 'otras') {
+                $EscuelasNivel->otras = true;
+            }
+        }
+        $EscuelasNivel->save();
+
 
         return redirect()->back();
     }
