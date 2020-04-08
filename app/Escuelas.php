@@ -30,6 +30,11 @@ class Escuelas extends Model
         'user_id',
     ];
 
+    public function getNivelEscuela()
+    {
+        return $this->hasMany('App\EscuelasNivel', 'escuela_id');
+    }
+
     public function getPhotos()
     {
         return $this->hasMany('App\PhotosEscuelas', 'escuela_id');

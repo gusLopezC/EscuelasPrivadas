@@ -17,4 +17,10 @@ class EscuelasNivel extends Model
         'universidades',
         'otras',
     ];
+
+
+    public function getEscuela()
+    {
+        return $this->hasMany('App\Escuelas', 'id', 'escuela_id');
+    }
 }

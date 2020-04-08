@@ -10320,7 +10320,7 @@ span.like-icon {
 }
 @media (min-width: 1240px) {
     .category-small-box {
-        width: calc(100% * (1 / 6) - 21px);
+        width: calc(100% * (1 / 7) - 21px);
     }
 }
 

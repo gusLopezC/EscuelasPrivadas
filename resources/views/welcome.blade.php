@@ -59,44 +59,47 @@
     <div class="row">
         <div class="col-md-12">
             <div class="categories-boxes-container margin-top-5 margin-bottom-30">
-                <form method="POST" action="{{ route('search')}}">
-                    {{csrf_field()}}
-                </form>
                 <!-- Box -->
-                <a class="category-small-box">
+                <a href="{{ route('search', ['category' => 'guarderia']) }}" class="category-small-box">
                     <img src="../images/icons/guarderia.svg" alt="">
                     <h4>Guarderia</h4>
                 </a>
 
                 <!-- Box -->
-                <a class="category-small-box">
+                <a href="{{ route('search', ['category' => 'preescolar']) }}" class="category-small-box">
                     <img src="../images/icons/preescolar.svg" alt="">
                     <h4>Pre-escolar</h4>
                 </a>
 
                 <!-- Box -->
-                <a class="category-small-box">
+                <a href="{{ route('search', ['category' => 'primarias']) }}" class="category-small-box">
                     <img src="../images/icons/primaria.svg" alt="">
                     <h4>Primarias</h4>
                 </a>
 
                 <!-- Box -->
-                <a class="category-small-box">
+                <a href="{{ route('search', ['category' => 'secundarias']) }}" class="category-small-box">
                     <img src="../images/icons/secundaria.svg" alt="">
                     <h4>Secundarias</h4>
                 </a>
 
                 <!-- Box -->
-                <a class="category-small-box">
+                <a href="{{ route('search', ['category' => 'preparatorias']) }}" class="category-small-box">
                     <img src="../images/icons/preparatoria.svg" alt="">
                     <h4>Preparatorias</h4>
                 </a>
 
                 <!-- Box -->
-                <a class="category-small-box">
+                <a href="{{ route('search', ['category' => 'universidades']) }}" class="category-small-box">
                     <img src="../images/icons/universidad.svg" alt="">
 
                     <h4>Universidades</h4>
+                </a>
+                <!-- Box -->
+                <a href="{{ route('search', ['category' => 'universidades']) }}" class="category-small-box">
+                    <img src="../images/icons/universidad.svg" alt="">
+
+                    <h4>Otros</h4>
                 </a>
 
             </div>
@@ -125,7 +128,7 @@
         @foreach ($escuelas as $escuela)
         <!-- Listing Item -->
         <div class="fw-carousel-item">
-            <a  class="listing-item-container compact">
+            <a class="listing-item-container compact">
                 <div class="listing-item" onclick="window.location='{{ route('school',$escuela->slug)}}'">
                     <img src="images/listing-item-01.jpg" alt="">
                     @if( $escuela->verificado)
