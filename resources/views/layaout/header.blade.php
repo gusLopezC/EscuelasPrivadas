@@ -49,7 +49,7 @@
 
                         <!-- Main Navigation -->
                         <nav id="navigation" class="style-1">
-                             <ul id="responsive">
+                            <ul id="responsive">
                                 <li class="{{ Request::is('/') ? 'current' : '' }}"><a href="{{route('/')}}">Home</a>
                                 </li>
                                 <li class="{{ Request::is('/') ? 'current' : '' }}"><a
@@ -80,12 +80,13 @@
 
                             <!-- User Menu -->
                             <div class="user-menu">
-                                <div class="user-name"><span><img src="/images/dashboard-avatar.jpg" alt=""></span>                                    </div>
+                                <div class="user-name"><span><img src="/images/dashboard-avatar.jpg" alt=""></span>
+                                </div>
                                 <ul>
                                     <li><a href="{{route('profile')}}"><i class="sl sl-icon-settings"></i>
                                             Profile</a></li>
                                     <li><a href="{{route('dashboard')}}"><i class="sl sl-icon-envelope-open"></i>
-                                        Dashboard</a></li>
+                                            Dashboard</a></li>
                                     <li><a href="{{route('/')}}"><i class="fa fa-calendar-check-o"></i>
                                             Bookings</a></li>
                                     <li>
@@ -192,17 +193,16 @@
 
 
     <!-- Scripts
-================================================== -->
-    <script type="text/javascript" src="/scripts/jquery-2.2.0.min.js"></script>
+==================================================
+    <script type="text/javascript" src="/scripts/rangeslider.min.js"></script>
+
+-->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/scripts/mmenu.min.js"></script>
     <script type="text/javascript" src="/scripts/chosen.min.js"></script>
     <script type="text/javascript" src="/scripts/slick.min.js"></script>
-    <script type="text/javascript" src="/scripts/rangeslider.min.js"></script>
     <script type="text/javascript" src="/scripts/magnific-popup.min.js"></script>
-    <script type="text/javascript" src="/scripts/waypoints.min.js"></script>
-    <script type="text/javascript" src="/scripts/counterup.min.js"></script>
-    <script type="text/javascript" src="/scripts/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="/scripts/tooltips.min.js"></script>
     <script type="text/javascript" src="/scripts/custom.js"></script>
 
     @livewireScripts

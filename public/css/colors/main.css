@@ -106,7 +106,6 @@ input:checked + .slider,
 .custom-zoom-in:hover,
 .custom-zoom-out:hover,
 #geoLocation:hover,
-#streetView:hover,
 #scrollEnabling:hover,
 #scrollEnabling.enabled,
 #mapnav-buttons a:hover,
@@ -255,10 +254,6 @@ a.button.border {
 .custom-zoom-in:hover:before,
 .custom-zoom-out:hover:before  { -webkit-text-stroke: 1px #f91942;  }
 
-.category-box-btn:hover {
-    background-color: #f91942;
-    border-color: #f91942;
-} 
 
 .message-bubble.me .message-text {
     color: #f91942;

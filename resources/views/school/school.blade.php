@@ -138,7 +138,7 @@
                 <div id="singleListingMap-container">
                     <div id="singleListingMap" data-latitude="40.70437865245596" data-longitude="-73.98674011230469"
                         data-map-icon="im im-icon-Hamburger"></div>
-                    <a href="#" id="streetView">Street View</a>
+
                 </div>
             </div>
 
@@ -353,6 +353,5 @@
 @endsection
 
 @push('scripts')
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
 @endpush

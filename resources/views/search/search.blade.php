@@ -53,8 +53,8 @@
                         <div class="sort-by">
                             <div class="sort-by-select">
                                 <select data-placeholder="Default order" class="chosen-select-no-single">
-                                    <option><a href=""></a> Default Order</option>
-                                    <option>Highest Rated</option>
+                                    <option>Default Order</a> </option>
+                                    <option><a href="">Highest Rated</option>
                                     <option>Most Reviewed</option>
                                     <option>Newest Listings</option>
                                     <option>Oldest Listings</option>
