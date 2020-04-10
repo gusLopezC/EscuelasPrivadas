@@ -25,7 +25,7 @@
                                 <option>Primarias</option>
                                 <option>Secundarias</option>
                                 <option>Preparatorias</option>
-                                <option>Universidades</option>
+                                <option>Otros</option>
                             </select>
                         </div>
 
@@ -96,8 +96,8 @@
                     <h4>Universidades</h4>
                 </a>
                 <!-- Box -->
-                <a href="{{ route('search', ['category' => 'universidades']) }}" class="category-small-box">
-                    <img src="../images/icons/universidad.svg" alt="">
+                <a href="{{ route('search', ['category' => 'otras']) }}" class="category-small-box">
+                    <img src="../images/icons/soccer.png" alt="">
 
                     <h4>Otros</h4>
                 </a>
@@ -109,46 +109,54 @@
 <!-- Category Boxes / End -->
 
 
-<!-- Fullwidth Section -->
-<section class="fullwidth margin-top-65 padding-top-75 padding-bottom-70" data-background-color="#f8f8f8">
+<!-- Listings -->
+<div class="container margin-top-70">
+    <div class="row">
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="headline centered margin-bottom-45">
-                    Escuelas mas populares
-                    <span>Discoubre las instituciones mas buscado</span>
-                </h3>
-            </div>
+        <div class="col-md-12">
+            <h3 class="headline centered margin-bottom-45">
+                Most Visited Places
+                <span>Discover top-rated local businesses</span>
+            </h3>
         </div>
-    </div>
 
-    <!-- Carousel / Start -->
-    <div class="simple-fw-slick-carousel dots-nav">
-        @foreach ($escuelas as $escuela)
-        <!-- Listing Item -->
-        <div class="fw-carousel-item">
-            <a class="listing-item-container compact">
-                <div class="listing-item" onclick="window.location='{{ route('school',$escuela->slug)}}'">
-                    <img src="images/listing-item-01.jpg" alt="">
-                    @if( $escuela->verificado)
-                    @endif
-                    <div class="listing-badge now-open">{{ $escuela->calification }}</div>
+        <div class="col-md-12">
+            <div class="simple-slick-carousel dots-nav">
 
-                    <div class="listing-item-content">
-                        <div class="numerical-rating"></div>
-                        <h3>{{ $escuela->name }}</h3>
+                @foreach ($escuelas as $escuela)
+                <!-- Listing Item -->
+                <div class="carousel-item">
+                    <a  class="listing-item-container">
+                        <div class="listing-item">
+                            <img src="https://escuelasprivadas.s3.amazonaws.com/images/escuelas/{{$escuela->getPhotos[0]->photo}}"
+                                alt="" >
+                            <div onclick="window.location='{{ route('school',$escuela->slug)}}'" class="listing-item-content">
+                                <span class="tag">{{$escuela->categoria}}</span>
+                            <h3>{{$escuela->name}}</h3>
+                                <span>{{ Illuminate\Support\Str::limit($escuela->address, 25) }} </span>
+                            </div>
+                            <span onclick="window.location='{{ route('addFavoritos',$escuela->id)}}'"
+                                class="like-icon"></span>
+                        </div>
 
-                    </div>
+                        <div class="star-rating" data-rating="{{$escuela->calification}}">
+                            <div class="rating-counter"></div>
 
+                        </div>
+                    </a>
                 </div>
-                <span onclick="window.location='{{ route('addFavoritos',$escuela->id)}}'" class="like-icon"></span>
+                <!-- Listing Item / End -->
+
+                @endforeach
+
+            </div>
+
         </div>
-        <!-- Listing Item / End -->
-        @endforeach
+
     </div>
-</section>
-<!-- Fullwidth Section / End -->
+</div>
+<!-- Listings / End -->
+
 
 
 <!-- Flip banner -->

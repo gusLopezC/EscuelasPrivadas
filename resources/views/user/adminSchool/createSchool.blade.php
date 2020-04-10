@@ -70,9 +70,9 @@
                                     value="{{old('categoria') }}" required>
                                     <option label="blank">Selecciona Categoria</option>
                                     <option>Tradicional</option>
-                                    <option>Religiosa/ Catolica</option>
+                                    <option>Religiosa</option>
                                     <option>Montessori</option>
-                                    <option>Tecnólogia y innovación</option>
+                                    <option>Tecnólogia</option>
                                     <option>Bicultural</option>
                                     <option>Mixtas</option>
                                     <option>Laicas</option>

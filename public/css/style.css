@@ -15310,7 +15310,11 @@ h4 span.headline-detail {
     color: #333;
     background-color: #fff;
 }
-
+.centerimagen{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 
 /*============== Elements Area css ================*/

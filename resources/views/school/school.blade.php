@@ -21,7 +21,18 @@
             <!-- Titlebar -->
             <div id="titlebar" class="listing-titlebar">
                 <div class="listing-titlebar-title">
-                    <h2>{{$escuela->name}}<span class="listing-tag">Primaria Secundaria</span></h2>
+                    <h2>{{$escuela->name}}</h2>
+                    <br>
+                    @if ($EscuelasNivel[0]->guarderia)<span class="listing-tag">Guarderia</span>@endif
+                    @if ($EscuelasNivel[0]->preescolar)<span class="listing-tag">Preescolar</span>@endif
+                    @if ($EscuelasNivel[0]->primarias)<span class="listing-tag">Primaria</span>@endif
+                    @if ($EscuelasNivel[0]->secundarias)<span class="listing-tag">Secundaria</span>@endif
+                    @if ($EscuelasNivel[0]->preparatorias)<span class="listing-tag">preparatoria</span>@endif
+                    @if ($EscuelasNivel[0]->universidades)<span class="listing-tag">Universidad</span>@endif
+                    @if ($EscuelasNivel[0]->otras)<span class="listing-tag">Otros</span>@endif
+
+
+                    <br>
                     <span>
                         <a href="#listing-location" class="listing-address">
                             <i class="fa fa-map-marker"></i>
@@ -327,7 +338,8 @@
 
             <!-- Share / Like -->
             <div class="listing-share margin-top-40 margin-bottom-40 no-border">
-                <button class="like-button" onclick="window.location='{{ route('addFavoritos',$escuela->id)}}'" ><span class="like-icon"></span> Bookmark this listing</button>
+                <button class="like-button" onclick="window.location='{{ route('addFavoritos',$escuela->id)}}'"><span
+                        class="like-icon"></span> Bookmark this listing</button>
 
                 <!-- Share Buttons -->
                 <ul class="share-buttons margin-top-40 margin-bottom-0">
@@ -339,7 +351,7 @@
                             target="_blank"><i class=" fa fa-twitter"></i> Tweet</a></li>
                     <li><a class="gplus-share"
                             href="https://plus.google.com/share?url={{ request()->fullUrl()}}&text={{$escuela->description}}&hl={language_code}"
-                            target="_blank"s><i class="fa fa-google-plus"></i> Share</a></li>
+                            target="_blank" s><i class="fa fa-google-plus"></i> Share</a></li>
                     <!-- <li><a class="pinterest-share" href="#"><i class="fa fa-pinterest-p"></i> Pin</a></li> -->
                 </ul>
                 <div class="clearfix"></div>
