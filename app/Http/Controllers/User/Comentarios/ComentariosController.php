@@ -15,18 +15,24 @@ class ComentariosController extends Controller
 {
     //
 
-    public function obtenerComentarios(Request $request)
+    public function obtenerComentarios($slug)
     {
+        $escuela = Escuelas::where('slug', '=', $slug)
+            ->with('getPhotos')
+            ->with('getUser')
+            ->with('getComentarios')
+            ->get();
+
+        $escuela = $escuela[0];
+        $escuela->services = json_decode($escuela->services, true);
+        $escuela->redsocial = json_decode($escuela->redsocial, true);
 
         $comentarios = Comentarios::
             //where('escuela_id', '=', $request->escuela_id)
             paginate(5);
 
-        if ($request->ajax()) {
-            return view('school.comentariosschool', compact('comentarios'));
-        }
 
-        return view('school.comentariosschool', compact('data'));
+        return view('school.comentariosschool', compact('escuela'));
     }
 
     public function viewreviews()

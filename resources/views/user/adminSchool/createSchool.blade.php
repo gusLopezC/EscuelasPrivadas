@@ -220,7 +220,7 @@
                             <!-- Email Address -->
                             <div class="col-md-4">
                                 <h5>E-mail</h5>
-                                <input type="text" name="emalcontact" id="emalcontact" value="{{old('emalcontact') }}"
+                                <input type="text" name="emailcontacto" id="emailcontacto" value="{{old('emailcontacto') }}"
                                     required>
                             </div>
 

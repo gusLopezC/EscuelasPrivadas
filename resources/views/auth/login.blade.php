@@ -61,7 +61,7 @@
                 </div>
 
                 <div class="login100-form-social flex-c-m">
-                    <a href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">
+                    <a href="{{ url('/auth/redirect/facebook') }}" class="login100-form-social-item flex-c-m bg1 m-r-5">
                         <i class="fa fa-facebook-f" aria-hidden="true"></i>
                     </a>
                     <div style="margin-right:3%"></div>

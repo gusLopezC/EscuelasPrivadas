@@ -25,9 +25,19 @@ return [
     ],
 
     'ses' => [
-        'key' => env('AWS_ACCESS_KEY_ID'),
-        'secret' => env('AWS_SECRET_ACCESS_KEY'),
-        'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
+        'key' => env('SES_KEY'),
+        'secret' => env('SES_SECRET'),
+        'region' => env('SES_REGION'),
     ],
+    'facebook' => [
+        'client_id' => '695164261305541',
+        'client_secret' => 'b775ee1fbdbd5b8dc42bc234a16ff312',
+        'redirect' => 'http://localhost:8000/callback/facebook',
+    ],
+    'google' => [
+        'client_id' => 'xxxx',
+        'client_secret' => 'xxx',
+        'redirect' => 'http://127.0.0.1:8000/callback/google',
+      ],
 
 ];

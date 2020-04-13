@@ -16,12 +16,13 @@ class Escuelas extends Model
         'categoria',
         'address',
         'ciudad',
+        'estado',
         'pais',
         'coordenadasGoogle',
         'description',
         'phone',
         'website',
-        'emalcontact',
+        'emailcontacto',
         'redsocial',
         'services',
         'verificado',
@@ -42,7 +43,7 @@ class Escuelas extends Model
 
     public function getUser()
     {
-        return $this->hasMany('App\User', 'id', 'user_id')->select(array('id', 'name', 'img'));
+        return $this->hasMany('App\User', 'id', 'user_id')->select(array('id', 'name', 'email','img'));
     }
 
     public function getComentarios()

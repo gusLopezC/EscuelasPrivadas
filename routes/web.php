@@ -31,6 +31,8 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 
 Auth::routes();
+Route::get('/auth/redirect/{provider}', 'Auth\SocialController@redirect');
+Route::get('/callback/{provider}', 'Auth\SocialController@callback');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 
@@ -40,13 +42,14 @@ Route::get('/', 'publicController@homeview')->name('/');
 Route::get('nosotros', 'publicController@nosotrosview')->name('nosotros');
 Route::get('workschool', 'publicController@workschoolview')->name('workschool');
 Route::get('contact', 'publicController@contactview')->name('contact');
+Route::post('contact', 'publicController@contactsend')->name('contactSend');
 Route::get('termsAndConditions', 'publicController@termsAndConditionsview')->name('termsAndConditions');
 Route::get('faq', 'publicController@faqview')->name('faq');
 
 
 Route::get('search', 'SearchController@search')->name('search') ;
 Route::get('school/{slug}', 'publicController@schoolShow')->name('school');
-Route::get('obtenerComentarios', 'User\Comentarios\ComentariosController@obtenerComentarios')->name('obtenerComentarios');
+Route::get('school/comentary/{slug}', 'User\Comentarios\ComentariosController@obtenerComentarios')->name('obtenerComentarios');
 
 
 
@@ -64,7 +67,6 @@ Route::delete('profile/delete', 'UserController@destroy')->name('profile.delete'
 
 
 Route::get('dashboard', function () { return view('user.dashboard'); })->name('dashboard');
-Route::get('booking', function () { return view('user.booking'); })->name('booking');
 
 /**
  * Create School
@@ -72,7 +74,6 @@ Route::get('booking', function () { return view('user.booking'); })->name('booki
  */
 Route::get('createSchool', 'Escuelas\EscuelasController@index')->name('createSchool');
 Route::post('createSchool', 'Escuelas\EscuelasController@store')->name('createschool.store');
-Route::post('dropzone/store', 'Escuelas\EscuelasController@dropzoneStore')->name('dropzone.store');
 
 /**
  * Comentario
@@ -99,7 +100,13 @@ Route::get('addFavoritos/{id}', 'Favoritos\FavoritosController@addFavoritos')->n
 Route::get('bookmarks','Favoritos\FavoritosController@viewFavoritos')->name('bookmarks');
 Route::delete('deleteFavoritos/{id}','Favoritos\FavoritosController@deleteFavoritos')->name('deleteFavoritos');
 
-
+/**
+ * Reservas
+ *
+ */
+Route::get('booking/{slug}', 'Bookings\BookingController@index')->name('createBooking');
+Route::post('booking', 'Bookings\BookingController@store')->name('Booking.store');
+Route::get('booking', 'Bookings\BookingController@showbookings')->name('booking');
 
 
 });
