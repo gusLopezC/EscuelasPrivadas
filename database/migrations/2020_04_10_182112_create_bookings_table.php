@@ -18,9 +18,10 @@ class CreateBookingsTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone');
-            $table->string('Date');
+            $table->date('Date');
             $table->string('Hour');
             $table->string('Guests');
+            $table->string('status')->default('Pendiente');
             $table->unsignedBigInteger('school_id')->unsigned();
             $table->unsignedBigInteger('visitante_id')->unsigned();
             $table->unsignedBigInteger('receptor_id')->unsigned();

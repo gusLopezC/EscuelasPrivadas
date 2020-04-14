@@ -107,6 +107,7 @@ Route::delete('deleteFavoritos/{id}','Favoritos\FavoritosController@deleteFavori
 Route::get('booking/{slug}', 'Bookings\BookingController@index')->name('createBooking');
 Route::post('booking', 'Bookings\BookingController@store')->name('Booking.store');
 Route::get('booking', 'Bookings\BookingController@showbookings')->name('booking');
+Route::get('cancelBooking/{id}', 'Bookings\BookingController@cancelBooking')->name('cancelBooking');
 
 
 });

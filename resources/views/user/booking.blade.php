@@ -31,6 +31,17 @@
         <div class="col-lg-12 col-md-12">
             <div class="dashboard-list-box margin-top-0">
 
+                <!-- Sort by -->
+                <div class="sort-by">
+                    <div class="sort-by-select">
+                        <select onchange="location = this.value;" class="chosen-select">
+                            <option></option>
+                            <option value="{{ route('booking', ['orderBy' => 'Activas' ]) }}">Activas</option>
+                            <option value="{{ route('booking', ['orderBy' => 'Historial' ]) }}">Historial</option>
+
+                        </select>
+                    </div>
+                </div>
 
                 <!-- Reply to review popup -->
                 <div id="small-dialog" class="zoom-anim-dialog mfp-hide">
@@ -44,16 +55,30 @@
                 </div>
 
                 <h4>Bookings List</h4>
+
                 <ul>
                     @foreach ($reservas as $reserva)
-                    <li class="approved-booking">
+
+                    @if ($reserva->status == 'Pendiente')
+                    <li class="pending-booking">
+                        @endif
+                        @if ($reserva->status == 'Cancelado')
+                    <li class="canceled-booking">
+                        @endif
                         <div class="list-box-listing bookings">
                             <div class="list-box-listing-img"><img
                                     src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=120"
                                     alt=""></div>
                             <div class="list-box-listing-content">
                                 <div class="inner">
-                                    <h3>{{$reserva->getEscuela[0]->name}} </h3>
+                                    <h3>{{$reserva->getEscuela[0]->name}}
+                                        @if ($reserva->status == 'Pendiente')
+                                        <span class="booking-status pending">Pendiente</span>
+                                        @endif
+                                        @if ($reserva->status == 'Cancelado')
+                                        <span class="booking-status">Canceled</span>
+                                        @endif
+                                    </h3>
 
                                     <div class="inner-booking-list">
                                         <h5>Booking Date:</h5>
@@ -84,6 +109,13 @@
                                 </div>
                             </div>
                         </div>
+                        @if ($reserva->status == 'Pendiente')
+                        <div class="buttons-to-right">
+                            <a href="{{route('cancelBooking',$reserva->id)}}" class="button gray reject"><i
+                                    class="sl sl-icon-close"></i> Cancel</a>
+                        </div>
+                        @endif
+
                     </li>
                     @endforeach
                     <div class="pagination">

@@ -78,9 +78,10 @@
                         @else
                         <div class="header-widget">
 
+
                             <!-- User Menu -->
                             <div class="user-menu">
-                                <div class="user-name"><span><img src="/images/dashboard-avatar.jpg" alt=""></span>
+                                <div class="user-name"><span><img src="https://escuelasprivadas.s3.amazonaws.com/images/profile/avatar.png" alt=""></span>
                                 </div>
                                 <ul>
                                     <li><a href="{{route('profile')}}"><i class="sl sl-icon-settings"></i>

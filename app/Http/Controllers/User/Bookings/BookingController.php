@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Booking\BookingEscuela;
@@ -37,6 +38,8 @@ class BookingController extends Controller
 
     public function store(Request $request)
     {
+
+
         $nameEscuela = $request->NameEscuela;
 
         $user = Auth::user();
@@ -52,11 +55,12 @@ class BookingController extends Controller
             'receptor_id' => 'required',
         ]);
 
+
         $reserva = Bookings::create([
             'name' => $request->name,
             'email' =>  $request->email,
             'phone' =>  $request->phone,
-            'Date' =>   $request->date,
+            'Date' => Carbon::parse($request->date)->format('Y-m-d'),
             'Hour' =>  $request->time,
             'Guests' =>  $request->Guests,
             'school_id' => $request->school_id,
@@ -77,11 +81,39 @@ class BookingController extends Controller
 
     public function showbookings()
     {
+        $fecha = Carbon::now();
+        $fecha = Carbon::parse($fecha)->format('Y-m-d');
+
         $iduser = Auth::user()->id;
-        $reservas = Bookings::where('visitante_id', '=', $iduser)
-            ->with('getEscuela')
-            ->paginate(5);
+
+       //  return request()->orderBy;
+
+        if (request()->orderBy == 'Activas' || request()->orderBy == '' ) {
+            $reservas = Bookings::where('visitante_id', '=', $iduser)
+                ->where('Date', '>=', $fecha)
+                ->with('getEscuela')
+                ->paginate(5);
+        } else {
+            $reservas = Bookings::where('visitante_id', '=', $iduser)
+                ->where('Date', '<', $fecha)
+                ->with('getEscuela')
+                ->paginate(5);
+        }
+
 
         return view('user.booking', compact('reservas'));
+    }
+
+    public function cancelBooking($id)
+    {
+        $reserva = Bookings::find($id);
+
+        $reserva->status = 'Cancelado';
+        $reserva->save();
+
+        Alert::success('Cancelacion realizada', '');
+
+        return redirect()->back();
+
     }
 }
