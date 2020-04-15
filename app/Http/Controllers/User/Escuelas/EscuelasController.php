@@ -49,6 +49,8 @@ class EscuelasController extends Controller
     public function store(Request $request)
     {
         //
+        return $request;
+
         $userid = User::find(Auth::user()->id);
         $slug = SlugService::createSlug(Escuelas::class, 'slug', $request->name, ['unique' => true]);
 
@@ -128,6 +130,7 @@ class EscuelasController extends Controller
 
     protected function validator($request)
     {
+
         return Validator::make($request->all(), [
             'name' => 'required',
             'categoria' => 'required|',

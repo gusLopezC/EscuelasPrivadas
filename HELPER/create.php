@@ -1,37 +1,3 @@
-@extends('layaout.header')
-@section('contenido')
-
-@extends('layaout.layaout')
-
-<!-- Content
-	================================================== -->
-<div class="dashboard-content">
-
-    <!-- Titlebar -->
-    <div id="titlebar">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Add Listing</h2>
-                <!-- Breadcrumbs -->
-                <nav id="breadcrumbs">
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Dashboard</a></li>
-                        <li>Add Listing</li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-12">
-
-            <div id="add-listing">
-                <form method="POST" action="{{ route('createschool.store')}}" enctype="multipart/form-data">
-                    {{csrf_field()}}
-
-
 
                     <!-- Section -->
                     <div class="add-listing-section">
@@ -221,8 +187,8 @@
                             <!-- Email Address -->
                             <div class="col-md-4">
                                 <h5>E-mail</h5>
-                                <input type="text" name="emailcontacto" id="emailcontacto"
-                                    value="{{old('emailcontacto') }}" required>
+                                <input type="text" name="emailcontacto" id="emailcontacto" value="{{old('emailcontacto') }}"
+                                    required>
                             </div>
 
                         </div>
@@ -305,101 +271,3 @@
 
                     </div>
                     <!-- Section / End -->
-
-                    <!-- Section -->
-                    <div class="add-listing-section margin-top-45">
-
-                        <!-- Headline -->
-                        <div class="add-listing-headline">
-                            <h3><i class="sl sl-icon-book-open"></i> Pricing</h3>
-                            <!-- Switcher -->
-                            <label class="switch"><input type="checkbox" checked><span
-                                    class="slider round"></span></label>
-                        </div>
-
-                        <!-- Switcher ON-OFF Content -->
-                        <div class="switcher-content">
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <table id="pricing-list-container">
-                                        <tr class="pricing-list-item pattern">
-                                            <td>
-                                                <div class="fm-move"><i class="sl sl-icon-cursor-move"></i></div>
-                                                <div class="fm-input pricing-name"><input type="text"
-                                                        placeholder="Title" /></div>
-                                                <div class="fm-input pricing-ingredients"><input type="text"
-                                                        placeholder="Description" /></div>
-                                                <div class="fm-input pricing-price"><input type="text"
-                                                        placeholder="Price" data-unit="USD" /></div>
-                                                <div class="fm-close"><a class="delete" href="#"><i
-                                                            class="fa fa-remove"></i></a></div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <a href="#" class="button add-pricing-list-item">Add Item</a>
-                                    <a href="#" class="button add-pricing-submenu">Add Category</a>
-                                </div>
-                            </div>
-
-                        </div>
-                        <!-- Switcher ON-OFF Content / End -->
-
-                    </div>
-                    <!-- Section / End -->
-
-
-                    <button class="button preview" type="submit">Enviar <i
-                            class="fa fa-arrow-circle-right"></i></button>
-
-                </form>
-
-            </div>
-        </div>
-
-    </div>
-
-</div>
-<!-- Content / End -->
-@endsection
-
-@push('styles')
-
-@endpush
-@push('scripts')
-
-
-<script src="https://maps.google.com/maps/api/js?key=AIzaSyAioR39TAyFp6nIBvQGDdcl0Q10TaoMXjw&libraries=places"
-    type="text/javascript"></script>
-<script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
-<script type="text/javascript" src="../../scripts/jquery-ui.min.js"></script>
-
-
-<script>
-    google.maps.event.addDomListener(window, 'load', initialize);
-
-    function initialize() {
-        var input = document.getElementById('name');
-        var autocomplete = new google.maps.places.Autocomplete(input);
-        autocomplete.addListener('place_changed', function() {
-            var place = autocomplete.getPlace();
-            console.log(place);
-            $('#latitude').val(place.geometry['location'].lat());
-            $('#longitude').val(place.geometry['location'].lng());
-            $('#address').val(place.formatted_address);
-            $('#ciudad').val(place.address_components['0'].long_name);
-            $('#state').val(place.address_components['1'].long_name);
-            $('#pais').val(place.address_components['2'].long_name);
-            $('#phone').val(place.international_phone_number);
-            $('#website').val(place.website);
-
-
-        });
-    }
-</script>
-
-<script>
-    CKEDITOR.replace( 'description' );
-</script>
-
-@endpush

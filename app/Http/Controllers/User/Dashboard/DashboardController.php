@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User\Dashboard;
 
 use App\Escuelas;
 use App\Http\Controllers\Controller;
+use App\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,7 +36,9 @@ class DashboardController extends Controller
 
             $escuelas = Escuelas::where('user_id', '=', $user->id)->get();
 
-            return view('user.dashboard', compact('estadisticasVisitas', 'estadisticasComentarios', 'totalReservas','escuelas'));
+            $notificationes = Notification::where('user_id', '=', $user->id)->get();
+
+            return view('user.dashboard', compact('estadisticasVisitas', 'estadisticasComentarios', 'totalReservas','escuelas','notificationes'));
         } else {
             return view('user.dashboard');
         }

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use App\User;
 use App\Comentarios;
 use App\Escuelas;
+use App\Notification;
 use App\PhotosComentarios;
 
 class ComentariosController extends Controller
@@ -77,13 +78,17 @@ class ComentariosController extends Controller
         }
 
 
+        $notification = Notification::create([
+            'type' =>  1,
+            'mensaje' => Auth::user()->name . ' dejó una reseña con calificacion de '. $request->rating . ' para '. $request->nameescuela . '.',
+            'user_id' => $request->iduserescuela,
+        ]);
+
         return redirect()->back();
     }
 
     public function edit($id)
     {
-
-
         $comentario = Comentarios::where('id', '=', $id)
             ->with('getPhotosComentario')
             ->get();

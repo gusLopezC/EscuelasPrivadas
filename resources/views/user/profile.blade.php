@@ -1,7 +1,8 @@
 @extends('layaout.header')
+@extends('layaout.layaout')
+
 @section('contenido')
 
-@extends('layaout.layaout')
 
 <!-- Content
 	================================================== -->

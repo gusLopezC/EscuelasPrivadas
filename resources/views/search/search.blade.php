@@ -102,7 +102,7 @@
                                 <h3>{{$escuela->name}} @if ($escuela->verificado)
                                     <i class="verified-icon"></i>
                                     @endif</h3>
-                                <span>{{ Illuminate\Support\Str::limit($escuela->address, 25) }} </span>
+                                <span>{{ Illuminate\Support\Str::limit($escuela->address, 30) }} </span>
                             </div>
                         </div>
                         <span onclick="window.location='{{ route('addFavoritos',$escuela->id)}}'"

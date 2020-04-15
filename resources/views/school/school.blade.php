@@ -308,6 +308,9 @@
                         </div>
 
                     </fieldset>
+                    <input type="hidden" name="iduserescuela" value="{{$escuela->getUser[0]->id}}">
+                    <input type="hidden" name="nameuserescuela" value="{{$escuela->getUser[0]->name}}">
+                    <input type="hidden" name="nameescuela" value="{{ Illuminate\Support\Str::limit($escuela->name, 25) }}">
                     <button type="submit" class="button">Submit Review</button>
                 </form>
 
