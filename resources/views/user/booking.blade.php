@@ -55,7 +55,7 @@
                 </div>
 
                 <h4>Bookings List</h4>
-
+                @if (count($reservas) >=1 )
                 <ul>
                     @foreach ($reservas as $reserva)
 
@@ -122,6 +122,34 @@
                         {{ $reservas->render() }}
                     </div>
                 </ul>
+                @else
+                <ul>
+                    <li>
+                        <div class="list-box-listing">
+
+                            <div class="list-box-listing-content">
+                                <div class="inner" style="text-align: center;">
+                                    <h2>Aun no tienes reservaciónes</h2>
+                                    <br>
+                                    <br>
+                                    <br> <a href="{{route('/')}}">
+                                        <button class="button margin-top-15" style="width: 80%;">
+                                            Explora
+                                        </button>
+                                    </a>
+                                </div>
+
+                            </div>
+                            <div style="margin-top:30%">
+
+                            </div>
+                        </div>
+                    </li>
+
+
+                </ul>
+                @endif
+
             </div>
         </div>
     </div>

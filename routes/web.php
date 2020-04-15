@@ -66,7 +66,15 @@ Route::post('pictureprofile', 'UserController@pictureprofile')->name('picturepro
 Route::delete('profile/delete', 'UserController@destroy')->name('profile.delete');
 
 
-Route::get('dashboard', function () { return view('user.dashboard'); })->name('dashboard');
+
+
+/**
+ * Create School
+ *
+ */
+Route::get('dashboard','Dashboard\DashboardController@index')->name('dashboard');
+
+
 
 /**
  * Create School
@@ -74,6 +82,10 @@ Route::get('dashboard', function () { return view('user.dashboard'); })->name('d
  */
 Route::get('createSchool', 'Escuelas\EscuelasController@index')->name('createSchool');
 Route::post('createSchool', 'Escuelas\EscuelasController@store')->name('createschool.store');
+Route::get('editSchool/{slug}', 'Escuelas\EscuelasController@edit')->name('school.edit');    //EDITAR
+Route::put('editSchool/{post}', 'Escuelas\EscuelasController@update')->name('school.update');     //UPDATE
+Route::get('school/{id}/delete', 'Escuelas\EscuelasController@destroy')->name('school.delete');     //DELETE
+Route::delete('schoolphoto/{photo}', 'Escuelas\EscuelasController@destroy')->name('school.photos.destroy');     //DELETE
 
 /**
  * Comentario
@@ -89,7 +101,7 @@ Route::get('comentarioUtil/{comentario}', 'Comentarios\ComentariosController@com
 Route::get('reviews', 'Comentarios\ComentariosController@viewreviews')->name('reviews');
 Route::get('editreview/{post}', 'Comentarios\ComentariosController@edit')->name('reviews.edit');
 Route::put('reviews/{comentario}', 'Comentarios\ComentariosController@update')->name('reviews.update');             //UPDATE
-Route::get('reviews/{post}/delete', 'Comentarios\ComentariosController@destroy')->name('reviews.delete');
+Route::get('reviews/{id}/delete', 'Comentarios\ComentariosController@destroy')->name('reviews.delete');
 Route::delete('reviewsphoto/{post}/delete', 'Comentarios\ComentariosController@destroyPhoto')->name('reviewsreviewsphoto.delete');
 
 /**

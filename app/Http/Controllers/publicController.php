@@ -93,7 +93,7 @@ class publicController extends Controller
         $escuela->save();
         $escuela->services = json_decode($escuela->services, true);
         $escuela->redsocial = json_decode($escuela->redsocial, true);
-
+        $escuela->coordenadasGoogle = explode(',', $escuela->coordenadasGoogle);
 
         $EscuelasNivel = EscuelasNivel::where('escuela_id', '=', $escuela->id)->get();
         $comentarios = Comentarios::where('escuela_id', '=', $escuela->id)
@@ -101,6 +101,7 @@ class publicController extends Controller
             ->with('getUser')
             ->take(10)
             ->get();
+
 
         return view('school.school', compact('escuela', 'comentarios', 'EscuelasNivel'));
     }

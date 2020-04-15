@@ -81,8 +81,10 @@
 
                             <!-- User Menu -->
                             <div class="user-menu">
-                                <div class="user-name"><span><img src="https://escuelasprivadas.s3.amazonaws.com/images/profile/avatar.png" alt=""></span>
+
+                                <div class="user-name"><span><img src="https://escuelasprivadas.s3.amazonaws.com/images/profile/{{ Auth::user()->img }}" alt=""></span>
                                 </div>
+
                                 <ul>
                                     <li><a href="{{route('profile')}}"><i class="sl sl-icon-settings"></i>
                                             Profile</a></li>

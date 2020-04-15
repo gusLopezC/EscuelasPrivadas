@@ -2,205 +2,225 @@
 @section('contenido')
 @extends('layaout.layaout')
 
-   <!-- Content
+<!-- Content
         ================================================== -->
-        <div class="dashboard-content">
+<div class="dashboard-content">
 
-            <!-- Titlebar -->
-            <div id="titlebar">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2>Howdy, Tom!</h2>
-                        <!-- Breadcrumbs -->
-                        <nav id="breadcrumbs">
-                            <ul>
-                                <li><a href="#">Home</a></li>
-                                <li>Dashboard</li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
+    <!-- Titlebar -->
+    <div id="titlebar">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Hello, {{Auth::user()->name}}!</h2>
+                <!-- Breadcrumbs -->
+                <nav id="breadcrumbs">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li>Dashboard</li>
+                    </ul>
+                </nav>
             </div>
+        </div>
+    </div>
+    @if ( Auth::user()->role == 'SCHOOL_ROLE')
+    <!-- Content -->
+    <div class="row">
+        <h1></h1>
 
-            <!-- Notice -->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="notification success closeable margin-bottom-30">
-                        <p>Your listing <strong>Hotel Govendor</strong> has been approved!</p>
-                        <a class="close" href="#"></a>
-                    </div>
+        <!-- Item -->
+        <div class="col-lg-3 col-md-6">
+            <div class="dashboard-stat color-1">
+                <div class="dashboard-stat-content">
+                    <h4>{{$estadisticasVisitas[0]->totalPlaces}}</h4> <span>Listados activos</span>
                 </div>
+                <div class="dashboard-stat-icon"><i class="im im-icon-Map2"></i></div>
             </div>
+        </div>
 
-            <!-- Content -->
-            <div class="row">
-
-                <!-- Item -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="dashboard-stat color-1">
-                        <div class="dashboard-stat-content">
-                            <h4>6</h4> <span>Active Listings</span>
-                        </div>
-                        <div class="dashboard-stat-icon"><i class="im im-icon-Map2"></i></div>
-                    </div>
+        <!-- Item -->
+        <div class="col-lg-3 col-md-6">
+            <div class="dashboard-stat color-2">
+                <div class="dashboard-stat-content">
+                    <h4>{{$estadisticasVisitas[0]->totalVisitas}}</h4> <span>Vistas totales</span>
                 </div>
-
-                <!-- Item -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="dashboard-stat color-2">
-                        <div class="dashboard-stat-content">
-                            <h4>726</h4> <span>Total Views</span>
-                        </div>
-                        <div class="dashboard-stat-icon"><i class="im im-icon-Line-Chart"></i></div>
-                    </div>
-                </div>
-
-
-                <!-- Item -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="dashboard-stat color-3">
-                        <div class="dashboard-stat-content">
-                            <h4>95</h4> <span>Total Reviews</span>
-                        </div>
-                        <div class="dashboard-stat-icon"><i class="im im-icon-Add-UserStar"></i></div>
-                    </div>
-                </div>
-
-                <!-- Item -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="dashboard-stat color-4">
-                        <div class="dashboard-stat-content">
-                            <h4>126</h4> <span>Times Bookmarked</span>
-                        </div>
-                        <div class="dashboard-stat-icon"><i class="im im-icon-Heart"></i></div>
-                    </div>
-                </div>
+                <div class="dashboard-stat-icon"><i class="im im-icon-Line-Chart"></i></div>
             </div>
+        </div>
 
 
-            <div class="row">
-
-                <!-- Recent Activity -->
-                <div class="col-lg-6 col-md-12">
-                    <div class="dashboard-list-box with-icons margin-top-20">
-                        <h4>Recent Activities</h4>
-                        <ul>
-                            <li>
-                                <i class="list-box-icon sl sl-icon-layers"></i> Your listing <strong><a href="#">Hotel
-                                        Govendor</a></strong> has been approved!
-                                <a href="#" class="close-list-item"><i class="fa fa-close"></i></a>
-                            </li>
-
-                            <li>
-                                <i class="list-box-icon sl sl-icon-star"></i> Kathy Brown left a review <div
-                                    class="numerical-rating" data-rating="5.0"></div> on <strong><a href="#">Burger
-                                        House</a></strong>
-                                <a href="#" class="close-list-item"><i class="fa fa-close"></i></a>
-                            </li>
-
-                            <li>
-                                <i class="list-box-icon sl sl-icon-heart"></i> Someone bookmarked your <strong><a
-                                        href="#">Burger House</a></strong> listing!
-                                <a href="#" class="close-list-item"><i class="fa fa-close"></i></a>
-                            </li>
-
-                            <li>
-                                <i class="list-box-icon sl sl-icon-star"></i> Kathy Brown left a review <div
-                                    class="numerical-rating" data-rating="3.0"></div> on <strong><a
-                                        href="#">Airport</a></strong>
-                                <a href="#" class="close-list-item"><i class="fa fa-close"></i></a>
-                            </li>
-
-                            <li>
-                                <i class="list-box-icon sl sl-icon-heart"></i> Someone bookmarked your <strong><a
-                                        href="#">Burger House</a></strong> listing!
-                                <a href="#" class="close-list-item"><i class="fa fa-close"></i></a>
-                            </li>
-
-                            <li>
-                                <i class="list-box-icon sl sl-icon-star"></i> John Doe left a review <div
-                                    class="numerical-rating" data-rating="4.0"></div> on <strong><a href="#">Burger
-                                        House</a></strong>
-                                <a href="#" class="close-list-item"><i class="fa fa-close"></i></a>
-                            </li>
-
-                            <li>
-                                <i class="list-box-icon sl sl-icon-star"></i> Jack Perry left a review <div
-                                    class="numerical-rating" data-rating="2.5"></div> on <strong><a href="#">Tom's
-                                        Restaurant</a></strong>
-                                <a href="#" class="close-list-item"><i class="fa fa-close"></i></a>
-                            </li>
-                        </ul>
-                    </div>
+        <!-- Item -->
+        <div class="col-lg-3 col-md-6">
+            <div class="dashboard-stat color-3">
+                <div class="dashboard-stat-content">
+                    <h4>{{$estadisticasComentarios[0]->totalComentarios}}</h4> <span>Revisiones totales</span>
                 </div>
-
-                <!-- Invoices -->
-                <div class="col-lg-6 col-md-12">
-                    <div class="dashboard-list-box invoices with-icons margin-top-20">
-                        <h4>Invoices</h4>
-                        <ul>
-
-                            <li><i class="list-box-icon sl sl-icon-doc"></i>
-                                <strong>Professional Plan</strong>
-                                <ul>
-                                    <li class="unpaid">Unpaid</li>
-                                    <li>Order: #00124</li>
-                                    <li>Date: 20/07/2017</li>
-                                </ul>
-                                <div class="buttons-to-right">
-                                    <a href="dashboard-invoice.html" class="button gray">View Invoice</a>
-                                </div>
-                            </li>
-
-                            <li><i class="list-box-icon sl sl-icon-doc"></i>
-                                <strong>Extended Plan</strong>
-                                <ul>
-                                    <li class="paid">Paid</li>
-                                    <li>Order: #00108</li>
-                                    <li>Date: 14/07/2017</li>
-                                </ul>
-                                <div class="buttons-to-right">
-                                    <a href="dashboard-invoice.html" class="button gray">View Invoice</a>
-                                </div>
-                            </li>
-
-                            <li><i class="list-box-icon sl sl-icon-doc"></i>
-                                <strong>Extended Plan</strong>
-                                <ul>
-                                    <li class="paid">Paid</li>
-                                    <li>Order: #00097</li>
-                                    <li>Date: 10/07/2017</li>
-                                </ul>
-                                <div class="buttons-to-right">
-                                    <a href="dashboard-invoice.html" class="button gray">View Invoice</a>
-                                </div>
-                            </li>
-
-                            <li><i class="list-box-icon sl sl-icon-doc"></i>
-                                <strong>Basic Plan</strong>
-                                <ul>
-                                    <li class="paid">Paid</li>
-                                    <li>Order: #00091</li>
-                                    <li>Date: 30/06/2017</li>
-                                </ul>
-                                <div class="buttons-to-right">
-                                    <a href="dashboard-invoice.html" class="button gray">View Invoice</a>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-
-
-                <!-- Copyrights -->
-                <div class="col-md-12">
-                    <div class="copyrights">© 2020 . All Rights Reserved.</div>
-                </div>
+                <div class="dashboard-stat-icon"><i class="im im-icon-Add-UserStar"></i></div>
             </div>
+        </div>
+
+        <!-- Item -->
+        <div class="col-lg-3 col-md-6">
+            <div class="dashboard-stat color-4">
+                <div class="dashboard-stat-content">
+                    <h4>{{$totalReservas[0]->totalReservas}}</h4> <span>Reservas</span>
+                </div>
+                <div class="dashboard-stat-icon"><i class="im im-icon-Heart"></i></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+
+        <!-- Recent Activity -->
+        <div class="col-lg-6 col-md-12">
+            <div class="dashboard-list-box with-icons margin-top-20">
+                <h4>Recent Activities</h4>
+                <ul>
+                    <li>
+                        <i class="list-box-icon sl sl-icon-layers"></i> Your listing <strong><a href="#">Hotel
+                                Govendor</a></strong> has been approved!
+                        <a href="#" class="close-list-item"><i class="fa fa-close"></i></a>
+                    </li>
+
+                    <li>
+                        <i class="list-box-icon sl sl-icon-star"></i> Kathy Brown left a review <div
+                            class="numerical-rating" data-rating="5.0"></div> on <strong><a href="#">Burger
+                                House</a></strong>
+                        <a href="#" class="close-list-item"><i class="fa fa-close"></i></a>
+                    </li>
+
+                    <li>
+                        <i class="list-box-icon sl sl-icon-heart"></i> Someone bookmarked your <strong><a
+                                href="#">Burger House</a></strong> listing!
+                        <a href="#" class="close-list-item"><i class="fa fa-close"></i></a>
+                    </li>
+
+                    <li>
+                        <i class="list-box-icon sl sl-icon-star"></i> Kathy Brown left a review <div
+                            class="numerical-rating" data-rating="3.0"></div> on <strong><a
+                                href="#">Airport</a></strong>
+                        <a href="#" class="close-list-item"><i class="fa fa-close"></i></a>
+                    </li>
+
+                    <li>
+                        <i class="list-box-icon sl sl-icon-heart"></i> Someone bookmarked your <strong><a
+                                href="#">Burger House</a></strong> listing!
+                        <a href="#" class="close-list-item"><i class="fa fa-close"></i></a>
+                    </li>
+
+                    <li>
+                        <i class="list-box-icon sl sl-icon-star"></i> John Doe left a review <div
+                            class="numerical-rating" data-rating="4.0"></div> on <strong><a href="#">Burger
+                                House</a></strong>
+                        <a href="#" class="close-list-item"><i class="fa fa-close"></i></a>
+                    </li>
+
+                    <li>
+                        <i class="list-box-icon sl sl-icon-star"></i> Jack Perry left a review <div
+                            class="numerical-rating" data-rating="2.5"></div> on <strong><a href="#">Tom's
+                                Restaurant</a></strong>
+                        <a href="#" class="close-list-item"><i class="fa fa-close"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Invoices -->
+        <div class="col-lg-6 col-md-12">
+            <div class="dashboard-list-box invoices with-icons margin-top-20">
+                <h4>Gestiona tus instutuciónes</h4>
+                <ul>
+                    @foreach ($escuelas as $escuela)
+                    <li>
+                        <div class="list-box-listing">
+                            <div class="list-box-listing-content">
+                                <div class="inner">
+                                    <h3><a href="#">{{$escuela->name}}</a></h3>
+                                    <span>{{ Illuminate\Support\Str::limit($escuela->address, 20) }}</span>
+                                    <div class="star-rating" data-rating="{{$escuela->calification}}">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <br>
+                            <div class="col-sm-4"></div>
+                            <div class="col-sm-4">
+                                <a href="{{route('school.edit',$escuela->slug)}}" class="button gray"><i class="sl sl-icon-note"></i> Editar</a>
+
+                            </div>
+                            <div class="col-sm-4">
+                                <a href="{{route('school.delete',$escuela->id)}}" class="button gray"><i class="sl sl-icon-close"></i> Eliminar</a>
+
+                            </div>
+                        </div>
+                    </li>
+                    @endforeach
+
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div style="margin-bottom:10%;"></div>
+
+    @else
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="dashboard-stat color-4 margin-top-70 margin-bottom-30" style="height: 70%;">
+                <div class="dashboard-stat-content">
+                    <h4>Verifica tu identidad</h4><span>Ponte en contacto con nosotros para desbloquear las estadisticas
+                        de tu tour</span>
+
+                </div>
+                <div class="dashboard-stat-icon"><i class="im im-icon-Student-Male"></i></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h4 class="headline margin-top-70 margin-bottom-30">Metodos de verificacion</h4>
+            <!-- Toggles Container -->
+            <div class="style-2">
+
+                <!-- Toggle 1 -->
+                <div class="toggle-wrap">
+                    <span class="trigger active"><a href="#"><i class="im im-icon-Mail"></i>Via email <i
+                                class="sl sl-icon-plus"></i> </a></span>
+                    <div class="toggle-container" style="display: none;">
+                        <p>Para la verificación por correo es necesario que nos envies un correo a la direcciòn
+                            <span> correo@correo.com </span> desde tu correo institutivo solicitando la activación.</p>
+                        <br><br>
+                        <p> <a href="#" class="button border">Escribenos</a></p>
+
+                    </div>
+                </div>
+
+                <!-- Toggle 2 -->
+                <div class="toggle-wrap">
+                    <span class="trigger active"><a href="#"><i class="fa fa-whatsapp"></i>Via whatsapp <i
+                                class="sl sl-icon-plus"></i> </a></span>
+                    <div class="toggle-container" style="display: block;">
+                        <p>Para la verificación por whatsapp ponte en contacto con uno de nuestros agente el te guiara
+                            solicitando algunas detalles de tu institucion para proceder a la validacion.</p>
+                        <br><br>
+                        <p> <a href="#" class="button border">Contactanos</a></p>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Toggles Container / End -->
 
         </div>
-        <!-- Content / End -->
+    </div>
+
+    <div style="margin-bottom:20%;"></div>
+
+    @endif
+
+
+</div>
+<!-- Content / End -->
 
 
 @endsection

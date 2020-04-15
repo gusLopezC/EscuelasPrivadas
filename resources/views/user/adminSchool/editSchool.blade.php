@@ -56,7 +56,7 @@
                             <div class="col-md-12">
                                 <h5>Nombre Escuela <i class="tip" data-tip-content="Nombre de tu escuela"></i></h5>
                                 <input name="name" id="name" class="search-field" type="text" required
-                                    value="{{old('name') }}" />
+                                    value="{{old('name', $escuela->name)}}" />
                             </div>
                         </div>
 
@@ -65,18 +65,18 @@
 
                             <!-- Status -->
                             <div class="col-md-6">
-                                <h5>Category</h5>
+                                <h5>Categoria</h5>
                                 <select class="chosen-select-no-single" name="categoria" id="categoria"
                                     value="{{old('categoria') }}" required>
-                                    <option label="blank">Selecciona Categoria</option>
-                                    <option>Tradicional</option>
-                                    <option>Religiosa</option>
-                                    <option>Montessori</option>
-                                    <option>Tecnólogia</option>
-                                    <option>Bicultural</option>
-                                    <option>Mixtas</option>
-                                    <option>Laicas</option>
-                                    <option>Otras</option>
+                                    <option {{ old('categoria',$escuela->categoria) == '1' ? 'selected' : '' }} label="blank">Selecciona Categoria</option>
+                                    <option {{ old('categoria',$escuela->categoria) == 'Tradicional' ? 'selected' : '' }}>Tradicional</option>
+                                    <option {{ old('categoria',$escuela->categoria) == 'Religiosa' ? 'selected' : '' }}>Religiosa</option>
+                                    <option {{ old('categoria',$escuela->categoria) == 'Montessori' ? 'selected' : '' }}>Montessori</option>
+                                    <option {{ old('categoria',$escuela->categoria) == 'Tecnólogia' ? 'selected' : '' }}>Tecnólogia</option>
+                                    <option {{ old('categoria',$escuela->categoria) == 'Bicultural' ? 'selected' : '' }}>Bicultural</option>
+                                    <option {{ old('categoria',$escuela->categoria) == 'Mixtas' ? 'selected' : '' }}>Mixtas</option>
+                                    <option {{ old('categoria',$escuela->categoria) == 'Laicas' ? 'selected' : '' }}>Laicas</option>
+                                    <option {{ old('categoria',$escuela->categoria) == 'Otras' ? 'selected' : '' }}>Otras</option>
                                 </select>
                             </div>
 
@@ -100,8 +100,6 @@
                             </div>
 
                         </div>
-                        <!-- Row / End -->
-
 
                     </div>
                     <!-- Section / End -->
@@ -125,23 +123,23 @@
                                 <div class="col-md-12">
                                     <h5>Address</h5>
                                     <input type="text" name="address" id="address" class="form-control"
-                                        placeholder="Select Location" value="{{old('address') }}" required>
+                                        placeholder="Select Location" value="{{old('address',$escuela->address) }}" required>
                                 </div>
                                 <div class="col-md-4">
                                     <h5>Ciudad</h5>
                                     <input type="text" name="ciudad" id="ciudad" class="form-control"
-                                        placeholder="Select Location" value="{{old('ciudad') }}" readonly required>
+                                        placeholder="Select Location" value="{{old('ciudad',$escuela->ciudad) }}" readonly required>
                                 </div>
                                 <div class="col-md-4">
                                     <h5>Estado</h5>
                                     <input type="text" name="state" id="state" class="form-control"
-                                        placeholder="Select Location" value="{{old('state') }}" readonly required>
+                                        placeholder="Select Location" value="{{old('state',$escuela->state) }}" readonly required>
                                 </div>
 
                                 <div class="col-md-4">
                                     <h5>Pais</h5>
                                     <input type="text" name="pais" id="pais" class="form-control"
-                                        placeholder="Select Location" value="{{old('pais') }}" readonly required>
+                                        placeholder="Select Location" value="{{old('pais',$escuela->pais) }}" readonly required>
                                 </div>
 
                                 <div style="display:none">
@@ -198,7 +196,7 @@
                         <div class="form">
                             <h5>Description</h5>
                             <textarea class="WYSIWYG" name="description" id="description" spellcheck="true"
-                                value="{{old('description') }}" required></textarea>
+                                 required>{{Request::old('description', $escuela->description)}}</textarea>
                         </div>
 
                         <!-- Row -->
@@ -207,19 +205,19 @@
                             <!-- Phone -->
                             <div class="col-md-4">
                                 <h5>Phone </h5>
-                                <input type="text" name="phone" id="phone" value="{{old('phone') }}" required>
+                                <input type="text" name="phone" id="phone" value="{{old('phone', $escuela->phone) }}" required>
                             </div>
 
                             <!-- Website -->
                             <div class="col-md-4">
                                 <h5>Website <span>(optional)</span></h5>
-                                <input type="text" name="website" id="website" value="{{old('website') }}">
+                                <input type="text" name="website" id="website" value="{{old('website', $escuela->website) }}">
                             </div>
 
                             <!-- Email Address -->
                             <div class="col-md-4">
                                 <h5>E-mail</h5>
-                                <input type="text" name="emailcontacto" id="emailcontacto" value="{{old('emailcontacto') }}"
+                                <input type="text" name="emailcontacto" id="emailcontacto" value="{{old('emailcontacto', $escuela->emailcontacto) }}"
                                     required>
                             </div>
 
@@ -235,21 +233,21 @@
                                 <h5 class="fb-input"><i class="fa fa-facebook-square"></i> Facebook
                                     <span>(optional)</span>
                                 </h5>
-                                <input type="text" name="redsocial[]" id="redsocial">
+                                <input type="text" name="redsocial[]" id="redsocial" value="{{old('redsocial', $escuela->redsocial[0]) }}">
                             </div>
                             <!-- Phone -->
                             <div class="col-md-4">
                                 <h5 class="twitter-input"><i class="fa fa-twitter-square"></i> Twitter
                                     <span>(optional)</span>
                                 </h5>
-                                <input type="text" name="redsocial[]" id="redsocial">
+                                <input type="text" name="redsocial[]" id="redsocial" value="{{old('redsocial', $escuela->redsocial[1]) }}">
                             </div>
                             <!-- Phone -->
                             <div class="col-md-4">
                                 <h5 class="gplus-input"><i class="fa fa-instagram"></i> Instagram
                                     <span>(optional)</span>
                                 </h5>
-                                <input type="text" name="redsocial[]" id="redsocial">
+                                <input type="text" name="redsocial[]" id="redsocial" value="{{old('redsocial', $escuela->redsocial[2]) }}">
                             </div>
 
 

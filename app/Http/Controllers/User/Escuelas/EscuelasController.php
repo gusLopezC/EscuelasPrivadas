@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Support\Collection;
 
@@ -66,7 +67,7 @@ class EscuelasController extends Controller
             'categoria' => $request->categoria,
             'address' => $request->address,
             'ciudad' => $request->ciudad,
-            'estado'=> $request->estado,
+            'state' => $request->state,
             'pais' => $request->pais,
             'coordenadasGoogle' => $coordenandas,
             'description' => $request->description,
@@ -157,12 +158,19 @@ class EscuelasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
         //
+        $escuela = Escuelas::where('slug', '=', $slug)
+            ->where('user_id', '=', Auth::user()->id)
+            ->with('getPhotos')
+            ->first();
 
+        $escuela->redsocial = json_decode($escuela->redsocial, true);
+
+        // return $escuela;
+        return view('user.adminSchool.editSchool', compact('escuela'));
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -185,5 +193,20 @@ class EscuelasController extends Controller
     public function destroy($id)
     {
         //
+        $photosEscuela = PhotosEscuelas::where('escuela_id', '=', $id)->get();
+
+        foreach ($photosEscuela as $photo) {
+            # code...
+            if (Storage::disk('s3')->exists('/images/escuelas/' . $photo->photo)) {
+                Storage::disk('s3')->delete('/images/escuelas/' . $photo->photo);
+            }
+            $photosEscuela->each->delete();
+        }
+
+        $escuela = Escuelas::destroy($id);
+
+        Alert::success('Escuela eliminada', '');
+
+        return redirect()->back();
     }
 }

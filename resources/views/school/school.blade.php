@@ -113,8 +113,8 @@
                 </ul>
             </div>
 
-             <!-- Food Menu -->
-             <div id="listing-pricing-list" class="listing-section">
+            <!-- Food Menu -->
+            <div id="listing-pricing-list" class="listing-section">
                 <h3 class="listing-desc-headline margin-top-70 margin-bottom-30">Pricing</h3>
 
                 <div class="show-more">
@@ -157,13 +157,14 @@
             @endif
 
 
-            	<!-- Book Now -->
-			<div class="boxed-widget booking-widget margin-top-35">
-				<h3><i class="fa fa-calendar-check-o "></i> Reservar cita</h3>
-				<!-- progress button animation handled via custom.js -->
-				<a href="{{ route('createBooking',$escuela->slug)}}" class="button book-now fullwidth margin-top-5">Reservar</a>
-			</div>
-			<!-- Book Now / End -->
+            <!-- Book Now -->
+            <div class="boxed-widget booking-widget margin-top-35">
+                <h3><i class="fa fa-calendar-check-o "></i> Reservar cita</h3>
+                <!-- progress button animation handled via custom.js -->
+                <a href="{{ route('createBooking',$escuela->slug)}}"
+                    class="button book-now fullwidth margin-top-5">Reservar</a>
+            </div>
+            <!-- Book Now / End -->
 
             <!-- Contact -->
             <div class="boxed-widget margin-top-35">
@@ -248,8 +249,8 @@
                 <h3 class="listing-desc-headline margin-top-60 margin-bottom-30">Location</h3>
 
                 <div id="singleListingMap-container">
-                    <div id="singleListingMap" data-latitude="40.70437865245596" data-longitude="-73.98674011230469"
-                        data-map-icon="im im-icon-Hamburger"></div>
+                    <div id="singleListingMap" data-latitude="{{$escuela->coordenadasGoogle[0]}}" data-longitude="{{$escuela->coordenadasGoogle[1]}}"
+                        data-map-icon="im im-icon-University"></div>
 
                 </div>
             </div>
@@ -354,7 +355,8 @@
                         @endforeach
 
                     </ul>
-                    <a  href="{{route('obtenerComentarios',$escuela->slug)}}"  class="show-more-button" data-more-title="Show More"><i class="fa fa-angle-down"></i></a>
+                    <a href="{{route('obtenerComentarios',$escuela->slug)}}" class="show-more-button"
+                        data-more-title="Show More"><i class="fa fa-angle-down"></i></a>
                 </section>
                 @else
                 <h3 class="listing-desc-headline margin-top-75 margin-bottom-20">Aun no hay Reviews</h3>
@@ -368,3 +370,12 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<!-- Maps -->
+<script src="https://maps.google.com/maps/api/js?key=AIzaSyAioR39TAyFp6nIBvQGDdcl0Q10TaoMXjw&libraries=places"
+    type="text/javascript"></script>
+<script type="text/javascript" src="../scripts/infobox.min.js"></script>
+<script type="text/javascript" src="../scripts/markerclusterer.js"></script>
+<script type="text/javascript" src="../scripts/maps.js"></script>
+@endpush
