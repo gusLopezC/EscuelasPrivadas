@@ -77,3 +77,8 @@
     </div>
 </div>
 @endsection
+
+@push('styles')
+<link rel="stylesheet" href="/css/login.css">
+
+@endpush

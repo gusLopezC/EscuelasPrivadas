@@ -1,8 +1,5 @@
-@extends('layaout.header')
+@extends('layaout.headeruser')
 @section('contenido')
-
-@extends('layaout.layaout')
-
 <div class="dashboard-content">
     <!-- Titlebar -->
     <div id="titlebar">

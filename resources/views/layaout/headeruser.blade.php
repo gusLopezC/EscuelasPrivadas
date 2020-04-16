@@ -1,30 +1,33 @@
-<!doctype html>
-<html lang="es">
+<!DOCTYPE html>
 
 <head>
-    <title>PROYECTO</title>
-    <!-- Required meta tags -->
+
+    <!-- Basic Page Needs
+================================================== -->
+    <title>Listeo</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- CSS
+================================================== -->
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/colors/main.css" id="colors">
 
     @stack('styles')
-    @livewireStyles
 </head>
 
 <body>
 
+    <!-- Wrapper -->
     <div id="wrapper">
 
         <!-- Header Container
-        ================================================== -->
+================================================== -->
         <header id="header-container" class="fixed fullwidth dashboard">
 
             <!-- Header -->
-            <div id="header">
+            <div id="header" class="not-sticky">
                 <div class="container">
 
                     <!-- Logo -->
@@ -94,7 +97,7 @@
                                             Bookings</a></li>
                                     <li>
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                             document.getElementById('logout-form').submit();">
                                             <i class="sl sl-icon-power"></i> Logout
                                         </a>
                                     </li>
@@ -108,10 +111,9 @@
                         </div>
                         @endguest
                     </div>
-
+                    <!-- Right Side Content / End -->
 
                 </div>
-
             </div>
             <!-- Header / End -->
 
@@ -120,85 +122,58 @@
         <!-- Header Container / End -->
 
 
+        <!-- Dashboard -->
+        <div id="dashboard">
 
-        @yield('contenido')
+            <!-- Navigation
+	================================================== -->
 
+            <!-- Responsive Navigation Trigger -->
+            <a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> Dashboard Navigation</a>
 
-        <!-- Footer
-================================================== -->
-        <div id="footer" class="sticky-footer">
-            <!-- Main -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-5 col-sm-6">
-                        <img class="footer-logo" src="/images/logo.png" alt="">
-                        <br><br>
-                        <p>SCHOLA es la principal plataforma que capacita a los padres para desbloquear oportunidades
-                            educativas para sus hijos. Brindamos información escolar y recursos para padres para ayudar
-                            a
-                            millones de familias a elegir la escuela correcta, apoyar el aprendizaje en el hogar y guiar
-                            a
-                            sus hijos hacia un gran futuro.
+            <div class="dashboard-nav">
+                <div class="dashboard-nav-inner">
 
-                        </p>
-                    </div>
+                    <ul data-submenu-title="Account">
+                        <li class="{{ Request::url() == route('profile') ? 'active' : '' }}"><a
+                                href="{{route('profile')}}"><i class="sl sl-icon-user"></i> My Profile</a></li>
+                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();"><i class="sl sl-icon-power"></i> Logout</a></li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </ul>
 
-                    <div class="col-md-4 col-sm-6 ">
-                        <h4>Helpful Links</h4>
-                        <ul class="footer-links">
-                            <li><a href="{{route('/')}}">Inicio</a></li>
-                            <li><a href="{{route('nosotros')}}">Nostros</a></li>
-                            <li><a href="{{route('workschool')}}">Trabajemos juntos</a></li>
-                            <li><a href="{{route('/')}}">Mi cuenta</a></li>
-                            <li><a href="{{route('termsAndConditions')}}">Términos y condiciones</a></li>
-                        </ul>
+                    <ul data-submenu-title="Main">
+                        <li class="{{ Request::url() == route('dashboard') ? 'active' : '' }}"><a
+                                href="{{route('dashboard')}}"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
+                        <li class="{{ Request::url() == route('booking') ? 'active' : '' }}"><a
+                                href="{{route('booking')}}"><i class="fa fa-calendar-check-o"></i> Reservas</a></li>
+                    </ul>
 
-                        <ul class="footer-links">
-                            <li><a href="{{route('faq')}}">FAQ</a></li>
-                            <li><a href="{{route('contact')}}">Contacto</a></li>
-                        </ul>
-                        <div class="clearfix"></div>
-                    </div>
+                    <ul data-submenu-title="Listings">
 
-                    <div class="col-md-3  col-sm-12">
-                        <h4>Contact Us</h4>
-                        <div class="text-widget">
-                            <span>Blvd. Bernardo Quintana 7001, 76090 Santiago de Querétaro, Qro.</span> <br>
-                            Phone: <span>(123) 123-456 </span><br>
-                            E-Mail:<span> <a href="#">iam@schola.com</a> </span><br>
-                        </div>
-
-                        <ul class="social-icons margin-top-20">
-                            <li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
-                            <li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
-                            <li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
-                        </ul>
-
-                    </div>
+                        <li class="{{ Request::url() == route('reviews') ? 'active' : '' }}"><a
+                                href="{{route('reviews')}}"><i class="sl sl-icon-star"></i> Reviews</a></li>
+                        <li class="{{ Request::url() == route('bookmarks') ? 'active' : '' }}"><a
+                                href="{{route('bookmarks')}}"><i class="sl sl-icon-heart"></i> Favoritos</a></li>
+                        <li class="{{ Request::url() == route('createSchool') ? 'active' : '' }}"><a
+                                href="{{route('createSchool')}}"><i class="sl sl-icon-plus"></i> Add School</a></li>
+                    </ul>
 
                 </div>
-
-                <!-- Copyright -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="copyrights">© 2020 . All Rights Reserved.</div>
-                    </div>
-                </div>
-
             </div>
+            <!-- Navigation / End -->
+
+            @yield('contenido')
+
 
         </div>
-        <!-- Footer / End -->
-
-
-
-        <!-- Back To Top Button -->
-        <div id="backtotop"><a href="#"></a></div>
+        <!-- Dashboard / End -->
 
 
     </div>
     <!-- Wrapper / End -->
-
 
 
     <!-- Scripts
@@ -209,13 +184,13 @@
     <script type="text/javascript" src="/scripts/chosen.min.js"></script>
     <script type="text/javascript" src="/scripts/slick.min.js"></script>
     <script type="text/javascript" src="/scripts/magnific-popup.min.js"></script>
+    <script type="text/javascript" src="/scripts/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/scripts/tooltips.min.js"></script>
     <script type="text/javascript" src="/scripts/custom.js"></script>
 
     @livewireScripts
     @stack('scripts')
     @include('sweetalert::alert')
-
-
 
 </body>
 

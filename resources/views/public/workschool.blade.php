@@ -133,5 +133,10 @@
     </div> <!-- container -->
 </section>
 
-
 @endsection
+
+@push('styles')
+<link rel="stylesheet" href="/css/workschool.css">
+
+@endpush
+

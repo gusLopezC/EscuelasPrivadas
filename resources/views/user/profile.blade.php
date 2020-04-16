@@ -1,6 +1,4 @@
-@extends('layaout.header')
-@extends('layaout.layaout')
-
+@extends('layaout.headeruser')
 @section('contenido')
 
 

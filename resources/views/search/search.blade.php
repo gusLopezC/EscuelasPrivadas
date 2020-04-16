@@ -2,13 +2,7 @@
 @section('contenido')
 <div class="container">
     <div class="row">
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
+        <div ></div>
         <!-- Search -->
         <div class="col-md-12">
             <div class="main-search-input gray-style margin-top-0 margin-bottom-10">

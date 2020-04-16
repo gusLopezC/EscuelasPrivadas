@@ -9,7 +9,7 @@
                 <span class="login100-form-title p-b-43">
                     Register
                 </span>
-                
+
                 <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
                     <input class="input100" type="text" id="name" name="name" value="{{ old('name') }}" placeholder="Name" required autofocus>
                 </div>
@@ -17,7 +17,7 @@
                 <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
                     <input class="input100" type="email" id="email" name="email" value="{{ old('email') }}" placeholder="Email" required autofocus>
                 </div>
-                
+
                 <div class="wrap-input100 validate-input" data-validate="Password is required">
                     <input class="input100" type="password" id="password" name="password" value="{{ old('password') }}" placeholder="Password" required>
                 </div>
@@ -36,14 +36,14 @@
                         </a>
                     </div>
                 </div>
-        
+
 
                 <div class="container-login100-form-btn">
                     <button class="login100-form-btn">
                         Login
                     </button>
                 </div>
-                
+
                 <div class="text-center p-t-46 p-b-20">
                     <span class="txt2">
                         or sign up using
@@ -68,3 +68,8 @@
 </div>
 
 @endsection
+
+@push('styles')
+<link rel="stylesheet" href="/css/login.css">
+
+@endpush
