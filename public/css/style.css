@@ -13661,8 +13661,9 @@ body p {
 }
 
 #wrapper {
-    background-color: #fff;
 }
+/* background-color: #fff; */
+
 
 /* Main Font */
 body,

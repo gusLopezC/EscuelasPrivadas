@@ -44,7 +44,7 @@
                                 <i class="lni-bolt"></i>
                             </div>
                             <div class="services-content media-body">
-                                <h4 class="services-title">Conoce mas tu escuela</h4>
+                                <h4 class="services-title">Conoce más tu escuela</h4>
                                 <p class="text">Como líder de la escuela, conoces mejor tu escuela. Queremos ayudarlo a
                                     contar la historia de su escuela y garantizar que nuestra información sea lo más
                                     sólida y precisa posible. </p>
@@ -119,8 +119,8 @@
             <div class="col-lg-6">
                 <div class="call-action-content text-center">
                     <h2 class="call-title">Trabaja con nosotros para empoderar a los padres</h2>
-                    <p class="text">Anuncie en GreatSchools y haga llegar su mensaje a nuestra gran audiencia de padres
-                        comprometidos. GreatSchools puede orientar su campaña por estado o nivel de grado; Ofrecemos
+                    <p class="text">Anuncie en SCHOOLA y haga llegar su mensaje a nuestra gran audiencia de padres
+                        comprometidos. SCHOOLA puede orientar su campaña por estado o nivel de grado; Ofrecemos
                         todos los bloques de anuncios tradicionales, así como patrocinios de boletines.</p>
                     <div class="call-newsletter">
                         <i class="lni-envelope"></i>

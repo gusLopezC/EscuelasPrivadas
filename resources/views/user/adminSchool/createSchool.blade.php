@@ -43,11 +43,12 @@
                                 @endforeach
                             </ul>
 
-                            @endif
+
                         </div>
+                        @endif
                         <!-- Headline -->
                         <div class="add-listing-headline">
-                            <h3><i class="sl sl-icon-doc"></i> Basic Informations</h3>
+                            <h3><i class="sl sl-icon-doc"></i> Información basica</h3>
                         </div>
 
 
@@ -65,7 +66,7 @@
 
                             <!-- Status -->
                             <div class="col-md-6">
-                                <h5>Category</h5>
+                                <h5>Categoria</h5>
                                 <select class="chosen-select-no-single" name="categoria" id="categoria"
                                     value="{{old('categoria') }}" required>
                                     <option label="blank">Selecciona Categoria</option>
@@ -112,7 +113,7 @@
 
                         <!-- Headline -->
                         <div class="add-listing-headline">
-                            <h3><i class="sl sl-icon-location"></i> Location</h3>
+                            <h3><i class="sl sl-icon-location"></i> Locación</h3>
                         </div>
 
                         <div class="submit-section">
@@ -123,7 +124,7 @@
 
                                 <!-- Address -->
                                 <div class="col-md-12">
-                                    <h5>Address</h5>
+                                    <h5>Dirección</h5>
                                     <input type="text" name="address" id="address" class="form-control"
                                         placeholder="Select Location" value="{{old('address') }}" required>
                                 </div>
@@ -145,9 +146,9 @@
                                 </div>
 
                                 <div style="display:none">
-                                    <input type="text" name="latitude" id="latitude" class="form-control"
+                                    <input type="hidden" name="latitude" id="latitude" class="form-control"
                                         value="{{old('pais') }}" readonly required>
-                                    <input type="text" name="longitude" id="longitude" class="form-control"
+                                    <input type="hidden" name="longitude" id="longitude" class="form-control"
                                         value="{{old('pais') }}" readonly required>
 
                                 </div>
@@ -165,14 +166,14 @@
 
                         <!-- Headline -->
                         <div class="add-listing-headline">
-                            <h3><i class="sl sl-icon-picture"></i> Gallery</h3>
+                            <h3><i class="sl sl-icon-picture"></i> Galeria</h3>
                         </div>
 
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="add-review-photos margin-bottom-30" style="margin-top: 30px;">
                                     <div class="photoUpload">
-                                        <span><i class="sl sl-icon-arrow-up-circle"></i> Upload Photos</span>
+                                        <span><i class="sl sl-icon-arrow-up-circle"></i> Cargar Photos</span>
                                         <input type='file' name="image[]" id="image[]" accept=".png, .jpg, .jpeg"
                                             multiple="" class="upload">
                                     </div>
@@ -191,12 +192,12 @@
 
                         <!-- Headline -->
                         <div class="add-listing-headline">
-                            <h3><i class="sl sl-icon-docs"></i> Details</h3>
+                            <h3><i class="sl sl-icon-docs"></i> Detalles</h3>
                         </div>
 
                         <!-- Description -->
                         <div class="form">
-                            <h5>Description</h5>
+                            <h5>Descripción</h5>
                             <textarea class="WYSIWYG" name="description" id="description" spellcheck="true"
                                 value="{{old('description') }}" required></textarea>
                         </div>
@@ -206,7 +207,7 @@
 
                             <!-- Phone -->
                             <div class="col-md-4">
-                                <h5>Phone </h5>
+                                <h5>Telefono </h5>
                                 <input type="text" name="phone" id="phone" value="{{old('phone') }}" required>
                             </div>
 
@@ -309,45 +310,34 @@
 
                         <!-- Headline -->
                         <div class="add-listing-headline">
-                            <h3><i class="sl sl-icon-book-open"></i> Pricing</h3>
+                            <h3><i class="sl sl-icon-book-open"></i> Precio</h3>
                             <!-- Switcher -->
-                            <label class="switch"><input type="checkbox" checked><span
-                                    class="slider round"></span></label>
                         </div>
 
-                        <!-- Switcher ON-OFF Content -->
-                        <div class="switcher-content">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table id="pricing-list-container">
+                                    <tr class="pricing-list-item pattern">
+                                        <td>
+                                            <div class="fm-move"><i class="sl sl-icon-cursor-move"></i></div>
+                                            <div class="fm-input pricing-name"><input type="text" name="pricetitle[]"
+                                                    placeholder="Title" /></div>
 
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <table id="pricing-list-container">
-                                        <tr class="pricing-list-item pattern">
-                                            <td>
-                                                <div class="fm-move"><i class="sl sl-icon-cursor-move"></i></div>
-                                                <div class="fm-input pricing-name"><input type="text"
-                                                        placeholder="Title" /></div>
-                                                <div class="fm-input pricing-ingredients"><input type="text"
-                                                        placeholder="Description" /></div>
-                                                <div class="fm-input pricing-price"><input type="text"
-                                                        placeholder="Price" data-unit="USD" /></div>
-                                                <div class="fm-close"><a class="delete" href="#"><i
-                                                            class="fa fa-remove"></i></a></div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <a href="#" class="button add-pricing-list-item">Add Item</a>
-                                    <a href="#" class="button add-pricing-submenu">Add Category</a>
-                                </div>
+                                            <div class="fm-input pricing-price"><input type="text" name="price[]"
+                                                    placeholder="Price" data-unit="MXN" /></div>
+                                            <div class="fm-close"><a class="delete" href="#"><i
+                                                        class="fa fa-remove"></i></a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <a href="#" class="button add-pricing-list-item">Add Item</a>
                             </div>
-
                         </div>
-                        <!-- Switcher ON-OFF Content / End -->
-
                     </div>
                     <!-- Section / End -->
 
 
-                    <button class="button preview" type="submit">Enviar <i
+                    <button class="button preview" type="submit" style="width:100%">Enviar <i
                             class="fa fa-arrow-circle-right"></i></button>
 
                 </form>

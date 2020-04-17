@@ -302,7 +302,7 @@
             data-color-opacity="0.85" data-img-width="2500" data-img-height="1666">
             <div class="flip-banner-content">
                 <h2 class="flip-visible">Ayudamos a los padres a encontrar la escuela adecuada para su familia</h2>
-                <h2 class="flip-hidden">Obten la información escolar que necesitan para guiar<br> a los niños hacia un
+                <h2 class="flip-hidden">Obtén la información escolar que necesitan para guiar<br> a los niños hacia un
                     gran
                     futuro</i></h2>
             </div>

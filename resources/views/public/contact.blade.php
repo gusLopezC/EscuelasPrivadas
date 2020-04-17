@@ -65,7 +65,7 @@
                             spellcheck="true" required="required"></textarea>
                     </div>
 
-                    <input type="submit" class="submit button" id="submit" value="Submit Message" />
+                    <input type="submit" class="submit button" id="submit" value="Enviar" />
 
                 </form>
             </section>

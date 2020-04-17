@@ -17,11 +17,11 @@ class CreatePricingSchoolsTable extends Migration
             $table->bigIncrements('id');
             $table->string('description');
             $table->string('precio');
-            $table->unsignedBigInteger('user_id')->unsigned();
+            $table->unsignedBigInteger('school_id')->unsigned();
 
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('school_id')->references('id')->on('escuelas')->onDelete('cascade');
         });
     }
 

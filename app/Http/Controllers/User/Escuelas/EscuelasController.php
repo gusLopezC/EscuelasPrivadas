@@ -14,6 +14,7 @@ use Illuminate\Support\Collection;
 use App\Escuelas;
 use App\PhotosEscuelas;
 use App\EscuelasNivel;
+use App\PricingSchool;
 use App\User;
 
 
@@ -49,7 +50,17 @@ class EscuelasController extends Controller
     public function store(Request $request)
     {
         //
-        return $request;
+        $precios = array_combine($request->pricetitle, $request->price );
+
+
+        foreach( $precios as $precio=>$value) {
+            echo($precio) ;
+            echo($value) ;
+        }
+
+        return false;
+        $precios = PricingSchool::create([
+            ]);
 
         $userid = User::find(Auth::user()->id);
         $slug = SlugService::createSlug(Escuelas::class, 'slug', $request->name, ['unique' => true]);

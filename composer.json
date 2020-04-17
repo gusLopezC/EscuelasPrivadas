@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "artesaos/seotools": "^0.17.2",
         "aws/aws-sdk-php": "^3.134",
         "calebporzio/livewire": "^1.0",
         "cviebrock/eloquent-sluggable": "^6.0",
@@ -31,14 +32,11 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true,
-        "disable-tls": false
+        "sort-packages": true
     },
     "extra": {
         "laravel": {
-            "dont-discover": [
-                "laravel/dusk"
-            ]
+            "dont-discover": [ ]
         }
     },
     "autoload": {

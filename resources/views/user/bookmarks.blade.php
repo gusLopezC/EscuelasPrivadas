@@ -26,7 +26,7 @@
             <!-- Listings -->
             <div class="col-lg-12 col-md-12">
                 <div class="dashboard-list-box margin-top-0">
-                    <h4>Tux favoritos</h4>
+                    <h4>Tus favoritos</h4>
                     @if (count($misfavoritos) > 0)
                     <ul>
                         @foreach ($misfavoritos as $favorito)

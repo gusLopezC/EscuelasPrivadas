@@ -10,13 +10,13 @@
         <div class="row">
             <div class="col-md-12">
 
-                <h2>Booking</h2>
+                <h2>Reserva</h2>
 
                 <!-- Breadcrumbs -->
                 <nav id="breadcrumbs">
                     <ul>
                         <li><a href="#">Home</a></li>
-                        <li>Booking</li>
+                        <li>Reserva</li>
                     </ul>
                 </nav>
 
@@ -37,7 +37,7 @@
 		================================================== -->
         <div class="col-lg-8 col-md-8 padding-right-30">
 
-            <h3 class="margin-top-0 margin-bottom-30">Personal Details</h3>
+            <h3 class="margin-top-0 margin-bottom-30">Detalles personales</h3>
             <form method="POST" action="{{ route('Booking.store')}}">
                 {{csrf_field()}}
                 <div class="row">

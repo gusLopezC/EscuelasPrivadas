@@ -8,13 +8,13 @@
     <div id="titlebar">
         <div class="row">
             <div class="col-md-12">
-                <h2>Bookings</h2>
+                <h2>Reservas</h2>
                 <!-- Breadcrumbs -->
                 <nav id="breadcrumbs">
                     <ul>
                         <li><a href="#">Home</a></li>
                         <li><a href="#">Dashboard</a></li>
-                        <li>Bookings</li>
+                        <li>Reservas</li>
                     </ul>
                 </nav>
             </div>
@@ -50,7 +50,7 @@
                     </div>
                 </div>
 
-                <h4>Bookings List</h4>
+                <h4>Lista de reservas</h4>
                 @if (count($reservas) >=1 )
                 <ul>
                     @foreach ($reservas as $reserva)
@@ -72,26 +72,26 @@
                                         <span class="booking-status pending">Pendiente</span>
                                         @endif
                                         @if ($reserva->status == 'Cancelado')
-                                        <span class="booking-status">Canceled</span>
+                                        <span class="booking-status">Cancelado</span>
                                         @endif
                                     </h3>
 
                                     <div class="inner-booking-list">
-                                        <h5>Booking Date:</h5>
+                                        <h5>Fecha de reserva:</h5>
                                         <ul class="booking-list">
                                             <li class="highlighted">{{$reserva->Date}} a las {{$reserva->Hour}}</li>
                                         </ul>
                                     </div>
 
                                     <div class="inner-booking-list">
-                                        <h5>Booking Details:</h5>
+                                        <h5>Detallesde reserva:</h5>
                                         <ul class="booking-list">
                                             <li class="highlighted">{{$reserva->Guests}} People</li>
                                         </ul>
                                     </div>
 
                                     <div class="inner-booking-list">
-                                        <h5>Client:</h5>
+                                        <h5>Cliente:</h5>
                                         <ul class="booking-list">
                                             <li>{{$reserva->name}}</li>
                                             <li>{{$reserva->email}}</li>
@@ -100,7 +100,7 @@
                                     </div>
 
                                     <a href="#small-dialog" class="rate-review popup-with-zoom-anim"><i
-                                            class="sl sl-icon-envelope-open"></i> Send Message</a>
+                                            class="sl sl-icon-envelope-open"></i>Enviar Mensaje</a>
 
                                 </div>
                             </div>
@@ -108,7 +108,7 @@
                         @if ($reserva->status == 'Pendiente')
                         <div class="buttons-to-right">
                             <a href="{{route('cancelBooking',$reserva->id)}}" class="button gray reject"><i
-                                    class="sl sl-icon-close"></i> Cancel</a>
+                                    class="sl sl-icon-close"></i> Cancelar</a>
                         </div>
                         @endif
 

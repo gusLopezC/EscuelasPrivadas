@@ -48,9 +48,9 @@
                                         </div>
                                         <p>{{$comentario->comentario}}</p>
                                         <a href="{{route('reviews.edit',$comentario)}}" class="rate-review">
-                                            <i class="sl sl-icon-note"></i> Edit</a>
+                                            <i class="sl sl-icon-note"></i> Editar</a>
                                         <a href="{{route('reviews.delete',$comentario)}}" class="rate-review">
-                                            <i class="sl sl-icon-ban"></i> Delete</a>
+                                            <i class="sl sl-icon-ban"></i> Eliminar</a>
 
 
                                     </div>
