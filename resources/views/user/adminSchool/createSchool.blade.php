@@ -36,16 +36,19 @@
                         @if (count($errors) > 0)
                         <div class="errorformulariomensaje">
 
-                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                            <strong>Whoops!</strong> Existen algunos problemas con la información proporcionada.<br><br>
                             <ul>
                                 @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
                                 @endforeach
                             </ul>
 
-
                         </div>
                         @endif
+                        @error('name')
+                        <p>{{ $message }}</p>
+                        @enderror
+
                         <!-- Headline -->
                         <div class="add-listing-headline">
                             <h3><i class="sl sl-icon-doc"></i> Información basica</h3>
@@ -69,7 +72,7 @@
                                 <h5>Categoria</h5>
                                 <select class="chosen-select-no-single" name="categoria" id="categoria"
                                     value="{{old('categoria') }}" required>
-                                    <option label="blank">Selecciona Categoria</option>
+                                    <option value="" selected disabled>Selecciona Categoria</option>
                                     <option>Tradicional</option>
                                     <option>Religiosa</option>
                                     <option>Montessori</option>
@@ -131,18 +134,18 @@
                                 <div class="col-md-4">
                                     <h5>Ciudad</h5>
                                     <input type="text" name="ciudad" id="ciudad" class="form-control"
-                                        placeholder="Select Location" value="{{old('ciudad') }}" readonly required>
+                                        placeholder="Select Location" value="{{old('ciudad') }}"  required>
                                 </div>
                                 <div class="col-md-4">
                                     <h5>Estado</h5>
                                     <input type="text" name="state" id="state" class="form-control"
-                                        placeholder="Select Location" value="{{old('state') }}" readonly required>
+                                        placeholder="Select Location" value="{{old('state') }}"  required>
                                 </div>
 
                                 <div class="col-md-4">
                                     <h5>Pais</h5>
                                     <input type="text" name="pais" id="pais" class="form-control"
-                                        placeholder="Select Location" value="{{old('pais') }}" readonly required>
+                                        placeholder="Select Location" value="{{old('pais') }}"  required>
                                 </div>
 
                                 <div style="display:none">
@@ -220,7 +223,7 @@
                             <!-- Email Address -->
                             <div class="col-md-4">
                                 <h5>E-mail</h5>
-                                <input type="text" name="emailcontacto" id="emailcontacto"
+                                <input type="email" name="emailcontacto" id="emailcontacto"
                                     value="{{old('emailcontacto') }}" required>
                             </div>
 
@@ -321,10 +324,10 @@
                                         <td>
                                             <div class="fm-move"><i class="sl sl-icon-cursor-move"></i></div>
                                             <div class="fm-input pricing-name"><input type="text" name="pricetitle[]"
-                                                    placeholder="Title" /></div>
+                                                    placeholder="Title" required /></div>
 
                                             <div class="fm-input pricing-price"><input type="text" name="price[]"
-                                                    placeholder="Price" data-unit="MXN" /></div>
+                                                    placeholder="Price" data-unit="MXN" required /></div>
                                             <div class="fm-close"><a class="delete" href="#"><i
                                                         class="fa fa-remove"></i></a></div>
                                         </td>
@@ -344,8 +347,8 @@
 
             </div>
         </div>
-
     </div>
+    <div style="margin-bottom:15%"></div>
 
 </div>
 <!-- Content / End -->

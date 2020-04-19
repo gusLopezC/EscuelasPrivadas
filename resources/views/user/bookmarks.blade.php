@@ -1,4 +1,5 @@
 @extends('layaout.headeruser')
+@section('title', 'Mis favoritos')
 @section('contenido')
 <!-- Content
 	================================================== -->

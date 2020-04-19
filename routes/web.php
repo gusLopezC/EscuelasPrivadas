@@ -83,9 +83,10 @@ Route::get('dashboard','Dashboard\DashboardController@index')->name('dashboard')
 Route::get('createSchool', 'Escuelas\EscuelasController@index')->name('createSchool');
 Route::post('createSchool', 'Escuelas\EscuelasController@store')->name('createschool.store');
 Route::get('editSchool/{slug}', 'Escuelas\EscuelasController@edit')->name('school.edit');    //EDITAR
-Route::put('editSchool/{post}', 'Escuelas\EscuelasController@update')->name('school.update');     //UPDATE
+Route::put('editSchool/{escuela}', 'Escuelas\EscuelasController@update')->name('school.update');     //UPDATE
+Route::put('editSchoolNivel/{EscuelasNivel}', 'Escuelas\EscuelasController@updateNivel')->name('school.Nivel.update');     //UPDATE
 Route::get('school/{id}/delete', 'Escuelas\EscuelasController@destroy')->name('school.delete');     //DELETE
-Route::delete('schoolphoto/{photo}', 'Escuelas\EscuelasController@destroy')->name('school.photos.destroy');     //DELETE
+Route::delete('schoolphoto/{photo}', 'Escuelas\EscuelasController@destroyPhotos')->name('school.photos.destroy');     //DELETE
 
 /**
  * Comentario

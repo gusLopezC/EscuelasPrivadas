@@ -50,17 +50,7 @@ class EscuelasController extends Controller
     public function store(Request $request)
     {
         //
-        $precios = array_combine($request->pricetitle, $request->price );
 
-
-        foreach( $precios as $precio=>$value) {
-            echo($precio) ;
-            echo($value) ;
-        }
-
-        return false;
-        $precios = PricingSchool::create([
-            ]);
 
         $userid = User::find(Auth::user()->id);
         $slug = SlugService::createSlug(Escuelas::class, 'slug', $request->name, ['unique' => true]);
@@ -70,6 +60,10 @@ class EscuelasController extends Controller
         if ($v->fails()) {
             return redirect()->back()->withInput()->withErrors($v->errors());
         }
+        if (!$request->file('image')) {
+            return redirect()->back()->withInput()->withErrors(['name' => 'Se requieren al menos 3 imagenes para guardar su registro']);
+        }
+
         $coordenandas = $request->latitude . ',' .  $request->longitude;
         $redsocial_json = json_encode($request->redsocial);
         $services_json = json_encode($request->services);
@@ -104,6 +98,18 @@ class EscuelasController extends Controller
 
                 ]);
             }
+        } else {
+            return redirect()->back()->withInput()->withErrors(['name' => 'The name is required']);
+        }
+
+        $precios = array_combine($request->pricetitle, $request->price);
+
+        foreach ($precios as $precio => $value) {
+            $precios = PricingSchool::create([
+                'description'  => $precio,
+                'precio'  => $value,
+                'school_id' => $escuela->id
+            ]);
         }
 
         $EscuelasNivel = new EscuelasNivel();
@@ -144,13 +150,11 @@ class EscuelasController extends Controller
 
         return Validator::make($request->all(), [
             'name' => 'required',
-            'categoria' => 'required|',
-            'niveleducativo' => 'required',
+            'categoria' => 'required',
             'address' => 'required',
             'description' => 'required',
             'phone' => 'required',
-            'website' => 'required',
-            'emalcontact' => 'required',
+            'emailcontacto' => 'required',
 
         ]);
     }
@@ -178,12 +182,18 @@ class EscuelasController extends Controller
         $escuela = Escuelas::where('slug', '=', $slug)
             ->where('user_id', '=', Auth::user()->id)
             ->with('getPhotos')
+            ->with('getPrincing')
             ->first();
 
+        $EscuelasNivel = EscuelasNivel::where('escuela_id', '=', $escuela->id)->first();
+
         $escuela->redsocial = json_decode($escuela->redsocial, true);
+        $escuela->services = json_decode($escuela->services, true);
+        $escuela->coordenadasGoogle = explode(',', $escuela->coordenadasGoogle);
 
         // return $escuela;
-        return view('user.adminSchool.editSchool', compact('escuela'));
+
+        return view('user.adminSchool.editSchool', compact('escuela', 'EscuelasNivel'));
     }
     /**
      * Update the specified resource in storage.
@@ -192,10 +202,80 @@ class EscuelasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Escuelas $escuela,  Request $request)
+    {        //
 
+
+        $v =  $this->validator($request);
+
+        if ($v->fails()) {
+            return redirect()->back()->withInput()->withErrors($v->errors());
+        }
+
+
+        $coordenandas = $request->latitude . ',' .  $request->longitude;
+        $redsocial_json = json_encode($request->redsocial);
+        $services_json = json_encode($request->services);
+
+
+        if ($escuela->name ==  $request->get('name')) {
+            return 'No cambio';
+        } else {
+            $escuela->name = $request->get('name');
+            $slug = SlugService::createSlug(Escuelas::class, 'slug', $request->get('name'), ['unique' => true]);
+            $escuela->slug = $slug;
+        }
+        $escuela->categoria = $request->get('categoria');
+        $escuela->address = $request->get('address');
+        $escuela->state = $request->get('state');
+        $escuela->ciudad = $request->get('ciudad');
+        $escuela->pais = $request->get('pais');
+        $escuela->coordenadasGoogle = $coordenandas;
+        $escuela->description =  $request->get('description');
+        $escuela->phone =  $request->get('phone');
+        $escuela->website =  $request->get('website');
+        $escuela->emailcontacto =  $request->get('emailcontacto');
+        $escuela->redsocial =  $redsocial_json;
+        $escuela->services =  $services_json;
+        $escuela->save();
+
+        alert()->success('Actualizado correctamente');
+        return redirect()->route('dashboard');
+    }
+
+    public function updateNivel(EscuelasNivel $EscuelasNivel, Request $request)
+    {
+        $EscuelasNivel->guarderia = 0;
+        $EscuelasNivel->preescolar = 0;
+        $EscuelasNivel->primarias = 0;
+        $EscuelasNivel->preparatorias = 0;
+        $EscuelasNivel->universidades = 0;
+        $EscuelasNivel->otras = 0;
+
+        if ($request->guarderia) {
+            $EscuelasNivel->guarderia =  $request->get('guarderia');
+        }
+        if ($request->preescolar) {
+            $EscuelasNivel->preescolar =  $request->get('preescolar');
+        }
+        if ($request->primarias) {
+            $EscuelasNivel->primarias =  $request->get('primarias');
+        }
+        if ($request->secundarias) {
+            $EscuelasNivel->secundarias =  $request->get('secundarias');
+        }
+        if ($request->preparatorias) {
+            $EscuelasNivel->preparatorias =  $request->get('preparatorias');
+        }
+        if ($request->universidades) {
+            $EscuelasNivel->universidades =  $request->get('universidades');
+        }
+        if ($request->otras) {
+            $EscuelasNivel->otras =  $request->get('otras');
+        }
+        $EscuelasNivel->save();
+        alert()->success('Actualizado correctamente');
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -222,5 +302,19 @@ class EscuelasController extends Controller
         Alert::success('Escuela eliminada', '');
 
         return redirect()->back();
+    }
+
+    public function destroyPhotos(PhotosEscuelas $photo)
+    {
+        return $photo;
+
+        if (Storage::disk('s3')->exists('/images/escuelas/' . $photo->photo)) {
+            Storage::disk('s3')->delete('/images/escuelas/' . $photo->photo);
+        }
+
+        $photo->delete();
+
+        alert()->success('Imagen eliminado correctamente');
+        return back()->withInput();
     }
 }

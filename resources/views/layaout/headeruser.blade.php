@@ -4,15 +4,24 @@
 
     <!-- Basic Page Needs
 ================================================== -->
-    <title>Listeo</title>
+    <title>Scholla - @yield('title')</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <meta name="description"
+        content="Consulta información sobre las características de las escuelas de México. Datos de contacto, información sobre desempeño, infraestructura, programas de apoyo y conoce las opiniones de otros padres de familia.">
+    <meta name="keywords" content="escuela, evaluación, key3">
+    <link rel="canonical" href="https://schoola.com" />
+    <meta property="og:title" content="SCHOOLA | Mejora tu escuela" />
+    <meta property="og:description"
+        content="Consulta información sobre las características de las escuelas de México. Datos de contacto, información sobre desempeño, infraestructura, programas de apoyo y conoce las opiniones de otros padres de familia." />
+    <meta property="og:type" content="WebPage" />
     <!-- CSS
 ================================================== -->
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/colors/main.css" id="colors">
+
 
     @stack('styles')
 </head>

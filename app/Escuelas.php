@@ -41,6 +41,12 @@ class Escuelas extends Model
         return $this->hasMany('App\PhotosEscuelas', 'escuela_id');
     }
 
+    public function getPrincing()
+    {
+        return $this->hasMany('App\PricingSchool', 'school_id');
+    }
+
+
     public function getUser()
     {
         return $this->hasMany('App\User', 'id', 'user_id')->select(array('id', 'name', 'email','img'));

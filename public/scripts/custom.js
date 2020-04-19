@@ -74,7 +74,7 @@
         /*  Sticky Header
 	/*----------------------------------------------------*/
         $("#header")
-            .not("#header.not-sticky")
+            .not("#header.sticky")
             .clone(true)
             .addClass("cloned unsticky")
             .insertAfter("#header");

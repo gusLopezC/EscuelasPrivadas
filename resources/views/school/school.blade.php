@@ -122,16 +122,12 @@
                         <!-- Food List -->
                         <h4>Colegiatura</h4>
                         <ul>
+                            @foreach ($escuela->getPrincing as $precio)
                             <li>
-                                <h5>Classic Burger</h5>
-                                <p>Beef, salad, mayonnaise, spicey relish, cheese</p>
-                                <span>$6</span>
+                                <h5>{{$precio->description}}</h5>
+                                <span>${{$precio->precio}}</span>
                             </li>
-                            <li>
-                                <h5>Cheddar Burger</h5>
-                                <p>Cheddar cheese, lettuce, tomato, onion, dill pickles</p>
-                                <span>$6</span>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -249,8 +245,8 @@
                 <h3 class="listing-desc-headline margin-top-60 margin-bottom-30">Location</h3>
 
                 <div id="singleListingMap-container">
-                    <div id="singleListingMap" data-latitude="{{$escuela->coordenadasGoogle[0]}}" data-longitude="{{$escuela->coordenadasGoogle[1]}}"
-                        data-map-icon="im im-icon-University"></div>
+                    <div id="singleListingMap" data-latitude="{{$escuela->coordenadasGoogle[0]}}"
+                        data-longitude="{{$escuela->coordenadasGoogle[1]}}" data-map-icon="im im-icon-University"></div>
 
                 </div>
             </div>
@@ -310,8 +306,9 @@
                     </fieldset>
                     <input type="hidden" name="iduserescuela" value="{{$escuela->getUser[0]->id}}">
                     <input type="hidden" name="nameuserescuela" value="{{$escuela->getUser[0]->name}}">
-                    <input type="hidden" name="nameescuela" value="{{ Illuminate\Support\Str::limit($escuela->name, 25) }}">
-                    <button type="submit" class="button">Submit Review</button>
+                    <input type="hidden" name="nameescuela"
+                        value="{{ Illuminate\Support\Str::limit($escuela->name, 25) }}">
+                    <button type="submit" class="button">Enviar Review</button>
                 </form>
 
             </div>

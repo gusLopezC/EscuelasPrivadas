@@ -2,7 +2,6 @@
 <html lang="es">
 
 <head>
-    <title>PROYECTO</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +9,9 @@
 
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/colors/main.css" id="colors">
+
+    {!! SEO::generate() !!}
+
 
     @stack('styles')
     @livewireStyles
