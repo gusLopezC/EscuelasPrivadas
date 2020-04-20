@@ -143,10 +143,10 @@
     @else
     <div class="row">
         <div class="col-sm-6">
-            <div class="dashboard-stat color-4 margin-top-70 margin-bottom-30" style="height: 70%;">
+            <div class="dashboard-stat color-4 margin-top-70 margin-bottom-30" style="height: 350px;">
                 <div class="dashboard-stat-content">
                     <h4>Verifica tu identidad</h4><span>Ponte en contacto con nosotros para desbloquear las estadisticas
-                        de tu tour</span>
+                        de tus instituciones</span>
 
                 </div>
                 <div class="dashboard-stat-icon"><i class="im im-icon-Student-Male"></i></div>

@@ -1,4 +1,5 @@
 @extends('layaout.headeruser')
+@section('title', 'Edit School')
 @section('contenido')
 <!-- Content
 	================================================== -->
@@ -292,51 +293,6 @@
         </div>
         <!-- Section / End -->
 
-        <!-- Section -->
-        <div class="add-listing-section margin-top-45">
-
-            <!-- Headline -->
-            <div class="add-listing-headline">
-                <h3><i class="sl sl-icon-book-open"></i> Pricing</h3>
-                <!-- Switcher -->
-
-            </div>
-
-            <!-- Switcher ON-OFF Content -->
-            <div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <table id="pricing-list-container">
-                            @foreach ($escuela->getPrincing as $precio)
-                            <tr class="pricing-list-item pattern">
-                                <td>
-                                    <div class="fm-move"><i class="sl sl-icon-cursor-move"></i></div>
-                                    <div class="fm-input pricing-name">
-                                        <input type="text" placeholder="Title" name="textprecio[]" id="textprecio"
-                                            value="{{$precio->description}}" />
-                                    </div>
-
-                                    <div class="fm-input pricing-price">
-                                        <input type="text" placeholder="Price" name="precio[]" id="precio"
-                                            value="{{$precio->precio}}" data-unit="MXN" />
-                                    </div>
-                                    <div class="fm-close"><a class="delete" href="#"><i class="fa fa-remove"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            @endforeach
-
-                        </table>
-                        <a href="#" class="button add-pricing-list-item">Add Item</a>
-                    </div>
-                </div>
-
-            </div>
-            <!-- Switcher ON-OFF Content / End -->
-
-        </div>
-        <!-- Section / End -->
-
         <div class="add-listing-section margin-top-45">
 
             <!-- Headline -->
@@ -361,6 +317,86 @@
     </form>
     <div style="margin-bottom:5%"></div>
 
+    <!-- Section -->
+    <div class="add-listing-section margin-top-45">
+
+        <!-- Headline -->
+        <div class="add-listing-headline">
+            <h3><i class="sl sl-icon-book-open"></i> Administrar Imagenes</h3>
+            <!-- Switcher -->
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    @foreach ($escuela->getPhotos as $photo)
+                    <div class="col-sm-2">
+                        <form method="POST" action="{{ route('school.photos.destroy',$photo)}}">
+                            {{ csrf_field() }} {{ method_field('DELETE') }}
+
+                            <button class="button" style="position:absolute"><i class="fa fa-remove"></i></button>
+                            <img src="https://escuelasprivadas.s3.amazonaws.com/images/escuelas/{{$photo->photo}}"
+                                class="img-responsive" alt="">
+                        </form>
+                    </div>
+
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div style="margin-bottom:5%"></div>
+
+    <div class="add-listing-section margin-top-45">
+
+        <!-- Headline -->
+        <div class="add-listing-headline">
+            <h3><i class="sl sl-icon-book-open"></i>Gestionar precios</h3>
+            <!-- Switcher -->
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form method="POST" action="{{ route('school.prices.update',$escuela->id)}}">
+                    {{ csrf_field()}} {{ method_field('PUT') }}
+                <table id="pricing-list-container">
+                    @foreach ($Pricing as $precio)
+                    <tr class="pricing-list-item pattern">
+                        <td>
+                            <div class="fm-move"><i class="sl sl-icon-cursor-move"></i></div>
+                            <div class="fm-input pricing-name">
+                                <input type="text" placeholder="Title" name="textprecio[]" id="textprecio"
+                                    value="{{$precio->description}}" required />
+                            </div>
+
+                            <div class="fm-input pricing-price">
+                                <input type="text" placeholder="Price" name="precio[]" id="precio"
+                                    value="{{$precio->precio}}" data-unit="MXN" required />
+                            </div>
+                            <div class="fm-close"><a class="" href="{{route('school.price.delete',$precio->id)}}"><i class="fa fa-remove"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    @endforeach
+
+                </table>
+                <a href="#" class="button add-pricing-list-item">Add Item</a>
+                <br>
+                <!-- Checkboxes / End -->
+                <button class="button preview" style="width:100%;" type="submit">Enviar <i
+                        class="fa fa-arrow-circle-right"></i></button>
+            </div>
+        </div>
+    </form>
+
+    </div>
+
+    <!-- Section / End -->
+    <div style="margin-bottom:5%"></div>
+
+
     <form method="POST" action="{{ route('school.Nivel.update',$EscuelasNivel)}}">
         {{ csrf_field()}} {{ method_field('PUT') }}
 
@@ -369,46 +405,46 @@
 
             <!-- Headline -->
             <div class="add-listing-headline">
-                <h3><i class="sl sl-icon-docs"></i> Servicios</h3>
+                <h3><i class="sl sl-icon-docs"></i> Editar niveles educativos</h3>
             </div>
             <!-- Checkboxes
              -->
             <div class="checkboxes in-row margin-bottom-20">
 
                 <input id="check-ser-a" type="checkbox" name="guarderia" value="1"
-                @if(old('EscuelasNivel',$EscuelasNivel->preescolar)) checked @endif>
+                    @if(old('EscuelasNivel',$EscuelasNivel->preescolar)) checked @endif>
                 <label for="check-ser-a">guarderia</label>
 
                 <input id="check-ser-b" type="checkbox" name="preescolar" value="1"
-                @if(old('EscuelasNivel',$EscuelasNivel->preescolar)) checked @endif >
+                    @if(old('EscuelasNivel',$EscuelasNivel->preescolar)) checked @endif >
                 <label for="check-ser-b">Preescolar</label>
 
                 <input id="check-ser-c" type="checkbox" name="primarias" value="1"
-                 @if(old('EscuelasNivel',$EscuelasNivel->primarias)) checked @endif >
+                    @if(old('EscuelasNivel',$EscuelasNivel->primarias)) checked @endif >
                 <label for="check-ser-c">primarias</label>
 
                 <input id="check-ser-d" type="checkbox" name="secundarias" value="1"
-                 @if(old('EscuelasNivel',$EscuelasNivel->secundarias)) checked @endif >
+                    @if(old('EscuelasNivel',$EscuelasNivel->secundarias)) checked @endif >
                 <label for="check-ser-d">Secundarias</label>
 
                 <input id="check-ser-e" type="checkbox" name="preparatorias" value="1"
-                 @if(old('EscuelasNivel',$EscuelasNivel->preparatorias)) checked @endif >
+                    @if(old('EscuelasNivel',$EscuelasNivel->preparatorias)) checked @endif >
                 <label for="check-ser-e">Preparatoria</label>
 
                 <input id="check-ser-f" type="checkbox" name="universidades" value="1"
-                 @if(old('EscuelasNivel',$EscuelasNivel->universidades)) checked @endif >
+                    @if(old('EscuelasNivel',$EscuelasNivel->universidades)) checked @endif >
                 <label for="check-ser-f">Universidad</label>
 
                 <input id="check-ser-g" type="checkbox" name="otras" value="1"
-                @if(old('EscuelasNivel',$EscuelasNivel->otras)) checked @endif >
-               <label for="check-ser-g">Secundarias</label>
+                    @if(old('EscuelasNivel',$EscuelasNivel->otras)) checked @endif >
+                <label for="check-ser-g">Otros</label>
 
 
 
             </div>
             <!-- Checkboxes / End -->
             <button class="button preview" style="width:100%;" type="submit">Enviar <i
-                class="fa fa-arrow-circle-right"></i></button>
+                    class="fa fa-arrow-circle-right"></i></button>
         </div>
         <!-- Section / End -->
 

@@ -76,7 +76,7 @@
 
                             <div class="list-box-listing-content">
                                 <div class="inner" style="text-align: center;">
-                                    <h4>Aun no tienes comentarios</h4>
+                                    <h3>Aun no tienes comentarios</h3>
                                     <br>
                                     <br>
                                     <br> <a href="{{route('/')}}">

@@ -142,7 +142,8 @@ class EscuelasController extends Controller
         $EscuelasNivel->save();
 
 
-        return redirect()->back();
+        alert()->success('Se a guardado correctamente');
+        return redirect()->route('dashboard');
     }
 
     protected function validator($request)
@@ -187,13 +188,14 @@ class EscuelasController extends Controller
 
         $EscuelasNivel = EscuelasNivel::where('escuela_id', '=', $escuela->id)->first();
 
+        $Pricing = PricingSchool::where('school_id', '=', $escuela->id)->get();
+
         $escuela->redsocial = json_decode($escuela->redsocial, true);
         $escuela->services = json_decode($escuela->services, true);
         $escuela->coordenadasGoogle = explode(',', $escuela->coordenadasGoogle);
 
-        // return $escuela;
 
-        return view('user.adminSchool.editSchool', compact('escuela', 'EscuelasNivel'));
+        return view('user.adminSchool.editSchool', compact('escuela', 'EscuelasNivel', 'Pricing'));
     }
     /**
      * Update the specified resource in storage.
@@ -218,9 +220,7 @@ class EscuelasController extends Controller
         $services_json = json_encode($request->services);
 
 
-        if ($escuela->name ==  $request->get('name')) {
-            return 'No cambio';
-        } else {
+        if ($escuela->name !=  $request->get('name')) {
             $escuela->name = $request->get('name');
             $slug = SlugService::createSlug(Escuelas::class, 'slug', $request->get('name'), ['unique' => true]);
             $escuela->slug = $slug;
@@ -238,6 +238,20 @@ class EscuelasController extends Controller
         $escuela->redsocial =  $redsocial_json;
         $escuela->services =  $services_json;
         $escuela->save();
+
+        if ($image = $request->file('image')) {
+            foreach ($image as $file) {
+                $filename = time() . '-' . $file->getClientOriginalName();
+                $filePath = '/images/escuelas/' . $filename;
+
+                Storage::disk('s3')->put($filePath, file_get_contents($file));
+                PhotosEscuelas::create([
+                    'photo' => $filename,
+                    'escuela_id' =>  $escuela->id
+
+                ]);
+            }
+        }
 
         alert()->success('Actualizado correctamente');
         return redirect()->route('dashboard');
@@ -278,6 +292,32 @@ class EscuelasController extends Controller
         return redirect()->route('dashboard');
     }
 
+    public function updatePrices($school_id, Request $request)
+    {
+        $Pricings = PricingSchool::where('school_id', '=', $school_id)->get();
+
+        $indice = 0;
+        foreach ($Pricings as $price) {
+            $price->description = $request->textprecio[$indice];
+            $price->precio = $request->precio[$indice];
+            $price->save();
+            $indice++;
+        }
+
+        if (count($Pricings) < count($request->textprecio)) {
+            for ($i = $indice; $i < count($request->textprecio); $i++) {
+                $precios = PricingSchool::create([
+                    'description'  => $request->textprecio[$indice],
+                    'precio'  => $price->precio = $request->precio[$indice],
+                    'school_id' => $school_id
+                ]);
+            }
+        }
+
+        # code...
+        alert()->success('Actualizado correctamente');
+        return back()->withInput();
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -306,7 +346,6 @@ class EscuelasController extends Controller
 
     public function destroyPhotos(PhotosEscuelas $photo)
     {
-        return $photo;
 
         if (Storage::disk('s3')->exists('/images/escuelas/' . $photo->photo)) {
             Storage::disk('s3')->delete('/images/escuelas/' . $photo->photo);
@@ -315,6 +354,14 @@ class EscuelasController extends Controller
         $photo->delete();
 
         alert()->success('Imagen eliminado correctamente');
+        return back()->withInput();
+    }
+
+    public function Pricedestroy($id)
+    {
+        $price = PricingSchool::destroy($id);
+
+        alert()->success('Precio eliminado correctamente');
         return back()->withInput();
     }
 }

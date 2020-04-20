@@ -8,7 +8,7 @@
             <form class="login100-form validate-form" action="{{ route('login') }}" method="POST">
                 {{ csrf_field() }}
                 <span class="login100-form-title p-b-43">
-                    Login to continue
+                    Inicia sesión
                 </span>
 
 
@@ -42,13 +42,14 @@
                     </div>
                 </div>
                 <br>
+                <br>
                 <div class="container-login100-form-btn">
                     <button class="login100-form-btn">
                         Login
                     </button>
                 </div>
                 <div class="text-center p-t-46 p-b-20">
-                    ¿Nuevo en LOKKL? <strong>
+                    ¿Nuevo aqui? <strong>
                         <a href="{{ route('register') }}" class="txt1">
                             Registrate
                         </a>
@@ -56,7 +57,7 @@
                 </div>
                 <div class="text-center p-t-46 p-b-20">
                     <span class="txt2">
-                        or sign up using
+                       o inicia sesión con
                     </span>
                 </div>
 
@@ -65,7 +66,7 @@
                         <i class="fa fa-facebook-f" aria-hidden="true"></i>
                     </a>
                     <div style="margin-right:3%"></div>
-                    <a href="#" class="login100-form-social-item flex-c-m bg2 m-r-5">
+                    <a href="#" class="login100-form-social-item flex-c-m bg3 m-r-5">
                         <i class="fa fa-google" aria-hidden="true"></i>
                     </a>
                 </div>

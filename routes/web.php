@@ -85,7 +85,9 @@ Route::post('createSchool', 'Escuelas\EscuelasController@store')->name('createsc
 Route::get('editSchool/{slug}', 'Escuelas\EscuelasController@edit')->name('school.edit');    //EDITAR
 Route::put('editSchool/{escuela}', 'Escuelas\EscuelasController@update')->name('school.update');     //UPDATE
 Route::put('editSchoolNivel/{EscuelasNivel}', 'Escuelas\EscuelasController@updateNivel')->name('school.Nivel.update');     //UPDATE
+Route::put('editSchoolPrices/{id}', 'Escuelas\EscuelasController@updatePrices')->name('school.prices.update');     //UPDATE
 Route::get('school/{id}/delete', 'Escuelas\EscuelasController@destroy')->name('school.delete');     //DELETE
+Route::get('schoolPrice/{id}/delete', 'Escuelas\EscuelasController@Pricedestroy')->name('school.price.delete');     //DELETE
 Route::delete('schoolphoto/{photo}', 'Escuelas\EscuelasController@destroyPhotos')->name('school.photos.destroy');     //DELETE
 
 /**

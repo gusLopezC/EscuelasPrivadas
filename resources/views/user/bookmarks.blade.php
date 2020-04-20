@@ -69,7 +69,7 @@
 
                                 <div class="list-box-listing-content">
                                     <div class="inner" style="text-align: center;">
-                                        <h2>Aun no tienes favoritos</h2>
+                                        <h3>Aun no tienes favoritos</h3>
                                         <br>
                                         <br>
                                         <br> <a href="{{route('/')}}">

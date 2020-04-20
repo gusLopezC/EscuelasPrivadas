@@ -102,7 +102,7 @@
                                             Profile</a></li>
                                     <li><a href="{{route('dashboard')}}"><i class="sl sl-icon-envelope-open"></i>
                                             Dashboard</a></li>
-                                    <li><a href="{{route('/')}}"><i class="fa fa-calendar-check-o"></i>
+                                    <li><a href="{{route('booking')}}"><i class="fa fa-calendar-check-o"></i>
                                             Bookings</a></li>
                                     <li>
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault();

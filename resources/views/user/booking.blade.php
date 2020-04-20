@@ -126,7 +126,7 @@
 
                             <div class="list-box-listing-content">
                                 <div class="inner" style="text-align: center;">
-                                    <h2>Aun no tienes reservaciónes</h2>
+                                    <h3>Aun no tienes reservaciónes</h3>
                                     <br>
                                     <br>
                                     <br> <a href="{{route('/')}}">

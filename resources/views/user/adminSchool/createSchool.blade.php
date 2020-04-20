@@ -1,4 +1,5 @@
 @extends('layaout.headeruser')
+@section('title', 'Crear School')
 @section('contenido')
 
 <!-- Content
