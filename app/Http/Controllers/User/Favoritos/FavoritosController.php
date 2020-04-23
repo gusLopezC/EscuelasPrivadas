@@ -24,13 +24,13 @@ class FavoritosController extends Controller
             ->paginate(5);
         */
         $misfavoritos = \DB::table('school_favoritos')
-        ->select('school_favoritos.*','escuelas.name','escuelas.slug','escuelas.address','escuelas.calification','photos_escuelas.photo')
-        ->where('school_favoritos.user_id', '=', $user->id)
-        ->join('escuelas', 'escuelas.id', '=', 'school_favoritos.escuela_id')
-        ->join('photos_escuelas', 'photos_escuelas.escuela_id', '=', 'school_favoritos.escuela_id')
-        ->paginate(7);
+            ->select('school_favoritos.id', 'escuelas.name', 'escuelas.slug', 'escuelas.address', 'escuelas.calification', 'photos_escuelas.photo')
+            ->where('school_favoritos.user_id', '=', $user->id)
+            ->join('escuelas', 'escuelas.id', '=', 'school_favoritos.escuela_id')
+            ->join('photos_escuelas', 'photos_escuelas.escuela_id', '=', 'school_favoritos.escuela_id')
+            ->groupBy('escuelas.name')
+            ->paginate(5);
 
-        // return $misfavoritos;
         return view('user.bookmarks', compact('misfavoritos'));
     }
 
@@ -40,10 +40,10 @@ class FavoritosController extends Controller
 
         $ExisteFavorito = SchoolFavoritos::where('escuela_id', '=', $id)
             ->where('user_id', '=', $user->id)
-            ->get();
+            ->first();
 
 
-        if (!count($ExisteFavorito)) {
+        if (!$ExisteFavorito) {
 
             SchoolFavoritos::create([
                 'escuela_id' => $id,

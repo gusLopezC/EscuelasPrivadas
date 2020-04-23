@@ -30,7 +30,7 @@
         <div class="col-lg-3 col-md-6">
             <div class="dashboard-stat color-1">
                 <div class="dashboard-stat-content">
-                    <h4>{{$estadisticasVisitas[0]->totalPlaces}}</h4> <span>Listados activos</span>
+                    <h4>{{$estadisticasVisitas[0]->totalPlaces}}</h4> <span>{{ trans('Dashboard.InstitucionesPublicadas') }}</span>
                 </div>
                 <div class="dashboard-stat-icon"><i class="im im-icon-Map2"></i></div>
             </div>
@@ -40,7 +40,7 @@
         <div class="col-lg-3 col-md-6">
             <div class="dashboard-stat color-2">
                 <div class="dashboard-stat-content">
-                    <h4>{{$estadisticasVisitas[0]->totalVisitas}}</h4> <span>Vistas totales</span>
+                    <h4>{{$estadisticasVisitas[0]->totalVisitas}}</h4> <span>{{ trans('Dashboard.Vistastotales') }}</span>
                 </div>
                 <div class="dashboard-stat-icon"><i class="im im-icon-Line-Chart"></i></div>
             </div>
@@ -51,7 +51,7 @@
         <div class="col-lg-3 col-md-6">
             <div class="dashboard-stat color-3">
                 <div class="dashboard-stat-content">
-                    <h4>{{$estadisticasComentarios[0]->totalComentarios}}</h4> <span>Revisiones totales</span>
+                    <h4>{{$estadisticasComentarios[0]->totalComentarios}}</h4> <span>{{ trans('Dashboard.RevisionesTotales') }}</span>
                 </div>
                 <div class="dashboard-stat-icon"><i class="im im-icon-Add-UserStar"></i></div>
             </div>
@@ -61,7 +61,7 @@
         <div class="col-lg-3 col-md-6">
             <div class="dashboard-stat color-4">
                 <div class="dashboard-stat-content">
-                    <h4>{{$totalReservas[0]->totalReservas}}</h4> <span>Reservas</span>
+                    <h4>{{$totalReservas[0]->totalReservas}}</h4> <span>{{ trans('Dashboard.ReservasLugares') }}</span>
                 </div>
                 <div class="dashboard-stat-icon"><i class="im im-icon-Heart"></i></div>
             </div>
@@ -74,7 +74,7 @@
         <!-- Recent Activity -->
         <div class="col-lg-6 col-md-12">
             <div class="dashboard-list-box with-icons margin-top-20">
-                <h4>Actividad Reciente</h4>
+                <h4>{{ trans('Dashboard.ActividadReciente') }}</h4>
                 <ul>
                     @if (count($notificationes) >=1)
                     @foreach ($notificationes as $notification)
@@ -88,7 +88,7 @@
                     @else
                     <li>
                         <strong>
-                            No hay notificaciones nuevas
+                            {{ trans('Dashboard.NoNotificaciones') }}
                         </strong>
 
                     </li>
@@ -102,7 +102,7 @@
         <!-- Invoices -->
         <div class="col-lg-6 col-md-12">
             <div class="dashboard-list-box invoices with-icons margin-top-20">
-                <h4>Gestiona tus instutuciónes</h4>
+                <h4>{{ trans('Dashboard.GestionaInstituciones') }}</h4>
                 <ul>
                     @foreach ($escuelas as $escuela)
                     <li>
@@ -122,11 +122,11 @@
                             <br>
                             <div class="col-sm-4"></div>
                             <div class="col-sm-4">
-                                <a href="{{route('school.edit',$escuela->slug)}}" class="button gray"><i class="sl sl-icon-note"></i> Editar</a>
+                                <a href="{{route('school.edit',$escuela->slug)}}" class="button gray"><i class="sl sl-icon-note"></i> {{ trans('Dashboard.Editar') }}</a>
 
                             </div>
                             <div class="col-sm-4">
-                                <a href="{{route('school.delete',$escuela->id)}}" class="button gray"><i class="sl sl-icon-close"></i> Eliminar</a>
+                                <a href="{{route('school.delete',$escuela->id)}}" class="button gray"><i class="sl sl-icon-close"></i> {{ trans('Dashboard.Eliminar') }}</a>
 
                             </div>
                         </div>

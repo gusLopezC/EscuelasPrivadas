@@ -5,12 +5,12 @@
     <div id="titlebar">
         <div class="row">
             <div class="col-md-12">
-                <h2>Editar Reviews</h2>
+                <h2>{{ trans('EditReviews.Title') }}</h2>
                 <!-- Breadcrumbs -->
                 <nav id="breadcrumbs">
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Dashboard</a></li>
+                        <li>Home</li>
+                        <li>Dashboard</li>
                         <li>Reviews</li>
                     </ul>
                 </nav>
@@ -21,39 +21,38 @@
 
 
         <!-- Add Review Box -->
-        <div id="add-review" class="add-review-box">
+        <div id="add-review" class="add-review-box" style="margin-top:0px">
 
             <!-- Add Review -->
-            <h3 class="listing-desc-headline margin-bottom-20">Editar Review</h3>
+            <h3 class="listing-desc-headline margin-bottom-20">{{ trans('EditReviews.Title') }}</h3>
             <!-- Review Comment -->
             <form method="POST" action="{{ route('reviews.update',$comentario)}}" enctype="multipart/form-data">
                 {{ csrf_field()}} {{ method_field('PUT') }}
 
-                <span class="leave-rating-title">Your rating for this listing</span>
+                <span class="leave-rating-title">{{ trans('EditReviews.YouCalification') }}</span>
 
                 <!-- Rating / Upload Button -->
                 <div class="row">
                     <div class="col-md-6">
                         <!-- Leave Rating -->
                         <div class="clearfix"></div>
-                        <div class="leave-rating margin-bottom-30">
-                            <select class="chosen-select-no-single" name="calification" id="calification" required
-                                style="width: 150%; !important">
+                        <div class="leave-rating margin-bottom-30" style="width: 30%">
+                            <select class="chosen-select-no-single" name="calification" id="calification" required>
                                 <option value="5"
                                     {{old('calification',$comentario->calification) == 5 ? 'selected' : ''}}>
-                                    Excelente</option>
+                                    {{ trans('EditReviews.Excelente') }} </option>
                                 <option value="4"
                                     {{old('calification',$comentario->calification) == 4 ? 'selected' : ''}}>
-                                    Bueno</option>
+                                    {{ trans('EditReviews.Bueno') }} </option>
                                 <option value="3"
                                     {{old('calification',$comentario->calification) == 3 ? 'selected' : ''}}>
-                                    Regular</option>
+                                    {{ trans('EditReviews.Regular') }} </option>
                                 <option value="2"
                                     {{old('calification',$comentario->calification) == 2 ? 'selected' : ''}}>
-                                    Malo</option>
+                                    {{ trans('EditReviews.Malo') }} </option>
                                 <option value="1"
                                     {{old('calification',$comentario->calification) == 1 ? 'selected' : ''}}>
-                                    Pesimo</option>
+                                    {{ trans('EditReviews.Pesimo') }} </option>
                             </select>
                         </div>
                         <div class="clearfix"></div>
@@ -63,7 +62,7 @@
                         <!-- Uplaod Photos -->
                         <div class="add-review-photos margin-bottom-30">
                             <div class="photoUpload">
-                                <span><i class="sl sl-icon-arrow-up-circle"></i> Upload Photos</span>
+                                <span><i class="sl sl-icon-arrow-up-circle"></i> {{ trans('EditReviews.UploadPhotos') }}</span>
                                 <input type='file' name="image[]" id="image[]" accept=".png, .jpg, .jpeg" multiple=""
                                     class="upload">
                             </div>
@@ -77,18 +76,18 @@
                     <input type="text" name="escuela_id" id="escuela_id"
                         value="{{old('escuela_id',$comentario->escuela_id)}}" style="display:none" />
                     <div>
-                        <label>Review:</label>
+                        <label>{{ trans('EditReviews.Review') }}:</label>
                         <textarea cols="40" rows="3" name="comentario" id="comentario"
                             required>{{Request::old('comentario', $comentario->comentario)}}</textarea>
                     </div>
                 </fieldset>
-                <button type="submit" class="button">Guardar</button>
+                <button type="submit" class="button">{{ trans('EditReviews.Guardar') }}</button>
             </form>
-
+            <br>
             <div class="row">
 
                 <div class="col-sm-12">
-                    <h3 class="listing-desc-headline margin-bottom-20">Administra tus fotos</h3>
+                    <h3 class="listing-desc-headline margin-bottom-20">{{ trans('EditReviews.AdministraFotos') }}</h3>
                     <div class="row">
                         @foreach ($comentario->getPhotosComentario as $photo)
                         <div class="col-sm-2">

@@ -9,13 +9,13 @@
     <div id="titlebar">
         <div class="row">
             <div class="col-md-12">
-                <h2>Reviews</h2>
+                <h2>{{ trans('Reviews.Title') }}</h2>
                 <!-- Breadcrumbs -->
                 <nav id="breadcrumbs">
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Dashboard</a></li>
-                        <li>Reviews</li>
+                        <li>Home</li>
+                        <li>Dashboard</li>
+                        <li>{{ trans('Reviews.Title') }}</li>
                     </ul>
                 </nav>
             </div>
@@ -27,7 +27,7 @@
         <!-- Listings -->
         <div class="col-lg-12 col-md-12">
             <div class="dashboard-list-box margin-top-0">
-                <h4>Tus Reviews</h4>
+                <h4>{{ trans('Reviews.TusReviews') }}</h4>
                 @if (count($comentarios) > 0)
                 <ul>
                     @foreach ($comentarios as $comentario)
@@ -40,7 +40,8 @@
                                             alt="" style="height: 85px;" /> </div>
                                     <div class="comment-content">
                                         <div class="arrow-comment"></div>
-                                        <div class="comment-by">Tu review <div class="comment-by-listing own-comment">
+                                        <div class="comment-by">{{ trans('Reviews.TuReview') }}<div
+                                                class="comment-by-listing own-comment">
                                                 de <a
                                                     onclick="window.location='{{ route('school',$comentario->getEscuela[0]->slug)}}'">{{$comentario->getEscuela[0]->name}}</a>
                                             </div>
@@ -49,13 +50,10 @@
                                         </div>
                                         <p>{{$comentario->comentario}}</p>
                                         <a href="{{route('reviews.edit',$comentario)}}" class="rate-review">
-                                            <i class="sl sl-icon-note"></i> Editar</a>
+                                            <i class="sl sl-icon-note"></i> {{ trans('Boton.Editar') }}</a>
                                         <a href="{{route('reviews.delete',$comentario)}}" class="rate-review">
-                                            <i class="sl sl-icon-ban"></i> Eliminar</a>
-
-
+                                            <i class="sl sl-icon-ban"></i>{{ trans('Boton.Eliminar') }} </a>
                                     </div>
-
                                 </li>
                             </ul>
                         </div>
@@ -76,12 +74,12 @@
 
                             <div class="list-box-listing-content">
                                 <div class="inner" style="text-align: center;">
-                                    <h3>Aun no tienes comentarios</h3>
+                                    <h3>{{ trans('Reviews.Nocomentarios') }}</h3>
                                     <br>
                                     <br>
                                     <br> <a href="{{route('/')}}">
                                         <button class="button margin-top-15" style="width: 80%;">
-                                            Explora
+                                            {{ trans('Reviews.Explora') }}
                                         </button>
                                     </a>
                                 </div>

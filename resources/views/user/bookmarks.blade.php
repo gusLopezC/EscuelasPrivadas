@@ -9,13 +9,13 @@
         <div id="titlebar">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Mis favoritos</h2>
+                    <h2>{{ trans('Bookmarks.Title') }}</h2>
                     <!-- Breadcrumbs -->
                     <nav id="breadcrumbs">
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Dashboard</a></li>
-                            <li>Mis favoritos</li>
+                            <li>Home</li>
+                            <li>Dashboard</li>
+                            <li>{{ trans('Bookmarks.Title') }}</li>
                         </ul>
                     </nav>
                 </div>
@@ -27,7 +27,7 @@
             <!-- Listings -->
             <div class="col-lg-12 col-md-12">
                 <div class="dashboard-list-box margin-top-0">
-                    <h4>Tus favoritos</h4>
+                    <h4>{{ trans('Bookmarks.Tusfavoritos') }}</h4>
                     @if (count($misfavoritos) > 0)
                     <ul>
                         @foreach ($misfavoritos as $favorito)
@@ -69,7 +69,7 @@
 
                                 <div class="list-box-listing-content">
                                     <div class="inner" style="text-align: center;">
-                                        <h3>Aun no tienes favoritos</h3>
+                                        <h3>{{ trans('Bookmarks.Nofavoritos') }}</h3>
                                         <br>
                                         <br>
                                         <br> <a href="{{route('/')}}">

@@ -63,6 +63,10 @@ class ComentariosController extends Controller
             'user_id' => $user->id,
         ]);
 
+        $escuela = Escuelas::find($request->escuela_id);
+        $escuela->calification = ($escuela->calification + $request->rating) / 2;
+        $escuela->save();
+
 
         if ($image = $request->file('image')) {
             foreach ($image as $file) {
