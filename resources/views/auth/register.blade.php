@@ -7,32 +7,36 @@
             <form class="login100-form validate-form" action="{{ route('register') }}" method="POST">
                 {{ csrf_field() }}
                 <span class="login100-form-title p-b-43">
-                    Register
+                    {{ trans('Login.Registrate') }}
                 </span>
 
-                <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                    <input class="input100" type="text" id="name" name="name" value="{{ old('name') }}" placeholder="Name" required autofocus>
+                <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                    <input class="input100" type="text" id="name" name="name" value="{{ old('name') }}"
+                        placeholder="Name" required autofocus>
                 </div>
 
-                <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                    <input class="input100" type="email" id="email" name="email" value="{{ old('email') }}" placeholder="Email" required autofocus>
+                <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                    <input class="input100" type="email" id="email" name="email" value="{{ old('email') }}"
+                        placeholder="Email" required autofocus>
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate="Password is required">
-                    <input class="input100" type="password" id="password" name="password" value="{{ old('password') }}" placeholder="Password" required>
+                    <input class="input100" type="password" id="password" name="password" value="{{ old('password') }}"
+                        placeholder="Password" required>
                 </div>
 
                 <div class="flex-sb-m w-full p-t-3 p-b-32">
                     <div class="contact100-form-checkbox">
-                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me" style="display:none">
+                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me"
+                            style="display:none">
                         <label class="label-checkbox100" for="ckb1">
-                            Remember me
+                            {{ trans('Login.Rememberme') }}
                         </label>
                     </div>
 
                     <div>
                         <a href="{{ route('password.request') }}" class="txt1">
-                            Forgot Password?
+                            {{ trans('Login.ForgotPassword') }}
                         </a>
                     </div>
                 </div>
@@ -46,17 +50,17 @@
 
                 <div class="text-center p-t-46 p-b-20">
                     <span class="txt2">
-                        or sign up using
+                        {{ trans('Login.Oiniciesesion') }}
                     </span>
                 </div>
 
                 <div class="login100-form-social flex-c-m">
-                    <a href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">
+                    <a href="{{ url('/auth/redirect/facebook') }}" class="login100-form-social-item flex-c-m bg1 m-r-5">
                         <i class="fa fa-facebook-f" aria-hidden="true"></i>
                     </a>
-
-                    <a href="#" class="login100-form-social-item flex-c-m bg2 m-r-5">
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                    <div style="margin-right:3%"></div>
+                    <a href="#" class="login100-form-social-item flex-c-m bg3 m-r-5">
+                        <i class="fa fa-google" aria-hidden="true"></i>
                     </a>
                 </div>
             </form>

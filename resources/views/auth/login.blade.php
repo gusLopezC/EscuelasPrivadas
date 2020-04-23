@@ -8,11 +8,9 @@
             <form class="login100-form validate-form" action="{{ route('login') }}" method="POST">
                 {{ csrf_field() }}
                 <span class="login100-form-title p-b-43">
-                    Inicia sesión
+                    {{ trans('Login.IniciaSesion') }}
                 </span>
-
-
-                <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@gmail.com">
                     <input class="input100" type="email" id="email" name="email" value="{{ old('email') }}"
                         placeholder="Email" required autofocus>
                 </div>
@@ -29,12 +27,12 @@
                                 <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me"
                                     style="display:none">
                                 <label class="label-checkbox100" for="ckb1">
-                                    Remember me
+                                    {{ trans('Login.Rememberme') }}
                                 </label>
                             </div>
                             <div class="col-sm-6">
                                 <a href="{{ route('password.request') }}" class="txt1">
-                                    Forgot Password?
+                                    {{ trans('Login.ForgotPassword') }}
                                 </a>
                             </div>
 
@@ -45,19 +43,19 @@
                 <br>
                 <div class="container-login100-form-btn">
                     <button class="login100-form-btn">
-                        Login
+                        {{ trans('Login.IniciaSesion') }}
                     </button>
                 </div>
                 <div class="text-center p-t-46 p-b-20">
-                    ¿Nuevo aqui? <strong>
+                    {{ trans('Login.Nuevoaqui') }} <strong>
                         <a href="{{ route('register') }}" class="txt1">
-                            Registrate
+                            {{ trans('Login.Registrate') }}
                         </a>
                     </strong>
                 </div>
                 <div class="text-center p-t-46 p-b-20">
                     <span class="txt2">
-                       o inicia sesión con
+                        {{ trans('Login.Oiniciesesion') }}
                     </span>
                 </div>
 
@@ -70,6 +68,8 @@
                         <i class="fa fa-google" aria-hidden="true"></i>
                     </a>
                 </div>
+
+
             </form>
 
             <div class="login100-more" style="background-image: url('../images/login/bg-01.jpg');">

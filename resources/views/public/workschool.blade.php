@@ -5,13 +5,10 @@
         <div class="row justify-content-center">
             <div class="col-xl-8 col-lg-10">
                 <div class="header-content text-center">
-                    <h3 class="header-title">Sobre SCHOLA</h3>
-                    <p class="text">Nuestras calificaciones están destinadas a proporcionar una mejor comprensión de la
-                        calidad de la escuela y ayudar a los padres a comparar las escuelas dentro del mismo estado.</p>
+                    <h3 class="header-title">{{ trans('Workschool.Title') }}</h3>
+                    <p class="text">{{ trans('Workschool.subTitle') }}</p>
                     <ul class="header-btn">
-                        <li><a class="main-btn btn-two video-popup"
-                                href="">WATCH THE VIDEO <i
-                                    class="lni-play"></i></a></li>
+                        <li><a class="main-btn btn-two video-popup" href=""> <i class="lni-play"></i></a></li>
                     </ul>
                 </div> <!-- header content -->
             </div>
@@ -27,11 +24,11 @@
         <div class="row">
             <div class="col-lg-8">
                 <div class="section-title pb-10">
-                    <h4 class="title">Obtenga más información sobre las escuelas</h4>
-                    <p class="text">Más padres recurren a <b>SCHOLA</b> que cualquier otra fuente para encontrar
-                        información sobre las escuelas y cómo apoyar el aprendizaje de sus hijos. <br>Para los líderes
-                        escolares, ofrecemos recursos que puede usar para conectarse con los padres y compartir más
-                        información sobre lo que hace que su escuela sea especial.</p>
+                    <h4 class="title">{{ trans('Workschool.Section1Title') }} </h4>
+                    <p class="text">{{ trans('Workschool.Section1Text1') }} <br>
+                        {{ trans('Workschool.Section1Text2') }}</p>
+                        <br>
+
                 </div> <!-- section title -->
             </div>
         </div> <!-- row -->
@@ -44,12 +41,11 @@
                                 <i class="lni-bolt"></i>
                             </div>
                             <div class="services-content media-body">
-                                <h4 class="services-title">Conoce más tu escuela</h4>
-                                <p class="text">Como líder de la escuela, conoces mejor tu escuela. Queremos ayudarlo a
-                                    contar la historia de su escuela y garantizar que nuestra información sea lo más
-                                    sólida y precisa posible. </p>
+                                <h4 class="services-title"> {{ trans('Workschool.Article1') }}</h4>
+                                <p class="text"> {{ trans('Workschool.Article1Text') }} </p>
                             </div>
                         </div> <!-- services content -->
+
                     </div>
                     <div class="col-md-6">
                         <div class="services-content mt-40 d-sm-flex">
@@ -57,10 +53,8 @@
                                 <i class="lni-bar-chart"></i>
                             </div>
                             <div class="services-content media-body">
-                                <h4 class="services-title">Llegar a futuros padres</h4>
-                                <p class="text">Ofrecemos una plataforma de publicidad de autoservicio que proporciona
-                                    una forma simple y automatizada de construir una campaña y llegar a las posibles
-                                    familias. </p>
+                                <h4 class="services-title">{{ trans('Workschool.Article2') }}</h4>
+                                <p class="text">{{ trans('Workschool.Article2Text') }}. </p>
                             </div>
                         </div> <!-- services content -->
                     </div>
@@ -70,10 +64,8 @@
                                 <i class="lni-brush"></i>
                             </div>
                             <div class="services-content media-body">
-                                <h4 class="services-title">Estamos aquí para ayudar</h4>
-                                <p class="text">Es tan fácil como 1-2-3: ingrese el nombre de su escuela en el cuadro de
-                                    búsqueda, regístrese para obtener una cuenta con su dirección de correo electrónico
-                                    profesional de la escuela y luego personalice su perfil.</p>
+                                <h4 class="services-title">{{ trans('Workschool.Article3') }}</h4>
+                                <p class="text">{{ trans('Workschool.Article3Text') }}. </p>
                             </div>
                         </div> <!-- services content -->
                     </div>
@@ -83,9 +75,8 @@
                                 <i class="lni-bulb"></i>
                             </div>
                             <div class="services-content media-body">
-                                <h4 class="services-title">Reforzar la conexión entre la escuela y el hogar</h4>
-                                <p class="text">Nuestro contenido puede ayudar a los maestros y líderes escolares
-                                    Reforzar las actividades en el aula y apoyar el gran aprendizaje en el hogar.</p>
+                                <h4 class="services-title">{{ trans('Workschool.Article4') }}</h4>
+                                <p class="text">{{ trans('Workschool.Article4Text') }}. </p>
                             </div>
                         </div> <!-- services content -->
                     </div>
@@ -118,15 +109,12 @@
             <div class="col-lg-6"> </div>
             <div class="col-lg-6">
                 <div class="call-action-content text-center">
-                    <h2 class="call-title">Trabaja con nosotros para empoderar a los padres</h2>
-                    <p class="text">Anuncie en SCHOOLA y haga llegar su mensaje a nuestra gran audiencia de padres
-                        comprometidos. SCHOOLA puede orientar su campaña por estado o nivel de grado; Ofrecemos
-                        todos los bloques de anuncios tradicionales, así como patrocinios de boletines.</p>
+                    <h2 class="call-title">{{ trans('Workschool.call-title') }}</h2>
+                    <p class="text">{{ trans('Workschool.call-titleText') }}</p>
                     <div class="call-newsletter">
                         <i class="lni-envelope"></i>
                         <input type="text" readonly>
-                        <button type="submit">Registrate</button>
-                    </div>
+                        <button type="submit">{{ trans('Workschool.Registrate') }}
                 </div> <!-- slider-content -->
             </div>
         </div> <!-- row -->
@@ -139,4 +127,3 @@
 <link rel="stylesheet" href="/css/workschool.css">
 
 @endpush
-

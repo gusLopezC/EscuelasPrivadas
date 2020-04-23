@@ -20,6 +20,8 @@ class publicController extends Controller
     //
     public function homeview()
     {
+
+
         $escuelas = Escuelas::select('id', 'slug', 'name', 'categoria', 'address', 'calification')
             ->orderBy('nivelpromo', 'desc')
             ->with('getPhotos')
@@ -38,8 +40,8 @@ class publicController extends Controller
         OpenGraph::addImage(['url' => 'http://image.url.com/cover.jpg', 'size' => 300]);
         OpenGraph::addImage('http://image.url.com/cover.jpg', ['height' => 300, 'width' => 300]);
 
+
         return view('welcome', compact('escuelas'));
-        //
 
     }
     public function nosotrosview()
@@ -150,7 +152,7 @@ class publicController extends Controller
      *  Vistas detalladas
      */
 
-    public function schoolShow($slug)
+    public function schoolShow( $slug)
     {
 
         $escuela = Escuelas::where('slug', '=', $slug)

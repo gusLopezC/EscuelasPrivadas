@@ -1,19 +1,19 @@
 <!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}">
 
 <head>
-
     <!-- Basic Page Needs
 ================================================== -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- CSS
-================================================== -->
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/colors/main.css" id="colors">
 
     {!! SEO::generate() !!}
-
+    @stack('styles')
+    @livewireStyles
 </head>
 
 <body>
@@ -50,16 +50,17 @@
                         <!-- Main Navigation -->
                         <nav id="navigation" class="style-1">
                             <ul id="responsive">
-                                <li class="{{ Request::is('/') ? 'current' : '' }}"><a href="{{route('/')}}">Home</a>
+                                <li class="{{ Request::is('/') ? 'current' : '' }}"><a
+                                        href="{{route('/')}}">{{ trans('Header.Home') }}</a>
                                 </li>
                                 <li class="{{ Request::is('/') ? 'current' : '' }}"><a
-                                        href="{{route('nosotros')}}">Nosotros</a>
+                                        href="{{route('nosotros')}}">{{ trans('Header.Nosotros') }}</a>
                                 </li>
                                 <li class="{{ Request::is('/') ? 'current' : '' }}"><a
-                                        href="{{route('workschool')}}">Trabajemos juntos</a>
+                                        href="{{route('workschool')}}">{{ trans('Header.Trabajamos juntos') }}</a>
                                 </li>
                                 <li class="{{ Request::is('/') ? 'current' : '' }}"><a
-                                        href="{{route('contact')}}">Contacto</a>
+                                        href="{{route('contact')}}">{{ trans('Header.Contacto') }}</a>
                                 </li>
 
                             </ul>
@@ -75,7 +76,8 @@
                     <div class="right-side">
                         @guest
                         <div class="header-widget">
-                            <a href="{{route('login')}}" class="sign-in"><i class="sl sl-icon-login"></i> Sign In</a>
+                            <a href="{{route('login')}}" class="sign-in"><i
+                                    class="sl sl-icon-login"></i>{{ trans('Header.Sign In') }}</a>
                         </div>
                         @else
                         <div class="header-widget">
@@ -90,20 +92,23 @@
                                 </div>
 
                                 <ul>
-                                    <li><a href="{{route('profile')}}"><i class="sl sl-icon-settings"></i>
-                                            Profile</a></li>
-                                    <li><a href="{{route('dashboard')}}"><i class="sl sl-icon-envelope-open"></i>
-                                            Dashboard</a></li>
-                                    <li><a href="{{route('booking')}}"><i class="fa fa-calendar-check-o"></i>
-                                            Bookings</a></li>
+                                    <li><a href="{{route('profile')}}"><i
+                                                class="sl sl-icon-settings"></i>
+                                            {{ trans('Header.Profile') }}</a></li>
+                                    <li><a href="{{route('dashboard')}}"><i
+                                                class="sl sl-icon-envelope-open"></i>
+                                            {{ trans('Header.Dashboard') }} </a></li>
+                                    <li><a href="{{route('booking')}}"><i
+                                                class="fa fa-calendar-check-o"></i>
+                                            {{ trans('Header.Bookings') }} </a></li>
                                     <li>
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            <i class="sl sl-icon-power"></i> Logout
+                                            <i class="sl sl-icon-power"></i> {{ trans('Header.Logout') }}
                                         </a>
                                     </li>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                        style="display: none;">
+                                    <form id="logout-form" action="{{ route('logout') }}"
+                                        method="POST" style="display: none;">
                                         {{ csrf_field() }}
                                     </form>
                                 </ul>
@@ -131,8 +136,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h2>Guíe a su hijo hacia un gran futuro</h2>
-                            <h4>ENCUENTRA UNA GRAN ESCUELA</h4>
+                            <h2>{{ trans('Welcome.Title') }}</h2>
+                            <h4>{{ trans('Welcome.SubTitle') }}</h4>
 
                             <div class="main-search-input">
 
@@ -187,13 +192,12 @@
 
                 <div class="col-md-12">
                     <h3 class="headline centered margin-top-75">
-                        Busca por nivel educativo
+                        {{ trans('Welcome.BuscarporNivel') }}
                     </h3>
                 </div>
 
             </div>
         </div>
-
 
         <!-- Category Boxes -->
         <div class="container">
@@ -201,43 +205,50 @@
                 <div class="col-md-12">
                     <div class="categories-boxes-container margin-top-5 margin-bottom-30">
                         <!-- Box -->
-                        <a href="{{ route('search', ['category' => 'guarderia']) }}" class="category-small-box">
+                        <a href="{{ route('search', ['category' => 'guarderia']) }}"
+                            class="category-small-box">
                             <img src="../images/icons/guarderia.svg" alt="">
                             <h4>Guarderia</h4>
                         </a>
 
                         <!-- Box -->
-                        <a href="{{ route('search', ['category' => 'preescolar']) }}" class="category-small-box">
+                        <a href="{{ route('search', [ 'category' => 'preescolar']) }}"
+                            class="category-small-box">
                             <img src="../images/icons/preescolar.svg" alt="">
                             <h4>Pre-escolar</h4>
                         </a>
 
                         <!-- Box -->
-                        <a href="{{ route('search', ['category' => 'primarias']) }}" class="category-small-box">
+                        <a href="{{ route('search', [ 'category' => 'primarias']) }}"
+                            class="category-small-box">
                             <img src="../images/icons/primaria.svg" alt="">
                             <h4>Primarias</h4>
                         </a>
 
                         <!-- Box -->
-                        <a href="{{ route('search', ['category' => 'secundarias']) }}" class="category-small-box">
+                        <a href="{{ route('search', [ 'category' => 'secundarias']) }}"
+                            class="category-small-box">
                             <img src="../images/icons/secundaria.svg" alt="">
                             <h4>Secundarias</h4>
                         </a>
 
                         <!-- Box -->
-                        <a href="{{ route('search', ['category' => 'preparatorias']) }}" class="category-small-box">
+                        <a href="{{ route('search', [ 'category' => 'preparatorias']) }}"
+                            class="category-small-box">
                             <img src="../images/icons/preparatoria.svg" alt="">
                             <h4>Preparatorias</h4>
                         </a>
 
                         <!-- Box -->
-                        <a href="{{ route('search', ['category' => 'universidades']) }}" class="category-small-box">
+                        <a href="{{ route('search', [ 'category' => 'universidades']) }}"
+                            class="category-small-box">
                             <img src="../images/icons/universidad.svg" alt="">
 
                             <h4>Universidades</h4>
                         </a>
                         <!-- Box -->
-                        <a href="{{ route('search', ['category' => 'otras']) }}" class="category-small-box">
+                        <a href="{{ route('search', [ 'category' => 'otras']) }}"
+                            class="category-small-box">
                             <img src="../images/icons/soccer.png" alt="">
 
                             <h4>Otros</h4>
@@ -255,8 +266,8 @@
 
                 <div class="col-md-12">
                     <h3 class="headline centered margin-bottom-45">
-                        Most Visited Places
-                        <span>Discover top-rated local businesses</span>
+                        {{ trans('Welcome.MostVisited') }}
+                        <span>{{ trans('Welcome.DescubreTop') }}</span>
                     </h3>
                 </div>
 
@@ -270,13 +281,14 @@
                                 <div class="listing-item">
                                     <img src="https://escuelasprivadas.s3.amazonaws.com/images/escuelas/{{$escuela->getPhotos[0]->photo}}"
                                         alt="">
-                                    <div onclick="window.location='{{ route('school',$escuela->slug)}}'"
+                                    <div onclick="window.location='{{ route('school', [ $escuela->slug])}}'"
                                         class="listing-item-content">
                                         <span class="tag">{{$escuela->categoria}}</span>
                                         <h3>{{$escuela->name}}</h3>
                                         <span>{{ Illuminate\Support\Str::limit($escuela->address, 25) }} </span>
                                     </div>
-                                    <span onclick="window.location='{{ route('addFavoritos',$escuela->id)}}'"
+                                    <span
+                                        onclick="window.location='{{ route('addFavoritos', [$escuela->id])}}'"
                                         class="like-icon"></span>
                                 </div>
 
@@ -298,14 +310,13 @@
         </div>
         <!-- Listings / End -->
 
+
         <!-- Flip banner -->
         <a class="flip-banner parallax margin-top-65" data-background="images/slider-bg-02.jpg" data-color="#f91942"
             data-color-opacity="0.85" data-img-width="2500" data-img-height="1666">
             <div class="flip-banner-content">
-                <h2 class="flip-visible">Ayudamos a los padres a encontrar la escuela adecuada para su familia</h2>
-                <h2 class="flip-hidden">Obtén la información escolar que necesitan para guiar<br> a los niños hacia un
-                    gran
-                    futuro</i></h2>
+                <h2 class="flip-visible">{{ trans('Welcome.AyudamosMensaje') }}</h2>
+                <h2 class="flip-hidden">{{ trans('Welcome.AyudamosMensaje2') }}</i></h2>
             </div>
         </a>
         <!-- Flip banner / End -->
@@ -319,35 +330,62 @@
                     <div class="col-md-5 col-sm-6">
                         <img class="footer-logo" src="/images/logo.png" alt="">
                         <br><br>
-                        <p>SCHOLA es la principal plataforma que capacita a los padres para desbloquear oportunidades
-                            educativas para sus hijos. Brindamos información escolar y recursos para padres para ayudar
-                            a
-                            millones de familias a elegir la escuela correcta, apoyar el aprendizaje en el hogar y guiar
-                            a
-                            sus hijos hacia un gran futuro.
-
+                        <p>
+                            {{ trans('Footer.Text') }}
                         </p>
+                        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                            <!-- Right Side Of Navbar -->
+                            <ul class="navbar-nav ml-auto">
+                                <!-- Authentication Links -->
+                                @php $locale = session()->get('locale'); @endphp
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        @switch($locale)
+                                        @case('es')
+                                        <img src="{{asset('img/us.png')}}"> Español
+                                        @break
+                                        @case('en')
+                                        <img src="{{asset('img/bn.png')}}"> Ingles
+                                        @break
+
+                                        @default
+                                        <img src="{{asset('img/us.png')}}"> Español
+                                        @endswitch
+                                        <span class="caret"></span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="lang/es"><img src="{{asset('img/us.png')}}">
+                                            Español</a>
+                                        <a class="dropdown-item" href="lang/en"><img src="{{asset('img/bn.png')}}">
+                                            Ingles</a>
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
 
                     <div class="col-md-4 col-sm-6 ">
-                        <h4>Helpful Links</h4>
+                        <h4>Sitemap</h4>
                         <ul class="footer-links">
-                            <li><a href="{{route('/')}}">Inicio</a></li>
-                            <li><a href="{{route('nosotros')}}">Nostros</a></li>
-                            <li><a href="{{route('workschool')}}">Trabajemos juntos</a></li>
-                            <li><a href="{{route('/')}}">Mi cuenta</a></li>
-                            <li><a href="{{route('termsAndConditions')}}">Términos y condiciones</a></li>
+                            <li><a href="{{route('/')}}">{{ trans('Header.Home') }}</a></li>
+                            <li><a href="{{route('nosotros')}}">{{ trans('Header.Nosotros') }}</a></li>
+                            <li><a href="{{route('workschool')}}">{{ trans('Header.Trabajamos juntos') }}</a></li>
+                            <li><a href="{{route('/')}}">{{ trans('Footer.Mi cuenta') }}</a></li>
+                            <li><a href="{{route('termsAndConditions')}}">{{ trans('Footer.Términos y condiciones') }}</a>
+                            </li>
                         </ul>
 
                         <ul class="footer-links">
                             <li><a href="{{route('faq')}}">FAQ</a></li>
-                            <li><a href="{{route('contact')}}">Contacto</a></li>
+                            <li><a href="{{route('contact')}}">{{ trans('Header.Contacto') }}</a></li>
                         </ul>
                         <div class="clearfix"></div>
                     </div>
 
                     <div class="col-md-3  col-sm-12">
-                        <h4>Contact Us</h4>
+                        <h4>{{ trans('Footer.Contact Us') }}</h4>
                         <div class="text-widget">
                             <span>Blvd. Bernardo Quintana 7001, 76090 Santiago de Querétaro, Qro.</span> <br>
                             Phone: <span>(123) 123-456 </span><br>
@@ -367,7 +405,7 @@
                 <!-- Copyright -->
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="copyrights">© 2020 . All Rights Reserved.</div>
+                        <div class="copyrights">© 2020 .{{ trans('Footer.All Rights Reserved') }} .</div>
                     </div>
                 </div>
 
@@ -398,8 +436,6 @@
     @livewireScripts
     @stack('scripts')
     @include('sweetalert::alert')
-
-
 
 </body>
 

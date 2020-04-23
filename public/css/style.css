@@ -2193,6 +2193,9 @@ em.mm-counter + a.mm-fullsubopen + span {
     border-color: #e0e0e0;
 }
 
+.margen-busqueda{
+    margin-bottom: 12%;
+}
 /* ---------------------------------- */
 /* Range Slider
 ------------------------------------- */

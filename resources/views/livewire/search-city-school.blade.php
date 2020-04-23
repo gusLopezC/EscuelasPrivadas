@@ -1,6 +1,6 @@
 <div class="main-search-input-item">
     <input wire:model="buscar" wire:keydown.enter="asignarPrimero()" type="text"
-        placeholder="Buscar por estado o ciudad" class="form-control" id="buscar">
+        placeholder="{{ __("Search.CityEscuela")}}" class="form-control" id="buscar">
     @error("buscar")
     <small class="form-text text-danger">{{$message}}</small>
     @else

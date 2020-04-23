@@ -50,16 +50,17 @@
                         <!-- Main Navigation -->
                         <nav id="navigation" class="style-1">
                             <ul id="responsive">
-                                <li class="{{ Request::is('/') ? 'current' : '' }}"><a href="{{route('/')}}">Home</a>
+                                <li class="{{ Request::is('/') ? 'current' : '' }}"><a href="{{route('/')}}">
+                                        {{ trans('Header.Home') }}</a>
                                 </li>
                                 <li class="{{ Request::is('/') ? 'current' : '' }}"><a
-                                        href="{{route('nosotros')}}">Nosotros</a>
+                                        href="{{route('nosotros')}}">{{ trans('Header.Nosotros') }}</a>
                                 </li>
                                 <li class="{{ Request::is('/') ? 'current' : '' }}"><a
-                                        href="{{route('workschool')}}">Trabajemos juntos</a>
+                                        href="{{route('workschool')}}">{{ trans('Header.Trabajamos juntos') }}</a>
                                 </li>
                                 <li class="{{ Request::is('/') ? 'current' : '' }}"><a
-                                        href="{{route('contact')}}">Contacto</a>
+                                        href="{{route('contact')}}">{{ trans('Header.Contacto') }}</a>
                                 </li>
                             </ul>
 
@@ -73,7 +74,8 @@
                     <div class="right-side">
                         @guest
                         <div class="header-widget">
-                            <a href="{{route('login')}}" class="sign-in"><i class="sl sl-icon-login"></i> Sign In</a>
+                            <a href="{{route('login')}}" class="sign-in"><i class="sl sl-icon-login"></i>
+                                {{ trans('Header.Sign In') }}</a>
                         </div>
                         @else
                         <div class="header-widget">
@@ -89,15 +91,15 @@
 
                                 <ul>
                                     <li><a href="{{route('profile')}}"><i class="sl sl-icon-settings"></i>
-                                            Profile</a></li>
+                                            {{ trans('Header.Profile') }}</a></li>
                                     <li><a href="{{route('dashboard')}}"><i class="sl sl-icon-envelope-open"></i>
-                                            Dashboard</a></li>
+                                            {{ trans('Header.Dashboard') }}</a></li>
                                     <li><a href="{{route('booking')}}"><i class="fa fa-calendar-check-o"></i>
-                                            Bookings</a></li>
+                                            {{ trans('Header.Bookings') }} </a></li>
                                     <li>
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            <i class="sl sl-icon-power"></i> Logout
+                                            <i class="sl sl-icon-power"></i> {{ trans('Header.Logout') }}
                                         </a>
                                     </li>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -135,35 +137,32 @@
                     <div class="col-md-5 col-sm-6">
                         <img class="footer-logo" src="/images/logo.png" alt="">
                         <br><br>
-                        <p>SCHOLA es la principal plataforma que capacita a los padres para desbloquear oportunidades
-                            educativas para sus hijos. Brindamos información escolar y recursos para padres para ayudar
-                            a
-                            millones de familias a elegir la escuela correcta, apoyar el aprendizaje en el hogar y guiar
-                            a
-                            sus hijos hacia un gran futuro.
-
+                        <p>
+                            {{ trans('Footer.Text') }}
                         </p>
                     </div>
 
                     <div class="col-md-4 col-sm-6 ">
-                        <h4>Helpful Links</h4>
+                        <h4>Sitemap</h4>
                         <ul class="footer-links">
-                            <li><a href="{{route('/')}}">Inicio</a></li>
-                            <li><a href="{{route('nosotros')}}">Nostros</a></li>
-                            <li><a href="{{route('workschool')}}">Trabajemos juntos</a></li>
-                            <li><a href="{{route('/')}}">Mi cuenta</a></li>
-                            <li><a href="{{route('termsAndConditions')}}">Términos y condiciones</a></li>
+                            <li><a href="{{route('/')}}">{{ trans('Header.Home') }}</a></li>
+                            <li><a href="{{route('nosotros')}}">{{ trans('Header.Nosotros') }}</a></li>
+                            <li><a href="{{route('workschool')}}">{{ trans('Header.Trabajamos juntos') }}</a></li>
+                            <li><a href="{{route('/')}}">{{ trans('Footer.Mi cuenta') }}</a></li>
+                            <li><a
+                                    href="{{route('termsAndConditions')}}">{{ trans('Footer.Términos y condiciones') }}</a>
+                            </li>
                         </ul>
 
                         <ul class="footer-links">
                             <li><a href="{{route('faq')}}">FAQ</a></li>
-                            <li><a href="{{route('contact')}}">Contacto</a></li>
+                            <li><a href="{{route('contact')}}">{{ trans('Header.Contacto') }}</a></li>
                         </ul>
                         <div class="clearfix"></div>
                     </div>
 
                     <div class="col-md-3  col-sm-12">
-                        <h4>Contact Us</h4>
+                        <h4>{{ trans('Footer.Contact Us') }}</h4>
                         <div class="text-widget">
                             <span>Blvd. Bernardo Quintana 7001, 76090 Santiago de Querétaro, Qro.</span> <br>
                             Phone: <span>(123) 123-456 </span><br>
@@ -183,7 +182,7 @@
                 <!-- Copyright -->
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="copyrights">© 2020 . All Rights Reserved.</div>
+                        <div class="copyrights">© 2020 . {{ trans('Footer.All Rights Reserved') }}.</div>
                     </div>
                 </div>
 

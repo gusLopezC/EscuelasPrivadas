@@ -60,16 +60,17 @@
                         <!-- Main Navigation -->
                         <nav id="navigation" class="style-1">
                             <ul id="responsive">
-                                <li class="{{ Request::is('/') ? 'current' : '' }}"><a href="{{route('/')}}">Home</a>
+                                <li class="{{ Request::is('/') ? 'current' : '' }}"><a
+                                        href="{{route('/')}}">{{ trans('Header.Home') }}</a>
                                 </li>
                                 <li class="{{ Request::is('/') ? 'current' : '' }}"><a
-                                        href="{{route('nosotros')}}">Nosotros</a>
+                                        href="{{route('nosotros')}}">{{ trans('Header.Nosotros') }}</a>
                                 </li>
                                 <li class="{{ Request::is('/') ? 'current' : '' }}"><a
-                                        href="{{route('workschool')}}">Trabajemos juntos</a>
+                                        href="{{route('workschool')}}">{{ trans('Header.Trabajamos juntos') }}</a>
                                 </li>
                                 <li class="{{ Request::is('/') ? 'current' : '' }}"><a
-                                        href="{{route('contact')}}">Contacto</a>
+                                        href="{{route('contact')}}">{{ trans('Header.Contacto') }}</a>
                                 </li>
                             </ul>
 
@@ -83,7 +84,8 @@
                     <div class="right-side">
                         @guest
                         <div class="header-widget">
-                            <a href="{{route('login')}}" class="sign-in"><i class="sl sl-icon-login"></i> Sign In</a>
+                            <a href="{{route('login')}}" class="sign-in"><i class="sl sl-icon-login"></i>
+                                {{ trans('Header.Sign In') }}</a>
                         </div>
                         @else
                         <div class="header-widget">
@@ -99,15 +101,15 @@
 
                                 <ul>
                                     <li><a href="{{route('profile')}}"><i class="sl sl-icon-settings"></i>
-                                            Profile</a></li>
+                                            {{ trans('Header.Profile') }}</a></li>
                                     <li><a href="{{route('dashboard')}}"><i class="sl sl-icon-envelope-open"></i>
-                                            Dashboard</a></li>
+                                            {{ trans('Header.Dashboard') }}</a></li>
                                     <li><a href="{{route('booking')}}"><i class="fa fa-calendar-check-o"></i>
-                                            Bookings</a></li>
+                                            {{ trans('Header.Bookings') }}</a></li>
                                     <li>
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
-                                            <i class="sl sl-icon-power"></i> Logout
+                                            <i class="sl sl-icon-power"></i> {{ trans('Header.Logout') }}
                                         </a>
                                     </li>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -138,36 +140,36 @@
 	================================================== -->
 
             <!-- Responsive Navigation Trigger -->
-            <a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> Dashboard Navigation</a>
+            <a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> Dashboard</a>
 
             <div class="dashboard-nav">
                 <div class="dashboard-nav-inner">
 
-                    <ul data-submenu-title="Account">
+                    <ul data-submenu-title="{{ trans('Dashboard.Micuenta') }}">
                         <li class="{{ Request::url() == route('profile') ? 'active' : '' }}"><a
-                                href="{{route('profile')}}"><i class="sl sl-icon-user"></i> My Profile</a></li>
+                                href="{{route('profile')}}"><i class="sl sl-icon-user"></i> {{ trans('Header.Profile') }}</a></li>
                         <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();"><i class="sl sl-icon-power"></i> Logout</a></li>
+                    document.getElementById('logout-form').submit();"><i class="sl sl-icon-power"></i> {{ trans('Header.Logout') }}</a></li>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
                         </form>
                     </ul>
 
-                    <ul data-submenu-title="Main">
+                    <ul data-submenu-title="{{ trans('Dashboard.MisReservas') }}">
                         <li class="{{ Request::url() == route('dashboard') ? 'active' : '' }}"><a
-                                href="{{route('dashboard')}}"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
+                                href="{{route('dashboard')}}"><i class="sl sl-icon-settings"></i>{{ trans('Dashboard.Dashboard') }} </a></li>
                         <li class="{{ Request::url() == route('booking') ? 'active' : '' }}"><a
-                                href="{{route('booking')}}"><i class="fa fa-calendar-check-o"></i> Reservas</a></li>
+                                href="{{route('booking')}}"><i class="fa fa-calendar-check-o"></i>{{ trans('Dashboard.Reservas') }} </a></li>
                     </ul>
 
-                    <ul data-submenu-title="Listings">
+                    <ul data-submenu-title="{{ trans('Dashboard.Administración') }}">
 
                         <li class="{{ Request::url() == route('reviews') ? 'active' : '' }}"><a
-                                href="{{route('reviews')}}"><i class="sl sl-icon-star"></i> Reviews</a></li>
+                                href="{{route('reviews')}}"><i class="sl sl-icon-star"></i>{{ trans('Dashboard.Reviews') }} </a></li>
                         <li class="{{ Request::url() == route('bookmarks') ? 'active' : '' }}"><a
-                                href="{{route('bookmarks')}}"><i class="sl sl-icon-heart"></i> Favoritos</a></li>
+                                href="{{route('bookmarks')}}"><i class="sl sl-icon-heart"></i>{{ trans('Dashboard.Favoritos') }} </a></li>
                         <li class="{{ Request::url() == route('createSchool') ? 'active' : '' }}"><a
-                                href="{{route('createSchool')}}"><i class="sl sl-icon-plus"></i> Add School</a></li>
+                                href="{{route('createSchool')}}"><i class="sl sl-icon-plus"></i>{{ trans('Dashboard.AddSchool') }} </a></li>
                     </ul>
 
                 </div>

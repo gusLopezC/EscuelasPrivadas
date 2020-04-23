@@ -20,7 +20,7 @@ class BookingController extends Controller
 {
     //
 
-    public function index($slug)
+    public function index( $slug)
     {
 
         $user = Auth::user();

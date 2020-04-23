@@ -23,13 +23,19 @@
                 <div class="listing-titlebar-title">
                     <h2>{{$escuela->name}}</h2>
                     <br>
-                    @if ($EscuelasNivel[0]->guarderia)<span class="listing-tag">Guarderia</span>@endif
-                    @if ($EscuelasNivel[0]->preescolar)<span class="listing-tag">Preescolar</span>@endif
-                    @if ($EscuelasNivel[0]->primarias)<span class="listing-tag">Primaria</span>@endif
-                    @if ($EscuelasNivel[0]->secundarias)<span class="listing-tag">Secundaria</span>@endif
-                    @if ($EscuelasNivel[0]->preparatorias)<span class="listing-tag">preparatoria</span>@endif
-                    @if ($EscuelasNivel[0]->universidades)<span class="listing-tag">Universidad</span>@endif
-                    @if ($EscuelasNivel[0]->otras)<span class="listing-tag">Otros</span>@endif
+                    @if ($EscuelasNivel[0]->guarderia)<span
+                        class="listing-tag">{{ trans('School.Guarderias') }}</span>@endif
+                    @if ($EscuelasNivel[0]->preescolar)<span
+                        class="listing-tag">{{ trans('School.Pre-escolar') }}</span>@endif
+                    @if ($EscuelasNivel[0]->primarias)<span
+                        class="listing-tag">{{ trans('School.Primaria') }}</span>@endif
+                    @if ($EscuelasNivel[0]->secundarias)<span
+                        class="listing-tag">{{ trans('School.Secundaria') }}</span>@endif
+                    @if ($EscuelasNivel[0]->preparatorias)<span
+                        class="listing-tag">{{ trans('School.Preparatoria') }}</span>@endif
+                    @if ($EscuelasNivel[0]->universidades)<span
+                        class="listing-tag">{{ trans('School.Universidad') }}</span>@endif
+                    @if ($EscuelasNivel[0]->otras)<span class="listing-tag">{{ trans('School.Otros') }}</span>@endif
 
 
                     <br>
@@ -55,11 +61,11 @@
             <!-- Listing Nav -->
             <div id="listing-nav" class="listing-nav-container">
                 <ul class="listing-nav">
-                    <li><a href="#listing-overview" class="active">Visión general</a></li>
-                    <li><a href="#listing-pricing-list">Precios</a></li>
-                    <li><a href="#listing-location">Locacion</a></li>
-                    <li><a href="#listing-reviews">Opiniones</a></li>
-                    <li><a href="#add-review">Agregar Opinion</a></li>
+                    <li><a href="#listing-overview" class="active">{{ trans('School.VisiónGeneral') }}</a></li>
+                    <li><a href="#listing-pricing-list">{{ trans('School.Precios') }}</a></li>
+                    <li><a href="#listing-location">{{ trans('School.Locacion') }}</a></li>
+                    <li><a href="#listing-reviews">{{ trans('School.Opiniones') }}</a></li>
+                    <li><a href="#add-review">{{ trans('School.AgregarOpinion') }}</a></li>
                 </ul>
             </div>
 
@@ -73,39 +79,39 @@
                 </p>
 
                 <!-- Amenities -->
-                <h3 class="listing-desc-headline">Services</h3>
+                <h3 class="listing-desc-headline">{{ trans('School.Services') }}</h3>
                 <ul class="listing-features checkboxes margin-top-0">
                     @foreach ($escuela->services as $services)
                     @switch($services)
                     @case(1)
-                    <li>Horario extendido</li>
+                    <li>{{ trans('School.Services1') }}</li>
                     @break
                     @case(2)
-                    <li>Extra clases(futbol, basquet, Voleibol, etc)</li>
+                    <li>{{ trans('School.Services2') }}</li>
                     @break
                     @case(3)
-                    <li>Centro de idiomas</li>
+                    <li>{{ trans('School.Services3') }}</li>
                     @break
                     @case(4)
-                    <li>Estacionamiento gratuito</li>
+                    <li>{{ trans('School.Services4') }}</li>
                     @break
                     @case(5)
-                    <li>Internet didactico/ simetrico</li>
+                    <li>{{ trans('School.Services5') }}</li>
                     @break
                     @case(6)
-                    <li>Proyector por aula</li>
+                    <li>{{ trans('School.Services6') }}</li>
                     @break
                     @case(7)
-                    <li>Servicios de cafeteria/ Alimentos</li>
+                    <li>{{ trans('School.Services7') }}</li>
                     @break
                     @case(8)
-                    <li>Aula Maker/ Media Lab</li>
+                    <li>{{ trans('School.Services8') }}</li>
                     @break
                     @case(9)
-                    <li>Robotica / Programación</li>
+                    <li>{{ trans('School.Services9') }}</li>
                     @break
                     @case(10)
-                    <li>Otros</li>
+                    <li>{{ trans('School.Services10') }}</li>
                     @break
                     @default
                     @endswitch
@@ -115,12 +121,12 @@
 
             <!-- Food Menu -->
             <div id="listing-pricing-list" class="listing-section">
-                <h3 class="listing-desc-headline margin-top-70 margin-bottom-30">Pricing</h3>
+                <h3 class="listing-desc-headline margin-top-70 margin-bottom-30"></h3>
 
                 <div class="show-more">
                     <div class="pricing-list-container">
                         <!-- Food List -->
-                        <h4>Colegiatura</h4>
+                        <h4>{{ trans('School.Pricing') }}</h4>
                         <ul>
                             @foreach ($escuela->getPrincing as $precio)
                             <li>
@@ -148,24 +154,24 @@
             <!-- Verified Badge -->
             <div class="verified-badge with-tip"
                 data-tip-content="Listing has been verified and belongs the business owner or manager.">
-                <i class="sl sl-icon-check"></i> Verified Listing
+                <i class="sl sl-icon-check"></i> {{ trans('School.Verified') }}
             </div>
             @endif
 
 
             <!-- Book Now -->
             <div class="boxed-widget booking-widget margin-top-35">
-                <h3><i class="fa fa-calendar-check-o "></i> Reservar cita</h3>
+                <h3><i class="fa fa-calendar-check-o "></i> {{ trans('School.ReservarCita') }}</h3>
                 <!-- progress button animation handled via custom.js -->
-                <a href="{{ route('createBooking',$escuela->slug)}}"
-                    class="button book-now fullwidth margin-top-5">Reservar</a>
+                <a href="{{ route('createBooking', $escuela->slug)}}" class="button book-now fullwidth margin-top-5">
+                    {{ trans('School.Reservar') }}</a>
             </div>
             <!-- Book Now / End -->
 
             <!-- Contact -->
             <div class="boxed-widget margin-top-35">
                 <div class="hosted-by-title">
-                    <h4><span>Publicado por </span>{{$escuela->getUser[0]->name}}</h4>
+                    <h4><span>{{ trans('School.Publicopor') }}</span>{{$escuela->getUser[0]->name}}</h4>
                     <img class="hosted-by-avatar"
                         src="https://escuelasprivadas.s3.amazonaws.com/images/profile/{{$escuela->getUser[0]->img}}"
                         alt="">
@@ -188,7 +194,7 @@
                     @endif
                     @if( $escuela->redsocial[2] != 'null')
                     <li><a href="{{$escuela->redsocial[2]}}" target="_blank" class="gplus-profile"><i
-                                class="fa fa-instagram"></i> Twitter</a>
+                                class="fa fa-instagram"></i> Intagram</a>
                     </li>
                     @endif
                     <!-- <li><a href="#" class="gplus-profile"><i class="fa fa-google-plus"></i> Google Plus</a></li> -->
@@ -197,16 +203,16 @@
                 <!-- Reply to review popup -->
                 <div id="small-dialog" class="zoom-anim-dialog mfp-hide">
                     <div class="small-dialog-header">
-                        <h3>Send Message</h3>
+                        <h3>{{ trans('School.SendMessage') }}</h3>
                     </div>
                     <div class="message-reply margin-top-0">
                         <textarea cols="40" rows="3" placeholder="Your message to Tom"></textarea>
-                        <button class="button">Send Message</button>
+                        <button class="button">{{ trans('School.SendMessage') }}</button>
                     </div>
                 </div>
 
                 <a href="#small-dialog" class="send-message-to-owner button popup-with-zoom-anim"><i
-                        class="sl sl-icon-envelope-open"></i> Send Message</a>
+                        class="sl sl-icon-envelope-open"></i> {{ trans('School.SendMessage') }}</a>
             </div>
             <!-- Contact / End-->
 
@@ -214,7 +220,7 @@
             <!-- Share / Like -->
             <div class="listing-share margin-top-40 margin-bottom-40 no-border">
                 <button class="like-button" onclick="window.location='{{ route('addFavoritos',$escuela->id)}}'"><span
-                        class="like-icon"></span> Bookmark this listing</button>
+                        class="like-icon"></span> {{ trans('School.Bookmark') }}</button>
 
                 <!-- Share Buttons -->
                 <ul class="share-buttons margin-top-40 margin-bottom-0">
@@ -242,7 +248,7 @@
 
             <!-- Location -->
             <div id="listing-location" class="listing-section">
-                <h3 class="listing-desc-headline margin-top-60 margin-bottom-30">Location</h3>
+                <h3 class="listing-desc-headline margin-top-60 margin-bottom-30">{{ trans('School.Location') }}</h3>
 
                 <div id="singleListingMap-container">
                     <div id="singleListingMap" data-latitude="{{$escuela->coordenadasGoogle[0]}}"
@@ -256,12 +262,12 @@
             <div id="add-review" class="add-review-box">
 
                 <!-- Add Review -->
-                <h3 class="listing-desc-headline margin-bottom-20">Add Review</h3>
+                <h3 class="listing-desc-headline margin-bottom-20">{{ trans('School.AddReview') }}</h3>
                 <!-- Review Comment -->
                 <form method="POST" action="{{ route('comentario.store')}}" enctype="multipart/form-data">
                     {{csrf_field()}}
 
-                    <span class="leave-rating-title">Your rating for this listing</span>
+                    <span class="leave-rating-title">{{ trans('School.YourRating') }}</span>
 
                     <!-- Rating / Upload Button -->
                     <div class="row">
@@ -288,7 +294,8 @@
                             <!-- Uplaod Photos -->
                             <div class="add-review-photos margin-bottom-30">
                                 <div class="photoUpload">
-                                    <span><i class="sl sl-icon-arrow-up-circle"></i> Upload Photos</span>
+                                    <span><i class="sl sl-icon-arrow-up-circle"></i>{{ trans('School.UploadPhotos') }}
+                                    </span>
                                     <input type='file' name="image[]" id="image[]" accept=".png, .jpg, .jpeg"
                                         multiple="" class="upload">
                                 </div>
@@ -308,7 +315,7 @@
                     <input type="hidden" name="nameuserescuela" value="{{$escuela->getUser[0]->name}}">
                     <input type="hidden" name="nameescuela"
                         value="{{ Illuminate\Support\Str::limit($escuela->name, 25) }}">
-                    <button type="submit" class="button">Enviar Review</button>
+                    <button type="submit" class="button">{{ trans('School.EnviarReview') }}</button>
                 </form>
 
             </div>
@@ -345,8 +352,7 @@
                                 @endif
 
                                 <a href="{{route('comentario.comentarioUtil',$comentario)}}" class="rate-review"><i
-                                        class="sl sl-icon-like"></i> Comentario
-                                    útil
+                                        class="sl sl-icon-like"></i>{{ trans('School.Comentarioutil') }}
                                     @if($comentario->calificationutil > 0)
                                     <span>{{$comentario->calificationutil}}</span>
                                     @endif </a>
@@ -359,7 +365,7 @@
                         data-more-title="Show More"><i class="fa fa-angle-down"></i></a>
                 </section>
                 @else
-                <h3 class="listing-desc-headline margin-top-75 margin-bottom-20">Aun no hay Reviews</h3>
+                <h3 class="listing-desc-headline margin-top-75 margin-bottom-20">{{ trans('School.NoReviews') }} </h3>
                 @endif
                 <!-- Pagination -->
                 <div class="clearfix"></div>

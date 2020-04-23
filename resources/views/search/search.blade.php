@@ -2,7 +2,7 @@
 @section('contenido')
 <div class="container">
     <div class="row">
-        <div ></div>
+        <div class="margen-busqueda" ></div>
         <!-- Search -->
         <div class="col-md-12">
             <div class="main-search-input gray-style margin-top-0 margin-bottom-10">
@@ -14,13 +14,13 @@
                 <div class="main-search-input-item">
                     <select onchange="location = this.value;" data-placeholder="All Categories" class="chosen-select">
                         <option value="{{ route('search', ['city'=> request()->city, 'order'=> request()->order, 'type'=> request()->type]) }}">Todos los niveles</option>
-                        <option value="{{ route('search', ['city'=> request()->city, 'order'=> request()->order, 'type'=> request()->type,  'category' => 'guarderia' ]) }}">Guarderias</option>
-                        <option value="{{ route('search', ['city'=> request()->city, 'order'=> request()->order, 'type'=> request()->type,  'category' => 'preescolar' ]) }}">Pre-escolares</option>
-                        <option value="{{ route('search', ['city'=> request()->city, 'order'=> request()->order, 'type'=> request()->type,  'category' => 'primarias' ]) }}">Primarias</option>
-                        <option value="{{ route('search', ['city'=> request()->city, 'order'=> request()->order, 'type'=> request()->type,  'category' => 'secundarias' ]) }}">Secundarias</option>
-                        <option value="{{ route('search', ['city'=> request()->city, 'order'=> request()->order, 'type'=> request()->type,  'category' => 'preparatorias' ]) }}">Preparatoria</option>
-                        <option value="{{ route('search', ['city'=> request()->city, 'order'=> request()->order, 'type'=> request()->type,  'category' => 'universidades' ]) }}">Universidades</option>
-                        <option value="{{ route('search', ['city'=> request()->city, 'order'=> request()->order, 'type'=> request()->type,  'category' => 'otras' ]) }}">Otros</option>
+                        <option value="{{ route('search', ['city'=> request()->city, 'order'=> request()->order, 'type'=> request()->type,  'category' => 'guarderia' ]) }}">{{ trans('Search.Guarderias') }}</option>
+                        <option value="{{ route('search', ['city'=> request()->city, 'order'=> request()->order, 'type'=> request()->type,  'category' => 'preescolar' ]) }}">{{ trans('Search.Pre-escolares') }}</option>
+                        <option value="{{ route('search', ['city'=> request()->city, 'order'=> request()->order, 'type'=> request()->type,  'category' => 'primarias' ]) }}">{{ trans('Search.Primarias') }}</option>
+                        <option value="{{ route('search', ['city'=> request()->city, 'order'=> request()->order, 'type'=> request()->type,  'category' => 'secundarias' ]) }}">{{ trans('Search.Secundarias') }}</option>
+                        <option value="{{ route('search', ['city'=> request()->city, 'order'=> request()->order, 'type'=> request()->type,  'category' => 'preparatorias' ]) }}">{{ trans('Search.Preparatoria') }}</option>
+                        <option value="{{ route('search', ['city'=> request()->city, 'order'=> request()->order, 'type'=> request()->type,  'category' => 'universidades' ]) }}">{{ trans('Search.Guarderias') }}</option>
+                        <option value="{{ route('search', ['city'=> request()->city, 'order'=> request()->order, 'type'=> request()->type,  'category' => 'otras' ]) }}">{{ trans('Search.Otros') }}</option>
 
                     </select>
                 </div>
@@ -44,24 +44,24 @@
                         <div class="sort-by">
                             <div class="sort-by-select">
                                 <select onchange="location = this.value;" data-placeholder="Default order" class="chosen-select-no-single">
-                                    <option label="blank">Selecciona Categoria</option>
-                                    <option value="{{ route('search', ['city'=> request()->city,'category'=> request()->category , 'order'=> request()->order, 'type' => 'Tradicional']) }}" >Tradicional</option>
-                                    <option value="{{ route('search', ['city'=> request()->city,'category'=> request()->category , 'order'=> request()->order, 'type' => 'Religiosa']) }}" >Religiosa</option>
-                                    <option value="{{ route('search', ['city'=> request()->city,'category'=> request()->category , 'order'=> request()->order, 'type' => 'Montessori']) }}" >Montessori</option>
-                                    <option value="{{ route('search', ['city'=> request()->city,'category'=> request()->category , 'order'=> request()->order, 'type' => 'Tecnólogia']) }}" >Tecnólogia</option>
-                                    <option value="{{ route('search', ['city'=> request()->city,'category'=> request()->category , 'order'=> request()->order, 'type' => 'Bicultural']) }}" >Bicultural</option>
-                                    <option value="{{ route('search', ['city'=> request()->city,'category'=> request()->category , 'order'=> request()->order, 'type' => 'Mixtas']) }}" >Mixtas</option>
-                                    <option value="{{ route('search', ['city'=> request()->city,'category'=> request()->category , 'order'=> request()->order, 'type' => 'Laicas']) }}" >Laicas</option>
-                                    <option value="{{ route('search', ['city'=> request()->city,'category'=> request()->category , 'order'=> request()->order, 'type' => 'Otras']) }}" >Otras</option>
+                                    <option label="blank">{{ trans('Search.SeleccionaCategoria') }}</option>
+                                    <option value="{{ route('search', ['city'=> request()->city,'category'=> request()->category , 'order'=> request()->order, 'type' => 'Tradicional']) }}" >{{ trans('Search.Tradicional') }}</option>
+                                    <option value="{{ route('search', ['city'=> request()->city,'category'=> request()->category , 'order'=> request()->order, 'type' => 'Religiosa']) }}" >{{ trans('Search.Religiosa') }}</option>
+                                    <option value="{{ route('search', ['city'=> request()->city,'category'=> request()->category , 'order'=> request()->order, 'type' => 'Montessori']) }}" >{{ trans('Search.Montessori') }}</option>
+                                    <option value="{{ route('search', ['city'=> request()->city,'category'=> request()->category , 'order'=> request()->order, 'type' => 'Tecnólogia']) }}" >{{ trans('Search.Tecnólogia') }}</option>
+                                    <option value="{{ route('search', ['city'=> request()->city,'category'=> request()->category , 'order'=> request()->order, 'type' => 'Bicultural']) }}" >{{ trans('Search.Bicultural') }}</option>
+                                    <option value="{{ route('search', ['city'=> request()->city,'category'=> request()->category , 'order'=> request()->order, 'type' => 'Mixtas']) }}" >{{ trans('Search.Mixtas') }}</option>
+                                    <option value="{{ route('search', ['city'=> request()->city,'category'=> request()->category , 'order'=> request()->order, 'type' => 'Laicas']) }}" >{{ trans('Search.Laicas') }}</option>
+                                    <option value="{{ route('search', ['city'=> request()->city,'category'=> request()->category , 'order'=> request()->order, 'type' => 'Otras']) }}" >{{ trans('Search.Otras') }}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="sort-by">
                             <div class="sort-by-select">
                                 <select onchange="location = this.value;" data-placeholder="Default orden" class="chosen-select-no-single">
-                                    <option value="{{ route('search', ['city'=> request()->city,'category'=> request()->category ,'type'=> request()->type, 'order' => 'default']) }}">Default Orden</a> </option>
-                                    <option value="{{ route('search', ['city'=> request()->city,'category'=> request()->category ,'type'=> request()->type, 'order' => 'HighestRated']) }}">El mejor valorado</option>
-                                    <option value="{{ route('search', ['city'=> request()->city,'category'=> request()->category ,'type'=> request()->type, 'order' => 'NewestListings']) }}">Listados más nuevos</option>
+                                    <option value="{{ route('search', ['city'=> request()->city,'category'=> request()->category ,'type'=> request()->type, 'order' => 'default']) }}">{{ trans('Search.DefaultOrden') }}</a> </option>
+                                    <option value="{{ route('search', ['city'=> request()->city,'category'=> request()->category ,'type'=> request()->type, 'order' => 'HighestRated']) }}">{{ trans('Search.mejorValorado') }}</option>
+                                    <option value="{{ route('search', ['city'=> request()->city,'category'=> request()->category ,'type'=> request()->type, 'order' => 'NewestListings']) }}">{{ trans('Search.Listadosnuevos') }}</option>
                                 </select>
                             </div>
                         </div>
@@ -87,7 +87,7 @@
                 <!-- Listing Item -->
                 <div class="col-lg-4 col-md-6">
                     <a class="listing-item-container compact">
-                        <div class="listing-item" onclick="window.location='{{ route('school',$escuela->slug)}}'">
+                        <div class="listing-item" onclick="window.location='{{ route('school', [ $escuela->slug])}}'">
                             <img src="https://escuelasprivadas.s3.amazonaws.com/images/escuelas/{{$escuela->photo}}"
                                 alt="">
                             <div class="listing-badge now-open">{{$escuela->categoria}}</div>
@@ -99,7 +99,7 @@
                                 <span>{{ Illuminate\Support\Str::limit($escuela->address, 30) }} </span>
                             </div>
                         </div>
-                        <span onclick="window.location='{{ route('addFavoritos',$escuela->id)}}'"
+                        <span onclick="window.location='{{ route('addFavoritos', [$escuela->id])}}'"
                             class="like-icon"></span>
 
                     </a>
