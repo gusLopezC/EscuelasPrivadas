@@ -74,7 +74,7 @@
                                         <br>
                                         <br> <a href="{{route('/')}}">
                                             <button class="button margin-top-15" style="width: 80%;">
-                                                Explora
+                                                {{ trans('Bookmarks.Explora') }}
                                             </button>
                                         </a>
                                     </div>

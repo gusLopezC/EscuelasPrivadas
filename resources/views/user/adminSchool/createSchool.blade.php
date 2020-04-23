@@ -10,13 +10,13 @@
     <div id="titlebar">
         <div class="row">
             <div class="col-md-12">
-                <h2>Add Listing</h2>
+                <h2>{{ trans('CreateSchool.Title') }}</h2>
                 <!-- Breadcrumbs -->
                 <nav id="breadcrumbs">
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Dashboard</a></li>
-                        <li>Add Listing</li>
+                        <li>Home</li>
+                        <li>Dashboard</li>
+                        <li>{{ trans('CreateSchool.Title') }}</li>
                     </ul>
                 </nav>
             </div>
@@ -52,14 +52,15 @@
 
                         <!-- Headline -->
                         <div class="add-listing-headline">
-                            <h3><i class="sl sl-icon-doc"></i> Información basica</h3>
+                            <h3><i class="sl sl-icon-doc"></i> {{ trans('CreateSchool.InformacionBasica') }}</h3>
                         </div>
 
 
                         <!-- Title -->
                         <div class="row with-forms">
                             <div class="col-md-12">
-                                <h5>Nombre Escuela <i class="tip" data-tip-content="Nombre de tu escuela"></i></h5>
+                                <h5>{{ trans('CreateSchool.NombreEscuela') }}<i class="tip"
+                                        data-tip-content="Nombre de tu escuela"></i></h5>
                                 <input name="name" id="name" class="search-field" type="text" required
                                     value="{{old('name') }}" />
                             </div>
@@ -70,37 +71,38 @@
 
                             <!-- Status -->
                             <div class="col-md-6">
-                                <h5>Categoria</h5>
+                                <h5>{{ trans('CreateSchool.Categoria') }}</h5>
                                 <select class="chosen-select-no-single" name="categoria" id="categoria"
                                     value="{{old('categoria') }}" required>
-                                    <option value="" selected disabled>Selecciona Categoria</option>
-                                    <option>Tradicional</option>
-                                    <option>Religiosa</option>
-                                    <option>Montessori</option>
-                                    <option>Tecnólogia</option>
-                                    <option>Bicultural</option>
-                                    <option>Mixtas</option>
-                                    <option>Laicas</option>
-                                    <option>Otras</option>
+                                    <option value="" selected disabled>{{ trans('CreateSchool.SeleccionaCategoria') }}
+                                    </option>
+                                    <option>{{ trans('CreateSchool.Tradicional') }}</option>
+                                    <option>{{ trans('CreateSchool.Religiosa') }}</option>
+                                    <option>{{ trans('CreateSchool.Montessori') }}</option>
+                                    <option>{{ trans('CreateSchool.Tecnólogia') }}</option>
+                                    <option>{{ trans('CreateSchool.Bicultural') }}</option>
+                                    <option>{{ trans('CreateSchool.Mixtas') }}</option>
+                                    <option>{{ trans('CreateSchool.Laicas') }}</option>
+                                    <option>{{ trans('CreateSchool.Otras') }}</option>
                                 </select>
                             </div>
 
                             <!-- Type -->
                             <div class="col-md-6">
-                                <h5>Niveles educativos <i class="tip"
+                                <h5>{{ trans('CreateSchool.NivelesEducativos') }}<i class="tip"
                                         data-tip-content="Maximum of 5 keywords related with your business"></i></h5>
                                 <select data-placeholder="Select Multiple Items" class="chosen-select" multiple
                                     name="niveleducativo[]" id="niveleducativo" required>
-                                    <option value="guarderia">Guarderia</option>
-                                    <option value="preescolar">Pree-escolar</option>
-                                    <option value="primarias">Primaria</option>
-                                    <option value="secundarias">Secundaria</option>
-                                    <option value="preparatorias">Preparatoria</option>
-                                    <option value="universidades">Universidad</option>
-                                    <option value="otras">Deportes</option>
-                                    <option value="otras">Arte</option>
-                                    <option value="otras">Tecnica</option>
-                                    <option value="otras">Idiomas</option>
+                                    <option value="guarderia">{{ trans('CreateSchool.Guarderia') }}</option>
+                                    <option value="preescolar">{{ trans('CreateSchool.Pre-escolar') }}</option>
+                                    <option value="primarias">{{ trans('CreateSchool.Primaria') }}</option>
+                                    <option value="secundarias">{{ trans('CreateSchool.Secundaria') }}</option>
+                                    <option value="preparatorias">{{ trans('CreateSchool.Preparatoria') }}</option>
+                                    <option value="universidades">{{ trans('CreateSchool.Universidad') }}</option>
+                                    <option value="otras">{{ trans('CreateSchool.Deportes') }}</option>
+                                    <option value="otras">{{ trans('CreateSchool.Arte') }}</option>
+                                    <option value="otras">{{ trans('CreateSchool.Tecnica') }}</option>
+                                    <option value="otras">{{ trans('CreateSchool.Idiomas') }}</option>
                                 </select>
                             </div>
 
@@ -117,7 +119,7 @@
 
                         <!-- Headline -->
                         <div class="add-listing-headline">
-                            <h3><i class="sl sl-icon-location"></i> Locación</h3>
+                            <h3><i class="sl sl-icon-location"></i>{{ trans('CreateSchool.Locación') }} </h3>
                         </div>
 
                         <div class="submit-section">
@@ -128,25 +130,25 @@
 
                                 <!-- Address -->
                                 <div class="col-md-12">
-                                    <h5>Dirección</h5>
+                                    <h5>{{ trans('CreateSchool.Dirección') }}</h5>
                                     <input type="text" name="address" id="address" class="form-control"
                                         placeholder="Select Location" value="{{old('address') }}" required>
                                 </div>
                                 <div class="col-md-4">
-                                    <h5>Ciudad</h5>
+                                    <h5>{{ trans('CreateSchool.Ciudad') }}</h5>
                                     <input type="text" name="ciudad" id="ciudad" class="form-control"
-                                        placeholder="Select Location" value="{{old('ciudad') }}"  required>
+                                        placeholder="Select Location" value="{{old('ciudad') }}" required>
                                 </div>
                                 <div class="col-md-4">
-                                    <h5>Estado</h5>
+                                    <h5>{{ trans('CreateSchool.Estado') }}</h5>
                                     <input type="text" name="state" id="state" class="form-control"
-                                        placeholder="Select Location" value="{{old('state') }}"  required>
+                                        placeholder="Select Location" value="{{old('state') }}" required>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <h5>Pais</h5>
+                                    <h5>{{ trans('CreateSchool.Pais') }}</h5>
                                     <input type="text" name="pais" id="pais" class="form-control"
-                                        placeholder="Select Location" value="{{old('pais') }}"  required>
+                                        placeholder="Select Location" value="{{old('pais') }}" required>
                                 </div>
 
                                 <div style="display:none">
@@ -170,14 +172,15 @@
 
                         <!-- Headline -->
                         <div class="add-listing-headline">
-                            <h3><i class="sl sl-icon-picture"></i> Galeria</h3>
+                            <h3><i class="sl sl-icon-picture"></i> {{ trans('CreateSchool.Galeria') }}</h3>
                         </div>
 
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="add-review-photos margin-bottom-30" style="margin-top: 30px;">
                                     <div class="photoUpload">
-                                        <span><i class="sl sl-icon-arrow-up-circle"></i> Cargar Photos</span>
+                                        <span><i class="sl sl-icon-arrow-up-circle"></i>
+                                            {{ trans('CreateSchool.CargarPhotos') }}</span>
                                         <input type='file' name="image[]" id="image[]" accept=".png, .jpg, .jpeg"
                                             multiple="" class="upload">
                                     </div>
@@ -196,12 +199,12 @@
 
                         <!-- Headline -->
                         <div class="add-listing-headline">
-                            <h3><i class="sl sl-icon-docs"></i> Detalles</h3>
+                            <h3><i class="sl sl-icon-docs"></i> {{ trans('CreateSchool.Detalles') }}</h3>
                         </div>
 
                         <!-- Description -->
                         <div class="form">
-                            <h5>Descripción</h5>
+                            <h5>{{ trans('CreateSchool.Descripción') }}</h5>
                             <textarea class="WYSIWYG" name="description" id="description" spellcheck="true"
                                 value="{{old('description') }}" required></textarea>
                         </div>
@@ -211,19 +214,19 @@
 
                             <!-- Phone -->
                             <div class="col-md-4">
-                                <h5>Telefono </h5>
+                                <h5>{{ trans('CreateSchool.Telefono') }} </h5>
                                 <input type="text" name="phone" id="phone" value="{{old('phone') }}" required>
                             </div>
 
                             <!-- Website -->
                             <div class="col-md-4">
-                                <h5>Website <span>(optional)</span></h5>
+                                <h5>{{ trans('CreateSchool.Website') }} <span>(optional)</span></h5>
                                 <input type="text" name="website" id="website" value="{{old('website') }}">
                             </div>
 
                             <!-- Email Address -->
                             <div class="col-md-4">
-                                <h5>E-mail</h5>
+                                <h5>{{ trans('CreateSchool.Website') }}</h5>
                                 <input type="email" name="emailcontacto" id="emailcontacto"
                                     value="{{old('emailcontacto') }}" required>
                             </div>
@@ -238,21 +241,21 @@
                             <!-- Phone -->
                             <div class="col-md-4">
                                 <h5 class="fb-input"><i class="fa fa-facebook-square"></i> Facebook
-                                    <span>(optional)</span>
+                                    <span>({{ trans('CreateSchool.optional') }})</span>
                                 </h5>
                                 <input type="text" name="redsocial[]" id="redsocial">
                             </div>
                             <!-- Phone -->
                             <div class="col-md-4">
                                 <h5 class="twitter-input"><i class="fa fa-twitter-square"></i> Twitter
-                                    <span>(optional)</span>
+                                    <span>({{ trans('CreateSchool.optional') }})</span>
                                 </h5>
                                 <input type="text" name="redsocial[]" id="redsocial">
                             </div>
                             <!-- Phone -->
                             <div class="col-md-4">
                                 <h5 class="gplus-input"><i class="fa fa-instagram"></i> Instagram
-                                    <span>(optional)</span>
+                                    <span>({{ trans('CreateSchool.optional') }})</span>
                                 </h5>
                                 <input type="text" name="redsocial[]" id="redsocial">
                             </div>
@@ -268,40 +271,40 @@
 
                         <!-- Headline -->
                         <div class="add-listing-headline">
-                            <h3><i class="sl sl-icon-docs"></i> Servicios</h3>
+                            <h3><i class="sl sl-icon-docs"></i>{{ trans('CreateSchool.Servicios') }} </h3>
                         </div>
                         <!-- Checkboxes -->
                         <div class="checkboxes in-row margin-bottom-20">
 
                             <input id="check-a" type="checkbox" name="services[]" value="1">
-                            <label for="check-a">Horario extendido</label>
+                            <label for="check-a">{{ trans('CreateSchool.Services1') }}</label>
 
                             <input id="check-b" type="checkbox" name="services[]" value="2">
-                            <label for="check-b">Extra clases(futbol, basquet, Voleibol, etc)</label>
+                            <label for="check-b">{{ trans('CreateSchool.Services2') }}</label>
 
                             <input id="check-c" type="checkbox" name="services[]" value="3">
-                            <label for="check-c">Centro de idiomas</label>
+                            <label for="check-c">{{ trans('CreateSchool.Services3') }}</label>
 
                             <input id="check-d" type="checkbox" name="services[]" value="4">
-                            <label for="check-d">Estacionamiento gratuito</label>
+                            <label for="check-d">{{ trans('CreateSchool.Services4') }}</label>
 
                             <input id="check-e" type="checkbox" name="services[]" value="5">
-                            <label for="check-e">Internet didactico/ simetrico</label>
+                            <label for="check-e">{{ trans('CreateSchool.Services5') }}</label>
 
                             <input id="check-f" type="checkbox" name="services[]" value="6">
-                            <label for="check-f">Proyector por aula</label>
+                            <label for="check-f">{{ trans('CreateSchool.Services6') }}</label>
 
                             <input id="check-g" type="checkbox" name="services[]" value="7">
-                            <label for="check-g">Servicios de cafeteria/ Alimentos</label>
+                            <label for="check-g">{{ trans('CreateSchool.Services7') }}</label>
 
                             <input id="check-h" type="checkbox" name="services[]" value="8">
-                            <label for="check-h">Aula Maker/ Media Lab</label>
+                            <label for="check-h">{{ trans('CreateSchool.Services8') }}</label>
 
                             <input id="check-i" type="checkbox" name="services[]" value="9">
-                            <label for="check-i">Robotica / Programación </label>
+                            <label for="check-i">{{ trans('CreateSchool.Services9') }}</label>
 
                             <input id="check-j" type="checkbox" name="services[]" value="10">
-                            <label for="check-j">Otros </label>
+                            <label for="check-j">{{ trans('CreateSchool.Services10') }}</label>
 
                         </div>
                         <!-- Checkboxes / End -->
@@ -314,7 +317,7 @@
 
                         <!-- Headline -->
                         <div class="add-listing-headline">
-                            <h3><i class="sl sl-icon-book-open"></i> Precio</h3>
+                            <h3><i class="sl sl-icon-book-open"></i>{{ trans('CreateSchool.Precios') }} </h3>
                             <!-- Switcher -->
                         </div>
 
@@ -334,14 +337,14 @@
                                         </td>
                                     </tr>
                                 </table>
-                                <a href="#" class="button add-pricing-list-item">Add Item</a>
+                                <a href="#" class="button add-pricing-list-item">{{ trans('CreateSchool.AddItem') }}</a>
                             </div>
                         </div>
                     </div>
                     <!-- Section / End -->
 
 
-                    <button class="button preview" type="submit" style="width:100%">Enviar <i
+                    <button class="button preview" type="submit" style="width:100%">{{ trans('CreateSchool.Enviar') }} <i
                             class="fa fa-arrow-circle-right"></i></button>
 
                 </form>
