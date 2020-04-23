@@ -4,7 +4,7 @@
 <head>
     <!-- Basic Page Needs
 ================================================== -->
-     <meta charset="utf-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -92,14 +92,11 @@
                                 </div>
 
                                 <ul>
-                                    <li><a href="{{route('profile')}}"><i
-                                                class="sl sl-icon-settings"></i>
+                                    <li><a href="{{route('profile')}}"><i class="sl sl-icon-settings"></i>
                                             {{ trans('Header.Profile') }}</a></li>
-                                    <li><a href="{{route('dashboard')}}"><i
-                                                class="sl sl-icon-envelope-open"></i>
+                                    <li><a href="{{route('dashboard')}}"><i class="sl sl-icon-envelope-open"></i>
                                             {{ trans('Header.Dashboard') }} </a></li>
-                                    <li><a href="{{route('booking')}}"><i
-                                                class="fa fa-calendar-check-o"></i>
+                                    <li><a href="{{route('booking')}}"><i class="fa fa-calendar-check-o"></i>
                                             {{ trans('Header.Bookings') }} </a></li>
                                     <li>
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -107,8 +104,8 @@
                                             <i class="sl sl-icon-power"></i> {{ trans('Header.Logout') }}
                                         </a>
                                     </li>
-                                    <form id="logout-form" action="{{ route('logout') }}"
-                                        method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        style="display: none;">
                                         {{ csrf_field() }}
                                     </form>
                                 </ul>
@@ -205,50 +202,43 @@
                 <div class="col-md-12">
                     <div class="categories-boxes-container margin-top-5 margin-bottom-30">
                         <!-- Box -->
-                        <a href="{{ route('search', ['category' => 'guarderia']) }}"
-                            class="category-small-box">
+                        <a href="{{ route('search', ['category' => 'guarderia']) }}" class="category-small-box">
                             <img src="../images/icons/guarderia.svg" alt="">
                             <h4>Guarderia</h4>
                         </a>
 
                         <!-- Box -->
-                        <a href="{{ route('search', [ 'category' => 'preescolar']) }}"
-                            class="category-small-box">
+                        <a href="{{ route('search', [ 'category' => 'preescolar']) }}" class="category-small-box">
                             <img src="../images/icons/preescolar.svg" alt="">
                             <h4>Pre-escolar</h4>
                         </a>
 
                         <!-- Box -->
-                        <a href="{{ route('search', [ 'category' => 'primarias']) }}"
-                            class="category-small-box">
+                        <a href="{{ route('search', [ 'category' => 'primarias']) }}" class="category-small-box">
                             <img src="../images/icons/primaria.svg" alt="">
                             <h4>Primarias</h4>
                         </a>
 
                         <!-- Box -->
-                        <a href="{{ route('search', [ 'category' => 'secundarias']) }}"
-                            class="category-small-box">
+                        <a href="{{ route('search', [ 'category' => 'secundarias']) }}" class="category-small-box">
                             <img src="../images/icons/secundaria.svg" alt="">
                             <h4>Secundarias</h4>
                         </a>
 
                         <!-- Box -->
-                        <a href="{{ route('search', [ 'category' => 'preparatorias']) }}"
-                            class="category-small-box">
+                        <a href="{{ route('search', [ 'category' => 'preparatorias']) }}" class="category-small-box">
                             <img src="../images/icons/preparatoria.svg" alt="">
                             <h4>Preparatorias</h4>
                         </a>
 
                         <!-- Box -->
-                        <a href="{{ route('search', [ 'category' => 'universidades']) }}"
-                            class="category-small-box">
+                        <a href="{{ route('search', [ 'category' => 'universidades']) }}" class="category-small-box">
                             <img src="../images/icons/universidad.svg" alt="">
 
                             <h4>Universidades</h4>
                         </a>
                         <!-- Box -->
-                        <a href="{{ route('search', [ 'category' => 'otras']) }}"
-                            class="category-small-box">
+                        <a href="{{ route('search', [ 'category' => 'otras']) }}" class="category-small-box">
                             <img src="../images/icons/soccer.png" alt="">
 
                             <h4>Otros</h4>
@@ -287,8 +277,7 @@
                                         <h3>{{$escuela->name}}</h3>
                                         <span>{{ Illuminate\Support\Str::limit($escuela->address, 25) }} </span>
                                     </div>
-                                    <span
-                                        onclick="window.location='{{ route('addFavoritos', [$escuela->id])}}'"
+                                    <span onclick="window.location='{{ route('addFavoritos', [$escuela->id])}}'"
                                         class="like-icon"></span>
                                 </div>
 
@@ -334,35 +323,16 @@
                             {{ trans('Footer.Text') }}
                         </p>
                         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                            <!-- Right Side Of Navbar -->
-                            <ul class="navbar-nav ml-auto">
-                                <!-- Authentication Links -->
-                                @php $locale = session()->get('locale'); @endphp
-                                <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        @switch($locale)
-                                        @case('es')
-                                        <img src="{{asset('img/us.png')}}"> Español
-                                        @break
-                                        @case('en')
-                                        <img src="{{asset('img/bn.png')}}"> Ingles
-                                        @break
-
-                                        @default
-                                        <img src="{{asset('img/us.png')}}"> Español
-                                        @endswitch
-                                        <span class="caret"></span>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="lang/es"><img src="{{asset('img/us.png')}}">
-                                            Español</a>
-                                        <a class="dropdown-item" href="lang/en"><img src="{{asset('img/bn.png')}}">
-                                            Ingles</a>
-
-                                    </div>
-                                </li>
-                            </ul>
+                            <div class="main-search-input-item">
+                                <select onchange="location = this.value;" data-placeholder="All Categories"
+                                    class="chosen-select">
+                                    @php $locale = session()->get('locale'); @endphp
+                                    <option value="{{ route('lang','es')}}" {{ $locale == 'es' ? 'selected' : '' }}>
+                                        {{ trans('Footer.Español') }}</option>
+                                    <option value="{{ route('lang','en')}}" {{ $locale == 'en' ? 'selected' : '' }}>
+                                        {{ trans('Footer.Ingles') }}</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
 
@@ -373,7 +343,8 @@
                             <li><a href="{{route('nosotros')}}">{{ trans('Header.Nosotros') }}</a></li>
                             <li><a href="{{route('workschool')}}">{{ trans('Header.Trabajamos juntos') }}</a></li>
                             <li><a href="{{route('/')}}">{{ trans('Footer.Mi cuenta') }}</a></li>
-                            <li><a href="{{route('termsAndConditions')}}">{{ trans('Footer.Términos y condiciones') }}</a>
+                            <li><a
+                                    href="{{route('termsAndConditions')}}">{{ trans('Footer.Términos y condiciones') }}</a>
                             </li>
                         </ul>
 

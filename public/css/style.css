@@ -254,7 +254,9 @@ img.footer-logo {
 }
 
 #header {
-    position: relative;
+    position: fixed;
+    width: 100%;
+    background: #fff;
     z-index: 999;
     padding: 18px 0 8px 0;
     box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.12);
@@ -14586,7 +14588,7 @@ h4 span.headline-detail {
 	a.dashboard-responsive-nav-trigger {
 		width: 90%;
 		margin: 0 5%;
-		margin-top: 40px;
+		margin-top: 100px;
 		background-color: #333;
 		border-radius: 5px;
 		color: #fff;

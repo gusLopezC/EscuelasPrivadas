@@ -140,6 +140,18 @@
                         <p>
                             {{ trans('Footer.Text') }}
                         </p>
+                        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                            <div class="main-search-input-item">
+                                <select onchange="location = this.value;" data-placeholder="All Categories"
+                                    class="chosen-select">
+                                    @php $locale = session()->get('locale'); @endphp
+                                    <option value="{{ route('lang','es')}}" {{ $locale == 'es' ? 'selected' : '' }}>
+                                        {{ trans('Footer.Español') }}</option>
+                                    <option value="{{ route('lang','en')}}" {{ $locale == 'en' ? 'selected' : '' }}>
+                                        {{ trans('Footer.Ingles') }}</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="col-md-4 col-sm-6 ">

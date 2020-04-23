@@ -28,8 +28,6 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 */
 
-Route::redirect('/', '/es');
-
 
 Auth::routes();
 
@@ -125,4 +123,4 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => 'auth']
 
 
 
-Route::get('lang/{locale}', 'LocalizationController@index');
+Route::get('lang/{locale}', 'LocalizationController@index')->name('lang');
