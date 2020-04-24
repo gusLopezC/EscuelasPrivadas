@@ -81,7 +81,7 @@ class BookingController extends Controller
 
     public function showbookings()
     {
-        $fecha = Carbon::now();
+        $fecha = Carbon::now()->subDays(1);
         $fecha = Carbon::parse($fecha)->format('Y-m-d');
 
         $iduser = Auth::user()->id;
