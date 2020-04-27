@@ -36,15 +36,15 @@
                     <div class="edit-profile-photo">
                         <img src="https://escuelasprivadas.s3.amazonaws.com/images/profile/{{$user->img}}" alt="">
                         <form enctype="multipart/form-data" action="{{ route('pictureprofile')}}" method="POST">
-                        <div class="change-photo-btn">
-                            <div class="photoUpload">
-                                <span><i class="fa fa-upload"></i>{{ trans('Perfil.UploadPhoto') }} </span>
-                                <input type="file" name="avatar" class="upload" />
+                            <div class="change-photo-btn">
+                                <div class="photoUpload">
+                                    <span><i class="fa fa-upload"></i>{{ trans('Perfil.UploadPhoto') }} </span>
+                                    <input type="file" name="avatar" class="upload" />
+                                </div>
                             </div>
-                        </div>
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="submit" class="pull-right btn btn-sm btn-primary" style="margin-top: 30%;">
-                    </form>
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="submit" class="pull-right btn btn-sm btn-primary" style="margin-top: 30%;">
+                        </form>
 
                     </div>
                 </div>
@@ -87,22 +87,43 @@
         <div class="col-lg-6 col-md-12">
             <div class="dashboard-list-box margin-top-0">
                 <h4 class="gray">{{ trans('Perfil.ChangePassword') }}</h4>
-                <div class="dashboard-list-box-static">
-
-                    <!-- Change Password -->
-                    <div class="my-profile">
-                        <label class="margin-top-0">{{ trans('Perfil.OldChanges') }}</label>
-                        <input type="password">
-
-                        <label>{{ trans('Perfil.NewPassword') }}</label>
-                        <input type="password">
-
-                        <label>{{ trans('Perfil.ConfirmNewPassword') }}</label>
-                        <input type="password">
-
-                        <button class="button margin-top-15">{{ trans('Perfil.SaveChanges') }}</button>
+                @if (session('error'))
+                <div class="errorformulariomensaje">
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                </div>
+                    @endif
+                    @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
                     </div>
 
+                @endif
+
+                <div class="dashboard-list-box-static">
+
+                    <form id="form-change-password" role="form" method="POST" action="{{ route('changePassword')  }}"
+                        novalidate class="form-horizontal">
+                        {{ csrf_field() }}
+                        <!-- Change Password -->
+                        <div class="my-profile">
+                            <label class="margin-top-0">{{ trans('Perfil.OldChanges') }}</label>
+                            <input type="password" class="form-control" id="current-password" name="current-password"
+                                placeholder="Password" required>
+
+                            <label>{{ trans('Perfil.NewPassword') }}</label>
+                            <input type="password" class="form-control" id="password" name="password"
+                                placeholder="Password" required>
+
+                            <label>{{ trans('Perfil.ConfirmNewPassword') }}</label>
+                            <input type="password" class="form-control" id="password_confirmation"
+                                name="password_confirmation" placeholder="Re-enter Password" required>
+
+                            <button type="submit"
+                                class="button margin-top-15">{{ trans('Perfil.SaveChanges') }}</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

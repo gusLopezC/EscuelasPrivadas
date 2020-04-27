@@ -57,6 +57,7 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => 'auth']
      */
     Route::get('profile', 'UserController@index')->name('profile');
     Route::put('profile/{id}', 'UserController@update')->name('profile.update');
+    Route::post('profile/password', 'UserController@changePassword')->name('changePassword');
     Route::post('pictureprofile', 'UserController@pictureprofile')->name('pictureprofile');
     Route::delete('profile/delete', 'UserController@destroy')->name('profile.delete');
 

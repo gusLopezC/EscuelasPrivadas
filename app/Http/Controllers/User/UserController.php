@@ -5,10 +5,12 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\Storage;
 use Image;
 use App\User;
 
+use Hash;
 use  Alert;
 
 class UserController extends Controller
@@ -54,9 +56,29 @@ class UserController extends Controller
         return redirect()->route('profile', $user);
     }
 
+    public function changePassword(Request $request)
+    {
+        if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
+            // The passwords matches
+            return redirect()->back()->with("error", "Your current password does not matches with the password you provided. Please try again.");
+        }
+
+        if (strcmp($request->get('current-password'), $request->get('password')) == 0) {
+            //Current password and new password are same
+            return redirect()->back()->with("error", "New Password cannot be same as your current password. Please choose a different password.");
+        }
+
+        //Change Password
+        $user = Auth::user();
+        $user->password = bcrypt($request->get('password'));
+        $user->save();
+
+        alert()->success('Contraseña actualizada');
+        return redirect()->route('profile');
+    }
 
 
-    public function pictureprofile(Request $request )
+    public function pictureprofile(Request $request)
     {
         // Handle the user upload of avatar
         if ($request->hasFile('avatar')) {
@@ -90,5 +112,4 @@ class UserController extends Controller
 
         return redirect('/')->with('success', 'User has been deleted');
     }
-
 }
