@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Auth\Events\Registered;
+use SEO;
+
 use App\User;
 
 use Redirect;
@@ -27,6 +29,10 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
+        SEO::setTitle('SCHOOLA | Register');
+        SEO::setDescription('Consulta información sobre las características de las escuelas de México. Datos de contacto, información sobre desempeño, infraestructura, programas de apoyo y conoce las opiniones de otros padres de familia.');
+
+
         return view('auth.register');
     }
 

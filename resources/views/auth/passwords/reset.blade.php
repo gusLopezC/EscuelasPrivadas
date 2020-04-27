@@ -1,8 +1,8 @@
-@extends('layout')
-
+@extends('layaout.header')
 @section('title', 'Reset Password')
 
-@section('content')
+
+@section('contenido')
 <div class="container">
     <div class="auth-pages">
         <div class="auth-left">
