@@ -119,7 +119,20 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => 'auth']
     Route::post('booking', 'Bookings\BookingController@store')->name('Booking.store');
     Route::get('booking', 'Bookings\BookingController@showbookings')->name('booking');
     Route::get('cancelBooking/{id}', 'Bookings\BookingController@cancelBooking')->name('cancelBooking');
-}); //end sesion
+
+    /**
+     * Chat
+     *
+     */
+
+
+    Route::get('messages', 'Chat\ChatController@index')->name('messages');
+    Route::get('message/{id}', 'Chat\ChatController@getMessage')->name('message');
+    Route::post('message', 'Chat\ChatController@sendMessage');
+
+
+
+}); //end session
 
 
 
