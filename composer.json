@@ -11,7 +11,7 @@
         "php": "^7.2",
         "artesaos/seotools": "^0.17.2",
         "aws/aws-sdk-php": "^3.134",
-        "calebporzio/livewire": "^1.0",
+        "livewire/livewire": "^1.0",
         "cviebrock/eloquent-sluggable": "^6.0",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.0",
@@ -38,7 +38,9 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": [ ]
+            "dont-discover": [
+                "livewire/livewire"
+             ]
         }
     },
     "autoload": {

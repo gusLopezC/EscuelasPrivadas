@@ -138,7 +138,7 @@
 
                             <div class="main-search-input">
 
-                                @livewire('search-name-school')
+                                <!-- @livewire('search-name-school')
 
                                 @livewire('search-city-school')
 
